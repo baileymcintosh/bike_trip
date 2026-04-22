@@ -101,6 +101,64 @@ PLAN_SF = [
     {"day": 30, "stop": "San Francisco, CA", "miles": 85, "segment": "sf", "note": "Pacific finish."},
 ]
 
+PLAN_DECISION_COMMON = [
+    {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Atlantic start from Cape Henlopen."},
+    {"day": 2, "stop": "Williamsport, MD", "miles": 100, "segment": "common", "note": "Join the eastern corridor."},
+    {"day": 3, "stop": "Cumberland, MD", "miles": 65, "segment": "common", "note": "C&O / GAP transition."},
+    {"day": 4, "stop": "South of Pittsburgh / Perryopolis area, PA", "miles": 90, "segment": "common", "note": "GAP westbound."},
+    {"day": 5, "stop": "Steubenville, OH", "miles": 80, "segment": "common", "note": "Ohio River side."},
+    {"day": 6, "stop": "Millersburg, OH", "miles": 90, "segment": "common", "note": "Hilly Amish-country day."},
+    {"day": 7, "stop": "Lilly Chapel / west Columbus, OH", "miles": 120, "segment": "common", "note": "Fast central Ohio mileage."},
+    {"day": 8, "stop": "Richmond, IN", "miles": 100, "segment": "common", "note": "Cross into Indiana."},
+    {"day": 9, "stop": "Logansport, IN", "miles": 115, "segment": "common", "note": "Longer Indiana day."},
+    {"day": 10, "stop": "Chicago Heights, IL", "miles": 110, "segment": "common", "note": "Urban fringe and weather exposure."},
+    {"day": 11, "stop": "Rock Falls, IL", "miles": 110, "segment": "common", "note": "Illinois farm-country day."},
+    {"day": 12, "stop": "Cedar Rapids, IA", "miles": 120, "segment": "common", "note": "Cross the Mississippi."},
+    {"day": 13, "stop": "Ames, IA", "miles": 105, "segment": "common", "note": "Wind management day."},
+    {"day": 14, "stop": "Denison, IA", "miles": 95, "segment": "common", "note": "Decision checkpoint: continue toward the mountains or drop south."},
+]
+
+PLAN_MOUNTAIN_BRANCH = [
+    {"day": 15, "stop": "Norfolk, NE", "miles": 100, "segment": "mountain", "note": "Late-branch option; preserves the 30-day target."},
+    {"day": 16, "stop": "Kearney, NE", "miles": 110, "segment": "mountain", "note": "Direct westbound move."},
+    {"day": 17, "stop": "McCook, NE", "miles": 120, "segment": "mountain", "note": "Plains mileage."},
+    {"day": 18, "stop": "Sterling, CO", "miles": 100, "segment": "mountain", "note": "Enter Colorado."},
+    {"day": 19, "stop": "Denver, CO", "miles": 105, "segment": "mountain", "note": "Major resupply and weather checkpoint."},
+    {"day": 20, "stop": "Silverthorne / Frisco, CO", "miles": 75, "segment": "mountain", "note": "High-altitude climb day."},
+    {"day": 21, "stop": "Glenwood Springs, CO", "miles": 85, "segment": "mountain", "note": "Mountain corridor; contingent on late-spring conditions."},
+    {"day": 22, "stop": "Grand Junction, CO", "miles": 90, "segment": "mountain", "note": "Western Colorado services."},
+    {"day": 23, "stop": "Green River, UT", "miles": 100, "segment": "mountain", "note": "Long exposed desert day."},
+    {"day": 24, "stop": "Richfield, UT", "miles": 120, "segment": "mountain", "note": "Big Utah mileage."},
+    {"day": 25, "stop": "Cedar City, UT", "miles": 100, "segment": "mountain", "note": "High desert."},
+    {"day": 26, "stop": "Mesquite, NV", "miles": 90, "segment": "mountain", "note": "Before the Las Vegas traffic."},
+    {"day": 27, "stop": "Las Vegas, NV", "miles": 80, "segment": "mountain", "note": "Last major service stop."},
+    {"day": 28, "stop": "Baker or Barstow, CA", "miles": 95, "segment": "mountain", "note": "Mojave exposure."},
+    {"day": 29, "stop": "Victorville / San Bernardino, CA", "miles": 85, "segment": "mountain", "note": "Margin day if Mojave slows you down."},
+    {"day": 30, "stop": "Santa Monica, CA", "miles": 75, "segment": "mountain", "note": "Pacific finish."},
+]
+
+PLAN_SOUTHERN_BRANCH = [
+    {"day": 15, "stop": "Lincoln, NE", "miles": 125, "segment": "southern", "note": "Early southward pivot; this is the more completion-oriented branch."},
+    {"day": 16, "stop": "Hastings, NE", "miles": 106, "segment": "southern", "note": "Keep moving southwest."},
+    {"day": 17, "stop": "Smith Center, KS", "miles": 74, "segment": "southern", "note": "Serviceable Kansas day."},
+    {"day": 18, "stop": "Great Bend, KS", "miles": 114, "segment": "southern", "note": "Flatter Plains mileage."},
+    {"day": 19, "stop": "Dodge City, KS", "miles": 84, "segment": "southern", "note": "Start bending toward Route 66 country."},
+    {"day": 20, "stop": "Liberal, KS", "miles": 83, "segment": "southern", "note": "Service stop before the Panhandle."},
+    {"day": 21, "stop": "Dalhart, TX", "miles": 113, "segment": "southern", "note": "High-plains mileage."},
+    {"day": 22, "stop": "Tucumcari, NM", "miles": 94, "segment": "southern", "note": "Join the Route 66 corridor."},
+    {"day": 23, "stop": "Santa Rosa, NM", "miles": 60, "segment": "southern", "note": "Shorter day that helps manage New Mexico wind or fatigue."},
+    {"day": 24, "stop": "Albuquerque, NM", "miles": 118, "segment": "southern", "note": "Big service city and bike-shop checkpoint."},
+    {"day": 25, "stop": "Grants, NM", "miles": 77, "segment": "southern", "note": "Dry but manageable."},
+    {"day": 26, "stop": "Gallup, NM", "miles": 62, "segment": "southern", "note": "High desert, but lower risk than the Colorado mountains."},
+    {"day": 27, "stop": "Holbrook, AZ", "miles": 96, "segment": "southern", "note": "Route 66 mileage day."},
+    {"day": 28, "stop": "Flagstaff, AZ", "miles": 91, "segment": "southern", "note": "One notable high town, but without the Colorado pass chain."},
+    {"day": 29, "stop": "Seligman, AZ", "miles": 75, "segment": "southern", "note": "Stage for western Arizona."},
+    {"day": 30, "stop": "Kingman, AZ", "miles": 74, "segment": "southern", "note": "At this point you are still two to three days from LA."},
+    {"day": 31, "stop": "Needles, CA", "miles": 62, "segment": "southern", "note": "Cross the Colorado River into California."},
+    {"day": 32, "stop": "Barstow, CA", "miles": 145, "segment": "southern", "note": "The hardest desert day on this branch."},
+    {"day": 33, "stop": "Santa Monica, CA", "miles": 131, "segment": "southern", "note": "Pacific finish."},
+]
+
 
 COORDS = {
     "Cape Henlopen State Park, DE": [38.7709, -75.1033],
@@ -140,6 +198,24 @@ COORDS = {
     "Carson City / South Lake Tahoe": [39.0490, -119.8420],
     "Sacramento, CA": [38.5811, -121.4939],
     "San Francisco, CA": [37.7879, -122.4075],
+    "Lincoln, NE": [40.8089, -96.7078],
+    "Hastings, NE": [40.5861, -98.3899],
+    "Smith Center, KS": [39.7792, -98.7851],
+    "Great Bend, KS": [38.3625, -98.7804],
+    "Dodge City, KS": [37.7528, -100.0171],
+    "Liberal, KS": [37.0431, -100.9210],
+    "Dalhart, TX": [36.0616, -102.5222],
+    "Tucumcari, NM": [35.1719, -103.7250],
+    "Santa Rosa, NM": [34.9387, -104.6825],
+    "Albuquerque, NM": [35.0841, -106.6510],
+    "Grants, NM": [35.1473, -107.8514],
+    "Gallup, NM": [35.5284, -108.7439],
+    "Holbrook, AZ": [34.9037, -110.1593],
+    "Flagstaff, AZ": [35.1988, -111.6518],
+    "Seligman, AZ": [35.3269, -112.8763],
+    "Kingman, AZ": [35.1896, -114.0533],
+    "Needles, CA": [34.8383, -114.6039],
+    "Barstow, CA": [34.8986, -117.0244],
 }
 
 
@@ -308,6 +384,63 @@ def write_markdown() -> None:
         md.append(f"- [{source['label']}]({source['url']}): {source['note']}")
 
     (ROOT / "bike_trip_plan.md").write_text("\n".join(md), encoding="utf-8")
+
+
+def write_decision_markdown() -> None:
+    mountain_total = sum(x["miles"] for x in PLAN_DECISION_COMMON) + sum(x["miles"] for x in PLAN_MOUNTAIN_BRANCH)
+    southern_total = sum(x["miles"] for x in PLAN_DECISION_COMMON) + sum(x["miles"] for x in PLAN_SOUTHERN_BRANCH)
+    md = [
+        "# Westbound Decision Brief",
+        "",
+        "## Purpose",
+        "",
+        "- This page carries two western options at once so you can decide on the road instead of locking the whole trip in before departure.",
+        "- The realistic decision point is **Denison, Iowa (Day 14)**. If you wait much longer, the lower-risk southern branch becomes too long to preserve your 30-day target.",
+        "",
+        "## Shared Eastern Spine To Decision Point",
+        "",
+        "| Day | Overnight | Target Miles | Notes |",
+        "| --- | --- | ---: | --- |",
+    ]
+    for row in PLAN_DECISION_COMMON:
+        md.append(f"| {row['day']} | {row['stop']} | {row['miles']} | {row['note']} |")
+    md += [
+        "",
+        "## Option A: Mountain LA Branch",
+        "",
+        "- Better match for a **30-day Atlantic-to-LA finish**.",
+        "- Higher risk because it depends on Colorado mountain conditions, late snow, and the Glenwood Canyon timing window.",
+        "",
+        "| Day | Overnight | Target Miles | Notes |",
+        "| --- | --- | ---: | --- |",
+    ]
+    for row in PLAN_MOUNTAIN_BRANCH:
+        md.append(f"| {row['day']} | {row['stop']} | {row['miles']} | {row['note']} |")
+    md += [
+        f"",
+        f"Approximate total: **{mountain_total} miles in 30 days**",
+        "",
+        "## Option B: Southern Completion Branch",
+        "",
+        "- Lower weather and pass risk overall.",
+        "- More compatible with a first tour and a loaded touring bike.",
+        "- The tradeoff is distance: on this schedule it lands in **33 days**, not 30.",
+        "",
+        "| Day | Overnight | Target Miles | Notes |",
+        "| --- | --- | ---: | --- |",
+    ]
+    for row in PLAN_SOUTHERN_BRANCH:
+        md.append(f"| {row['day']} | {row['stop']} | {row['miles']} | {row['note']} |")
+    md += [
+        f"",
+        f"Approximate total: **{southern_total} miles in 33 days**",
+        "",
+        "## Practical Read",
+        "",
+        "- If you are healthy, on schedule, and Colorado conditions look stable when you reach Iowa/Nebraska, the mountain branch preserves the 30-day goal.",
+        "- If weather, bike issues, fatigue, or risk tolerance argue against Colorado, the southern branch is the more robust completion route, but you should expect roughly three extra days.",
+    ]
+    (ROOT / "bike_trip_decision.md").write_text("\n".join(md), encoding="utf-8")
 
 
 def map_points(plan: list[dict]) -> list[dict]:
@@ -791,6 +924,150 @@ def write_lodging_map() -> None:
     (ROOT / "bike_trip_map_lodging.html").write_text(html, encoding="utf-8")
 
 
+def write_decision_map() -> None:
+    cache = load_route_cache()
+    common_points = [
+        {
+            "day": 0,
+            "stop": "Cape Henlopen State Park, DE",
+            "miles": 0,
+            "segment": "common",
+            "note": "Atlantic tire dip start.",
+            "lat": COORDS["Cape Henlopen State Park, DE"][0],
+            "lon": COORDS["Cape Henlopen State Park, DE"][1],
+        }
+    ] + map_points(PLAN_DECISION_COMMON)
+    mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
+    southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
+
+    common_segments = routed_segments(common_points, "#d97706", "Shared", cache)
+    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", cache)
+    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", cache)
+    save_route_cache(cache)
+
+    html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bike Trip Decision Routes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {{ height: 100%; margin: 0; }}
+    .panel {{
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      width: 380px;
+      max-width: calc(100% - 24px);
+      background: rgba(255, 248, 240, 0.96);
+      border: 1px solid #caa57a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font: 14px/1.4 Georgia, serif;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }}
+    .panel h1 {{ margin: 0 0 8px; font-size: 18px; }}
+    .panel p {{ margin: 0 0 8px; }}
+    .panel button {{
+      margin: 6px 6px 0 0;
+      border: 1px solid #8b6b46;
+      background: #fff8f0;
+      border-radius: 999px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font: inherit;
+    }}
+    .panel button.active {{ background: #f4d9b5; }}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="panel">
+    <h1>Mountain vs Southern Split</h1>
+    <p>The common route runs to Denison, Iowa. That is the meaningful on-road decision point.</p>
+    <p>Red preserves the 30-day target but uses the Colorado/Utah mountain-desert line. Blue is the lower-risk completion branch but lands closer to 33 days.</p>
+    <div>
+      <button id="toggle-common" class="active">Shared</button>
+      <button id="toggle-mountain" class="active">Mountain</button>
+      <button id="toggle-southern" class="active">Southern</button>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const commonPoints = {json.dumps(common_points)};
+    const mountainPoints = {json.dumps(mountain_points)};
+    const southernPoints = {json.dumps(southern_points)};
+    const commonSegments = {json.dumps(common_segments)};
+    const mountainSegments = {json.dumps(mountain_segments)};
+    const southernSegments = {json.dumps(southern_segments)};
+
+    const map = L.map('map').setView([39.2, -97.7], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }}).addTo(map);
+
+    const groups = {{
+      common: L.layerGroup().addTo(map),
+      mountain: L.layerGroup().addTo(map),
+      southern: L.layerGroup().addTo(map)
+    }};
+
+    function addSegments(group, color, segments) {{
+      for (const seg of segments) {{
+        const geo = L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.9 }} }});
+        geo.bindPopup(
+          `<strong>${{seg.branch}} branch</strong><br>Day ${{seg.start_day}} to Day ${{seg.finish_day}}<br>${{seg.start_stop}} to ${{seg.finish_stop}}<br>Target: ${{seg.target_miles}} mi<br>Mapped: ${{seg.mapped_miles}} mi<br>${{seg.note}}`
+        );
+        geo.addTo(group);
+      }}
+    }}
+
+    function addMarkers(group, color, points) {{
+      for (const point of points) {{
+        L.circleMarker([point.lat, point.lon], {{
+          radius: point.day === 14 ? 6 : 4,
+          color,
+          fillColor: color,
+          fillOpacity: 0.95
+        }}).addTo(group).bindPopup(
+          `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>${{point.miles}} target miles<br>${{point.note}}`
+        );
+      }}
+    }}
+
+    addSegments(groups.common, '#d97706', commonSegments);
+    addMarkers(groups.common, '#d97706', commonPoints);
+    addSegments(groups.mountain, '#b91c1c', mountainSegments);
+    addMarkers(groups.mountain, '#b91c1c', mountainPoints.slice(commonPoints.length - 1));
+    addSegments(groups.southern, '#1d4ed8', southernSegments);
+    addMarkers(groups.southern, '#1d4ed8', southernPoints.slice(commonPoints.length - 1));
+
+    function hookToggle(id, key) {{
+      const button = document.getElementById(id);
+      button.addEventListener('click', () => {{
+        if (map.hasLayer(groups[key])) {{
+          map.removeLayer(groups[key]);
+          button.classList.remove('active');
+        }} else {{
+          groups[key].addTo(map);
+          button.classList.add('active');
+        }}
+      }});
+    }}
+
+    hookToggle('toggle-common', 'common');
+    hookToggle('toggle-mountain', 'mountain');
+    hookToggle('toggle-southern', 'southern');
+  </script>
+</body>
+</html>
+"""
+    (ROOT / "bike_trip_map_decision.html").write_text(html, encoding="utf-8")
+
+
 def write_map() -> None:
     common = branch_points([])
     la = branch_points(PLAN_LA)
@@ -880,9 +1157,11 @@ def main() -> None:
     day_posts = caption_lookup(items)
     write_friend_csv(day_posts)
     write_markdown()
+    write_decision_markdown()
     write_map()
     write_routed_map()
     write_lodging_map()
+    write_decision_map()
 
 
 if __name__ == "__main__":
