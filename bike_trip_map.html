@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bike Trip Route Options</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map { height: 100%; margin: 0; }
+    .panel {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      width: 340px;
+      max-width: calc(100% - 24px);
+      background: rgba(255, 248, 240, 0.95);
+      border: 1px solid #caa57a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font: 14px/1.4 Georgia, serif;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+    .panel h1 { margin: 0 0 8px; font-size: 18px; }
+    .panel p { margin: 0 0 8px; }
+    .key { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; }
+    .swatch { width: 12px; height: 12px; border-radius: 99px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="panel">
+    <h1>Cross-Country Bike Plan</h1>
+    <p>Common eastern spine from Cape Henlopen to Norfolk, then two western finish options.</p>
+    <p>Orange = shared route. Red = Los Angeles branch. Blue = San Francisco fallback.</p>
+    <div class="key">
+      <span class="chip"><span class="swatch" style="background:#d97706"></span>Shared</span>
+      <span class="chip"><span class="swatch" style="background:#dc2626"></span>LA</span>
+      <span class="chip"><span class="swatch" style="background:#2563eb"></span>SF</span>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const common = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": 38.7709, "lon": -75.1033}, {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Start at Cape Henlopen for the Atlantic tire dip, then ride inland.", "lat": 38.9786, "lon": -76.4928}, {"day": 2, "stop": "Williamsport, MD", "miles": 100, "segment": "common", "note": "Joins your friend's eastern corridor and the C&O / GAP approach.", "lat": 39.5994, "lon": -77.8215}, {"day": 3, "stop": "Cumberland, MD", "miles": 65, "segment": "common", "note": "Trail-heavy day.", "lat": 39.6526, "lon": -78.7624}, {"day": 4, "stop": "South of Pittsburgh / Perryopolis area, PA", "miles": 90, "segment": "common", "note": "GAP-based push west.", "lat": 40.0884, "lon": -79.7509}, {"day": 5, "stop": "Steubenville, OH", "miles": 80, "segment": "common", "note": "Ohio River side of the eastern rail-trail network.", "lat": 40.3601, "lon": -80.6151}, {"day": 6, "stop": "Millersburg, OH", "miles": 90, "segment": "common", "note": "Hilly Amish-country day.", "lat": 40.5545, "lon": -81.9179}, {"day": 7, "stop": "Lilly Chapel / west Columbus, OH", "miles": 120, "segment": "common", "note": "Fast central Ohio mileage if legs feel good.", "lat": 39.8834, "lon": -83.4334}, {"day": 8, "stop": "Richmond, IN", "miles": 100, "segment": "common", "note": "Cross into Indiana.", "lat": 39.8287, "lon": -84.8899}, {"day": 9, "stop": "Logansport, IN", "miles": 115, "segment": "common", "note": "Longer Indiana day to preserve the 30-day target.", "lat": 40.7542, "lon": -86.3625}, {"day": 10, "stop": "Chicago Heights, IL", "miles": 110, "segment": "common", "note": "Urban fringe and weather exposure.", "lat": 41.5063, "lon": -87.6357}, {"day": 11, "stop": "Rock Falls, IL", "miles": 110, "segment": "common", "note": "Illinois farm-country day.", "lat": 41.7816, "lon": -89.6926}, {"day": 12, "stop": "Cedar Rapids, IA", "miles": 120, "segment": "common", "note": "Cross the Mississippi and settle into Iowa rollers and gravel connectors.", "lat": 41.9759, "lon": -91.6704}, {"day": 13, "stop": "Ames, IA", "miles": 105, "segment": "common", "note": "Wind management day.", "lat": 42.0268, "lon": -93.617}, {"day": 14, "stop": "Denison, IA", "miles": 95, "segment": "common", "note": "Friend-proven overnight.", "lat": 42.0178, "lon": -95.3553}, {"day": 15, "stop": "Norfolk, NE", "miles": 100, "segment": "common", "note": "Pivot point: decide on the LA desert branch or the SF fallback.", "lat": 42.0283, "lon": -97.417}];
+    const la = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": 38.7709, "lon": -75.1033}, {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Start at Cape Henlopen for the Atlantic tire dip, then ride inland.", "lat": 38.9786, "lon": -76.4928}, {"day": 2, "stop": "Williamsport, MD", "miles": 100, "segment": "common", "note": "Joins your friend's eastern corridor and the C&O / GAP approach.", "lat": 39.5994, "lon": -77.8215}, {"day": 3, "stop": "Cumberland, MD", "miles": 65, "segment": "common", "note": "Trail-heavy day.", "lat": 39.6526, "lon": -78.7624}, {"day": 4, "stop": "South of Pittsburgh / Perryopolis area, PA", "miles": 90, "segment": "common", "note": "GAP-based push west.", "lat": 40.0884, "lon": -79.7509}, {"day": 5, "stop": "Steubenville, OH", "miles": 80, "segment": "common", "note": "Ohio River side of the eastern rail-trail network.", "lat": 40.3601, "lon": -80.6151}, {"day": 6, "stop": "Millersburg, OH", "miles": 90, "segment": "common", "note": "Hilly Amish-country day.", "lat": 40.5545, "lon": -81.9179}, {"day": 7, "stop": "Lilly Chapel / west Columbus, OH", "miles": 120, "segment": "common", "note": "Fast central Ohio mileage if legs feel good.", "lat": 39.8834, "lon": -83.4334}, {"day": 8, "stop": "Richmond, IN", "miles": 100, "segment": "common", "note": "Cross into Indiana.", "lat": 39.8287, "lon": -84.8899}, {"day": 9, "stop": "Logansport, IN", "miles": 115, "segment": "common", "note": "Longer Indiana day to preserve the 30-day target.", "lat": 40.7542, "lon": -86.3625}, {"day": 10, "stop": "Chicago Heights, IL", "miles": 110, "segment": "common", "note": "Urban fringe and weather exposure.", "lat": 41.5063, "lon": -87.6357}, {"day": 11, "stop": "Rock Falls, IL", "miles": 110, "segment": "common", "note": "Illinois farm-country day.", "lat": 41.7816, "lon": -89.6926}, {"day": 12, "stop": "Cedar Rapids, IA", "miles": 120, "segment": "common", "note": "Cross the Mississippi and settle into Iowa rollers and gravel connectors.", "lat": 41.9759, "lon": -91.6704}, {"day": 13, "stop": "Ames, IA", "miles": 105, "segment": "common", "note": "Wind management day.", "lat": 42.0268, "lon": -93.617}, {"day": 14, "stop": "Denison, IA", "miles": 95, "segment": "common", "note": "Friend-proven overnight.", "lat": 42.0178, "lon": -95.3553}, {"day": 15, "stop": "Norfolk, NE", "miles": 100, "segment": "common", "note": "Pivot point: decide on the LA desert branch or the SF fallback.", "lat": 42.0283, "lon": -97.417}, {"day": 16, "stop": "Kearney, NE", "miles": 110, "segment": "la", "note": "More direct than staying on the northern GART line.", "lat": 40.6995, "lon": -99.0819}, {"day": 17, "stop": "McCook, NE", "miles": 120, "segment": "la", "note": "Plains mileage; stock up before eastern Colorado.", "lat": 40.2007, "lon": -100.6258}, {"day": 18, "stop": "Sterling, CO", "miles": 100, "segment": "la", "note": "Enter Colorado on a serviceable but exposed corridor.", "lat": 40.6255, "lon": -103.2077}, {"day": 19, "stop": "Denver, CO", "miles": 105, "segment": "la", "note": "Major resupply and weather checkpoint.", "lat": 39.7392, "lon": -104.9849}, {"day": 20, "stop": "Silverthorne / Frisco, CO", "miles": 75, "segment": "la", "note": "Shorter day because of the Front Range climb and altitude.", "lat": 39.592, "lon": -106.097}, {"day": 21, "stop": "Glenwood Springs, CO", "miles": 85, "segment": "la", "note": "I-70 corridor / bike path mix depending exact routing.", "lat": 39.5466, "lon": -107.3247}, {"day": 22, "stop": "Grand Junction, CO", "miles": 90, "segment": "la", "note": "Western Colorado services before the desert begins.", "lat": 39.0673, "lon": -108.5645}, {"day": 23, "stop": "Green River, UT", "miles": 100, "segment": "la", "note": "Long, exposed desert day; start before sunrise.", "lat": 38.9952, "lon": -110.1617}, {"day": 24, "stop": "Richfield, UT", "miles": 120, "segment": "la", "note": "Another big Utah day; heat and water planning are decisive.", "lat": 38.7725, "lon": -112.0841}, {"day": 25, "stop": "Cedar City, UT", "miles": 100, "segment": "la", "note": "High-desert riding with services.", "lat": 37.6774, "lon": -113.0618}, {"day": 26, "stop": "Mesquite, NV", "miles": 90, "segment": "la", "note": "Good checkpoint before Vegas traffic.", "lat": 36.8036, "lon": -114.0671}, {"day": 27, "stop": "Las Vegas, NV", "miles": 80, "segment": "la", "note": "Last big-city service stop.", "lat": 36.1674, "lon": -115.1484}, {"day": 28, "stop": "Baker or Barstow, CA", "miles": 95, "segment": "la", "note": "Mojave exposure; if wind is bad, stop in Baker instead of forcing Barstow.", "lat": 35.08, "lon": -116.55}, {"day": 29, "stop": "Victorville / San Bernardino, CA", "miles": 85, "segment": "la", "note": "Gives you margin if the Mojave day is slower than planned.", "lat": 34.3917, "lon": -117.2948}, {"day": 30, "stop": "Santa Monica, CA", "miles": 75, "segment": "la", "note": "Pacific tire dip at the pier.", "lat": 34.0195, "lon": -118.4912}];
+    const sf = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": 38.7709, "lon": -75.1033}, {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Start at Cape Henlopen for the Atlantic tire dip, then ride inland.", "lat": 38.9786, "lon": -76.4928}, {"day": 2, "stop": "Williamsport, MD", "miles": 100, "segment": "common", "note": "Joins your friend's eastern corridor and the C&O / GAP approach.", "lat": 39.5994, "lon": -77.8215}, {"day": 3, "stop": "Cumberland, MD", "miles": 65, "segment": "common", "note": "Trail-heavy day.", "lat": 39.6526, "lon": -78.7624}, {"day": 4, "stop": "South of Pittsburgh / Perryopolis area, PA", "miles": 90, "segment": "common", "note": "GAP-based push west.", "lat": 40.0884, "lon": -79.7509}, {"day": 5, "stop": "Steubenville, OH", "miles": 80, "segment": "common", "note": "Ohio River side of the eastern rail-trail network.", "lat": 40.3601, "lon": -80.6151}, {"day": 6, "stop": "Millersburg, OH", "miles": 90, "segment": "common", "note": "Hilly Amish-country day.", "lat": 40.5545, "lon": -81.9179}, {"day": 7, "stop": "Lilly Chapel / west Columbus, OH", "miles": 120, "segment": "common", "note": "Fast central Ohio mileage if legs feel good.", "lat": 39.8834, "lon": -83.4334}, {"day": 8, "stop": "Richmond, IN", "miles": 100, "segment": "common", "note": "Cross into Indiana.", "lat": 39.8287, "lon": -84.8899}, {"day": 9, "stop": "Logansport, IN", "miles": 115, "segment": "common", "note": "Longer Indiana day to preserve the 30-day target.", "lat": 40.7542, "lon": -86.3625}, {"day": 10, "stop": "Chicago Heights, IL", "miles": 110, "segment": "common", "note": "Urban fringe and weather exposure.", "lat": 41.5063, "lon": -87.6357}, {"day": 11, "stop": "Rock Falls, IL", "miles": 110, "segment": "common", "note": "Illinois farm-country day.", "lat": 41.7816, "lon": -89.6926}, {"day": 12, "stop": "Cedar Rapids, IA", "miles": 120, "segment": "common", "note": "Cross the Mississippi and settle into Iowa rollers and gravel connectors.", "lat": 41.9759, "lon": -91.6704}, {"day": 13, "stop": "Ames, IA", "miles": 105, "segment": "common", "note": "Wind management day.", "lat": 42.0268, "lon": -93.617}, {"day": 14, "stop": "Denison, IA", "miles": 95, "segment": "common", "note": "Friend-proven overnight.", "lat": 42.0178, "lon": -95.3553}, {"day": 15, "stop": "Norfolk, NE", "miles": 100, "segment": "common", "note": "Pivot point: decide on the LA desert branch or the SF fallback.", "lat": 42.0283, "lon": -97.417}, {"day": 16, "stop": "Kearney, NE", "miles": 110, "segment": "sf", "note": "Direct westbound move.", "lat": 40.6995, "lon": -99.0819}, {"day": 17, "stop": "McCook, NE", "miles": 120, "segment": "sf", "note": "Plains mileage.", "lat": 40.2007, "lon": -100.6258}, {"day": 18, "stop": "Sterling, CO", "miles": 100, "segment": "sf", "note": "Eastern Colorado exposure.", "lat": 40.6255, "lon": -103.2077}, {"day": 19, "stop": "Denver, CO", "miles": 105, "segment": "sf", "note": "Decision point before the mountain section.", "lat": 39.7392, "lon": -104.9849}, {"day": 20, "stop": "Silverthorne / Frisco, CO", "miles": 75, "segment": "sf", "note": "Shorter altitude day.", "lat": 39.592, "lon": -106.097}, {"day": 21, "stop": "Glenwood Springs, CO", "miles": 85, "segment": "sf", "note": "Western Express style movement.", "lat": 39.5466, "lon": -107.3247}, {"day": 22, "stop": "Grand Junction, CO", "miles": 90, "segment": "sf", "note": "Last major Colorado resupply.", "lat": 39.0673, "lon": -108.5645}, {"day": 23, "stop": "Green River, UT", "miles": 100, "segment": "sf", "note": "Start of the long dry western run.", "lat": 38.9952, "lon": -110.1617}, {"day": 24, "stop": "Richfield, UT", "miles": 120, "segment": "sf", "note": "Big mileage needed to stay on the 30-day schedule.", "lat": 38.7725, "lon": -112.0841}, {"day": 25, "stop": "Milford, UT", "miles": 95, "segment": "sf", "note": "Dry corridor toward Nevada.", "lat": 38.3969, "lon": -113.0108}, {"day": 26, "stop": "Ely, NV", "miles": 85, "segment": "sf", "note": "Join the official USBR 50 / US 50 corridor regionally.", "lat": 39.2481, "lon": -114.8917}, {"day": 27, "stop": "Eureka or Austin, NV", "miles": 100, "segment": "sf", "note": "Classic Great Basin day; services are sparse and early closures happen.", "lat": 39.725, "lon": -116.69}, {"day": 28, "stop": "Carson City / South Lake Tahoe", "miles": 110, "segment": "sf", "note": "High-basin to Sierra transition.", "lat": 39.049, "lon": -119.842}, {"day": 29, "stop": "Sacramento, CA", "miles": 85, "segment": "sf", "note": "Lets you clear the Sierra before the final Bay push.", "lat": 38.5811, "lon": -121.4939}, {"day": 30, "stop": "San Francisco, CA", "miles": 85, "segment": "sf", "note": "Pacific finish.", "lat": 37.7879, "lon": -122.4075}];
+
+    const map = L.map('map').setView([39.5, -98.35], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    function draw(points, color) {
+      const latlngs = points.map(p => [p.lat, p.lon]);
+      L.polyline(latlngs, { color, weight: 4, opacity: 0.9 }).addTo(map);
+      points.forEach(p => {
+        L.circleMarker([p.lat, p.lon], {
+          radius: 5,
+          color,
+          fillColor: color,
+          fillOpacity: 0.9
+        }).addTo(map).bindPopup(
+          `<strong>Day ${p.day}</strong><br>${p.stop}<br>${p.miles} target miles<br>${p.note}`
+        );
+      });
+    }
+
+    draw(common, '#d97706');
+    draw(la, '#dc2626');
+    draw(sf, '#2563eb');
+  </script>
+</body>
+</html>

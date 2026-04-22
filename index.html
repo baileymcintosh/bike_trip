@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bike Trip Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --sand: #f8efe3;
+      --clay: #b26139;
+      --ink: #1e1a17;
+      --gold: #d79a37;
+      --blue: #2f6a8e;
+      --red: #c34b36;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.5 Georgia, serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(215,154,55,0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(47,106,142,0.14), transparent 28%),
+        linear-gradient(180deg, #fffaf4 0%, var(--sand) 100%);
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.05;
+    }
+    .lede {
+      max-width: 760px;
+      font-size: 1.08rem;
+      margin: 0 0 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin: 26px 0 36px;
+    }
+    .card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(178,97,57,0.22);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(69, 44, 19, 0.08);
+    }
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+    .card p {
+      margin: 0 0 14px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: white;
+      background: var(--clay);
+    }
+    .meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      color: #544840;
+      font-size: 0.95rem;
+    }
+    .meta span {
+      background: rgba(255,255,255,0.65);
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+    ul {
+      padding-left: 18px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Cross-Country Bike Trip Planner</h1>
+    <p class="lede">
+      Static planning site for the coast-to-coast ride: shared eastern spine, LA primary finish, SF fallback,
+      routed map geometry, and overnight lodging around each planned stop.
+    </p>
+
+    <div class="meta">
+      <span>Start: Cape Henlopen, DE</span>
+      <span>Target: 30 days</span>
+      <span>Pace: 80–100 miles/day</span>
+      <span>Departure window: early May</span>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Planning Brief</h2>
+        <p>Readable trip summary with the shared route, LA branch, SF fallback, and season-specific warnings.</p>
+        <a class="button" href="bike_trip_plan.md">Open Brief</a>
+      </section>
+
+      <section class="card">
+        <h2>Overview Map</h2>
+        <p>Lightweight interactive overview with the shared line plus both finish branches.</p>
+        <a class="button" href="bike_trip_map.html">Open Map</a>
+      </section>
+
+      <section class="card">
+        <h2>Routed Map</h2>
+        <p>Road-following route geometry generated from cycling routing instead of straight stop-to-stop lines.</p>
+        <a class="button" href="bike_trip_map_routed.html">Open Routed Map</a>
+      </section>
+
+      <section class="card">
+        <h2>Lodging Map</h2>
+        <p>Overnight stops with nearby mapped motels, hotels, inns, guest houses, and hostels.</p>
+        <a class="button" href="bike_trip_map_lodging.html">Open Lodging Map</a>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Included Files</h2>
+      <ul>
+        <li><a href="friend_instagram_daybook.csv">Friend Instagram daybook CSV</a></li>
+        <li><a href="build_trip_outputs.py">Generator script</a></li>
+        <li><a href="bike_trip_route_cache.json">Routed map cache</a></li>
+        <li><a href="bike_trip_lodging_cache.json">Lodging cache</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
