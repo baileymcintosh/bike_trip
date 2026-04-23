@@ -1,0 +1,538 @@
+{
+  "38.77090,-75.10330": 10.0,
+  "38.97860,-76.49280": 19.0,
+  "38.77090,-75.10330|||38.97860,-76.49280": {
+    "start_elevation_ft": 33,
+    "finish_elevation_ft": 62,
+    "gain_ft": 30,
+    "loss_ft": 0,
+    "net_elevation_ft": 30
+  },
+  "39.59940,-77.82150": 128.0,
+  "38.97860,-76.49280|||39.59940,-77.82150": {
+    "start_elevation_ft": 62,
+    "finish_elevation_ft": 420,
+    "gain_ft": 358,
+    "loss_ft": 0,
+    "net_elevation_ft": 358
+  },
+  "39.65260,-78.76240": 192.0,
+  "39.59940,-77.82150|||39.65260,-78.76240": {
+    "start_elevation_ft": 420,
+    "finish_elevation_ft": 630,
+    "gain_ft": 210,
+    "loss_ft": 0,
+    "net_elevation_ft": 210
+  },
+  "40.08840,-79.75090": 303.0,
+  "39.65260,-78.76240|||40.08840,-79.75090": {
+    "start_elevation_ft": 630,
+    "finish_elevation_ft": 994,
+    "gain_ft": 364,
+    "loss_ft": 0,
+    "net_elevation_ft": 364
+  },
+  "40.36010,-80.61510": 222.0,
+  "40.08840,-79.75090|||40.36010,-80.61510": {
+    "start_elevation_ft": 994,
+    "finish_elevation_ft": 728,
+    "gain_ft": 0,
+    "loss_ft": 266,
+    "net_elevation_ft": -266
+  },
+  "40.55450,-81.91790": 272.0,
+  "40.36010,-80.61510|||40.55450,-81.91790": {
+    "start_elevation_ft": 728,
+    "finish_elevation_ft": 892,
+    "gain_ft": 164,
+    "loss_ft": 0,
+    "net_elevation_ft": 164
+  },
+  "39.88340,-83.43340": 319.0,
+  "40.55450,-81.91790|||39.88340,-83.43340": {
+    "start_elevation_ft": 892,
+    "finish_elevation_ft": 1047,
+    "gain_ft": 154,
+    "loss_ft": 0,
+    "net_elevation_ft": 154
+  },
+  "39.82870,-84.88990": 304.0,
+  "39.88340,-83.43340|||39.82870,-84.88990": {
+    "start_elevation_ft": 1047,
+    "finish_elevation_ft": 997,
+    "gain_ft": 0,
+    "loss_ft": 49,
+    "net_elevation_ft": -49
+  },
+  "40.75420,-86.36250": 191.0,
+  "39.82870,-84.88990|||40.75420,-86.36250": {
+    "start_elevation_ft": 997,
+    "finish_elevation_ft": 627,
+    "gain_ft": 0,
+    "loss_ft": 371,
+    "net_elevation_ft": -371
+  },
+  "41.50630,-87.63570": 200.0,
+  "40.75420,-86.36250|||41.50630,-87.63570": {
+    "start_elevation_ft": 627,
+    "finish_elevation_ft": 656,
+    "gain_ft": 30,
+    "loss_ft": 0,
+    "net_elevation_ft": 30
+  },
+  "41.78160,-89.69260": 199.0,
+  "41.50630,-87.63570|||41.78160,-89.69260": {
+    "start_elevation_ft": 656,
+    "finish_elevation_ft": 653,
+    "gain_ft": 0,
+    "loss_ft": 3,
+    "net_elevation_ft": -3
+  },
+  "41.97590,-91.67040": 214.0,
+  "41.78160,-89.69260|||41.97590,-91.67040": {
+    "start_elevation_ft": 653,
+    "finish_elevation_ft": 702,
+    "gain_ft": 49,
+    "loss_ft": 0,
+    "net_elevation_ft": 49
+  },
+  "42.02680,-93.61700": 285.0,
+  "41.97590,-91.67040|||42.02680,-93.61700": {
+    "start_elevation_ft": 702,
+    "finish_elevation_ft": 935,
+    "gain_ft": 233,
+    "loss_ft": 0,
+    "net_elevation_ft": 233
+  },
+  "42.01780,-95.35530": 390.0,
+  "42.02680,-93.61700|||42.01780,-95.35530": {
+    "start_elevation_ft": 935,
+    "finish_elevation_ft": 1280,
+    "gain_ft": 344,
+    "loss_ft": 0,
+    "net_elevation_ft": 344
+  },
+  "42.02830,-97.41700": 467.0,
+  "42.01780,-95.35530|||42.02830,-97.41700": {
+    "start_elevation_ft": 1280,
+    "finish_elevation_ft": 1532,
+    "gain_ft": 253,
+    "loss_ft": 0,
+    "net_elevation_ft": 253
+  },
+  "40.69950,-99.08190": 658.0,
+  "42.02830,-97.41700|||40.69950,-99.08190": {
+    "start_elevation_ft": 1532,
+    "finish_elevation_ft": 2159,
+    "gain_ft": 627,
+    "loss_ft": 0,
+    "net_elevation_ft": 627
+  },
+  "40.20070,-100.62580": 782.0,
+  "40.69950,-99.08190|||40.20070,-100.62580": {
+    "start_elevation_ft": 2159,
+    "finish_elevation_ft": 2566,
+    "gain_ft": 407,
+    "loss_ft": 0,
+    "net_elevation_ft": 407
+  },
+  "40.62550,-103.20770": 1202.0,
+  "40.20070,-100.62580|||40.62550,-103.20770": {
+    "start_elevation_ft": 2566,
+    "finish_elevation_ft": 3944,
+    "gain_ft": 1378,
+    "loss_ft": 0,
+    "net_elevation_ft": 1378
+  },
+  "39.73920,-104.98490": 1609.0,
+  "40.62550,-103.20770|||39.73920,-104.98490": {
+    "start_elevation_ft": 3944,
+    "finish_elevation_ft": 5279,
+    "gain_ft": 1335,
+    "loss_ft": 0,
+    "net_elevation_ft": 1335
+  },
+  "39.59200,-106.09700": 2770.0,
+  "39.73920,-104.98490|||39.59200,-106.09700": {
+    "start_elevation_ft": 5279,
+    "finish_elevation_ft": 9088,
+    "gain_ft": 3809,
+    "loss_ft": 0,
+    "net_elevation_ft": 3809
+  },
+  "39.54660,-107.32470": 1762.0,
+  "39.59200,-106.09700|||39.54660,-107.32470": {
+    "start_elevation_ft": 9088,
+    "finish_elevation_ft": 5781,
+    "gain_ft": 0,
+    "loss_ft": 3307,
+    "net_elevation_ft": -3307
+  },
+  "39.06730,-108.56450": 1401.0,
+  "39.54660,-107.32470|||39.06730,-108.56450": {
+    "start_elevation_ft": 5781,
+    "finish_elevation_ft": 4596,
+    "gain_ft": 0,
+    "loss_ft": 1184,
+    "net_elevation_ft": -1184
+  },
+  "38.99520,-110.16170": 1241.0,
+  "39.06730,-108.56450|||38.99520,-110.16170": {
+    "start_elevation_ft": 4596,
+    "finish_elevation_ft": 4072,
+    "gain_ft": 0,
+    "loss_ft": 525,
+    "net_elevation_ft": -525
+  },
+  "38.77250,-112.08410": 1639.0,
+  "38.99520,-110.16170|||38.77250,-112.08410": {
+    "start_elevation_ft": 4072,
+    "finish_elevation_ft": 5377,
+    "gain_ft": 1306,
+    "loss_ft": 0,
+    "net_elevation_ft": 1306
+  },
+  "37.67740,-113.06180": 1782.0,
+  "38.77250,-112.08410|||37.67740,-113.06180": {
+    "start_elevation_ft": 5377,
+    "finish_elevation_ft": 5846,
+    "gain_ft": 469,
+    "loss_ft": 0,
+    "net_elevation_ft": 469
+  },
+  "36.80360,-114.06710": 488.0,
+  "37.67740,-113.06180|||36.80360,-114.06710": {
+    "start_elevation_ft": 5846,
+    "finish_elevation_ft": 1601,
+    "gain_ft": 0,
+    "loss_ft": 4245,
+    "net_elevation_ft": -4245
+  },
+  "36.16740,-115.14840": 620.0,
+  "36.80360,-114.06710|||36.16740,-115.14840": {
+    "start_elevation_ft": 1601,
+    "finish_elevation_ft": 2034,
+    "gain_ft": 433,
+    "loss_ft": 0,
+    "net_elevation_ft": 433
+  },
+  "35.08000,-116.55000": 794.0,
+  "36.16740,-115.14840|||35.08000,-116.55000": {
+    "start_elevation_ft": 2034,
+    "finish_elevation_ft": 2605,
+    "gain_ft": 571,
+    "loss_ft": 0,
+    "net_elevation_ft": 571
+  },
+  "34.39170,-117.29480": 959.0,
+  "35.08000,-116.55000|||34.39170,-117.29480": {
+    "start_elevation_ft": 2605,
+    "finish_elevation_ft": 3146,
+    "gain_ft": 541,
+    "loss_ft": 0,
+    "net_elevation_ft": 541
+  },
+  "34.01950,-118.49120": 35.0,
+  "34.39170,-117.29480|||34.01950,-118.49120": {
+    "start_elevation_ft": 3146,
+    "finish_elevation_ft": 115,
+    "gain_ft": 0,
+    "loss_ft": 3031,
+    "net_elevation_ft": -3031
+  },
+  "40.80890,-96.70780": 360.0,
+  "42.01780,-95.35530|||40.80890,-96.70780": {
+    "start_elevation_ft": 1280,
+    "finish_elevation_ft": 1181,
+    "gain_ft": 0,
+    "loss_ft": 98,
+    "net_elevation_ft": -98
+  },
+  "40.58610,-98.38990": 588.0,
+  "40.80890,-96.70780|||40.58610,-98.38990": {
+    "start_elevation_ft": 1181,
+    "finish_elevation_ft": 1929,
+    "gain_ft": 748,
+    "loss_ft": 0,
+    "net_elevation_ft": 748
+  },
+  "39.77920,-98.78510": 546.0,
+  "40.58610,-98.38990|||39.77920,-98.78510": {
+    "start_elevation_ft": 1929,
+    "finish_elevation_ft": 1791,
+    "gain_ft": 0,
+    "loss_ft": 138,
+    "net_elevation_ft": -138
+  },
+  "38.36250,-98.78040": 566.0,
+  "39.77920,-98.78510|||38.36250,-98.78040": {
+    "start_elevation_ft": 1791,
+    "finish_elevation_ft": 1857,
+    "gain_ft": 66,
+    "loss_ft": 0,
+    "net_elevation_ft": 66
+  },
+  "37.75280,-100.01710": 766.0,
+  "38.36250,-98.78040|||37.75280,-100.01710": {
+    "start_elevation_ft": 1857,
+    "finish_elevation_ft": 2513,
+    "gain_ft": 656,
+    "loss_ft": 0,
+    "net_elevation_ft": 656
+  },
+  "37.04310,-100.92100": 866.0,
+  "37.75280,-100.01710|||37.04310,-100.92100": {
+    "start_elevation_ft": 2513,
+    "finish_elevation_ft": 2841,
+    "gain_ft": 328,
+    "loss_ft": 0,
+    "net_elevation_ft": 328
+  },
+  "36.06160,-102.52220": 1217.0,
+  "37.04310,-100.92100|||36.06160,-102.52220": {
+    "start_elevation_ft": 2841,
+    "finish_elevation_ft": 3993,
+    "gain_ft": 1152,
+    "loss_ft": 0,
+    "net_elevation_ft": 1152
+  },
+  "35.17190,-103.72500": 1248.0,
+  "36.06160,-102.52220|||35.17190,-103.72500": {
+    "start_elevation_ft": 3993,
+    "finish_elevation_ft": 4094,
+    "gain_ft": 102,
+    "loss_ft": 0,
+    "net_elevation_ft": 102
+  },
+  "34.93870,-104.68250": 1410.0,
+  "35.17190,-103.72500|||34.93870,-104.68250": {
+    "start_elevation_ft": 4094,
+    "finish_elevation_ft": 4626,
+    "gain_ft": 531,
+    "loss_ft": 0,
+    "net_elevation_ft": 531
+  },
+  "35.08410,-106.65100": 1514.0,
+  "34.93870,-104.68250|||35.08410,-106.65100": {
+    "start_elevation_ft": 4626,
+    "finish_elevation_ft": 4967,
+    "gain_ft": 341,
+    "loss_ft": 0,
+    "net_elevation_ft": 341
+  },
+  "35.14730,-107.85140": 1968.0,
+  "35.08410,-106.65100|||35.14730,-107.85140": {
+    "start_elevation_ft": 4967,
+    "finish_elevation_ft": 6457,
+    "gain_ft": 1490,
+    "loss_ft": 0,
+    "net_elevation_ft": 1490
+  },
+  "35.52840,-108.74390": 1982.0,
+  "35.14730,-107.85140|||35.52840,-108.74390": {
+    "start_elevation_ft": 6457,
+    "finish_elevation_ft": 6503,
+    "gain_ft": 46,
+    "loss_ft": 0,
+    "net_elevation_ft": 46
+  },
+  "34.90370,-110.15930": 1548.0,
+  "35.52840,-108.74390|||34.90370,-110.15930": {
+    "start_elevation_ft": 6503,
+    "finish_elevation_ft": 5079,
+    "gain_ft": 0,
+    "loss_ft": 1424,
+    "net_elevation_ft": -1424
+  },
+  "35.19880,-111.65180": 2106.0,
+  "34.90370,-110.15930|||35.19880,-111.65180": {
+    "start_elevation_ft": 5079,
+    "finish_elevation_ft": 6909,
+    "gain_ft": 1831,
+    "loss_ft": 0,
+    "net_elevation_ft": 1831
+  },
+  "35.32690,-112.87630": 1600.0,
+  "35.19880,-111.65180|||35.32690,-112.87630": {
+    "start_elevation_ft": 6909,
+    "finish_elevation_ft": 5249,
+    "gain_ft": 0,
+    "loss_ft": 1660,
+    "net_elevation_ft": -1660
+  },
+  "35.18960,-114.05330": 1024.0,
+  "35.32690,-112.87630|||35.18960,-114.05330": {
+    "start_elevation_ft": 5249,
+    "finish_elevation_ft": 3360,
+    "gain_ft": 0,
+    "loss_ft": 1890,
+    "net_elevation_ft": -1890
+  },
+  "34.83830,-114.60390": 152.0,
+  "35.18960,-114.05330|||34.83830,-114.60390": {
+    "start_elevation_ft": 3360,
+    "finish_elevation_ft": 499,
+    "gain_ft": 0,
+    "loss_ft": 2861,
+    "net_elevation_ft": -2861
+  },
+  "34.89860,-117.02440": 662.0,
+  "34.83830,-114.60390|||34.89860,-117.02440": {
+    "start_elevation_ft": 499,
+    "finish_elevation_ft": 2172,
+    "gain_ft": 1673,
+    "loss_ft": 0,
+    "net_elevation_ft": 1673
+  },
+  "34.89860,-117.02440|||34.01950,-118.49120": {
+    "start_elevation_ft": 2172,
+    "finish_elevation_ft": 115,
+    "gain_ft": 0,
+    "loss_ft": 2057,
+    "net_elevation_ft": -2057
+  },
+  "38.89510,-77.03640": 12.0,
+  "38.89510,-77.03640|||39.59940,-77.82150": {
+    "start_elevation_ft": 39,
+    "finish_elevation_ft": 420,
+    "gain_ft": 381,
+    "loss_ft": 0,
+    "net_elevation_ft": 381
+  },
+  "40.08710,-79.75070": 310.0,
+  "39.65260,-78.76240|||40.08710,-79.75070": {
+    "start_elevation_ft": 630,
+    "finish_elevation_ft": 1017,
+    "gain_ft": 387,
+    "loss_ft": 0,
+    "net_elevation_ft": 387
+  },
+  "40.08710,-79.75070|||40.36010,-80.61510": {
+    "start_elevation_ft": 1017,
+    "finish_elevation_ft": 728,
+    "gain_ft": 0,
+    "loss_ft": 289,
+    "net_elevation_ft": -289
+  },
+  "39.88880,-83.28160": 299.0,
+  "40.55450,-81.91790|||39.88880,-83.28160": {
+    "start_elevation_ft": 892,
+    "finish_elevation_ft": 981,
+    "gain_ft": 89,
+    "loss_ft": 0,
+    "net_elevation_ft": 89
+  },
+  "39.88880,-83.28160|||39.82870,-84.88990": {
+    "start_elevation_ft": 981,
+    "finish_elevation_ft": 997,
+    "gain_ft": 16,
+    "loss_ft": 0,
+    "net_elevation_ft": 16
+  },
+  "41.87810,-87.62980": 241.0,
+  "41.87810,-87.62980|||41.78160,-89.69260": {
+    "start_elevation_ft": 791,
+    "finish_elevation_ft": 653,
+    "gain_ft": 0,
+    "loss_ft": 138,
+    "net_elevation_ft": -138
+  },
+  "42.12860,-98.03000": 537.0,
+  "42.02830,-97.41700|||42.12860,-98.03000": {
+    "start_elevation_ft": 1532,
+    "finish_elevation_ft": 1762,
+    "gain_ft": 230,
+    "loss_ft": 0,
+    "net_elevation_ft": 230
+  },
+  "42.87470,-100.55060": 788.0,
+  "42.12860,-98.03000|||42.87470,-100.55060": {
+    "start_elevation_ft": 1762,
+    "finish_elevation_ft": 2585,
+    "gain_ft": 823,
+    "loss_ft": 0,
+    "net_elevation_ft": 823
+  },
+  "42.80480,-102.20330": 1086.0,
+  "42.87470,-100.55060|||42.80480,-102.20330": {
+    "start_elevation_ft": 2585,
+    "finish_elevation_ft": 3563,
+    "gain_ft": 978,
+    "loss_ft": 0,
+    "net_elevation_ft": 978
+  },
+  "43.67260,-103.51020": 1553.0,
+  "42.80480,-102.20330|||43.67260,-103.51020": {
+    "start_elevation_ft": 3563,
+    "finish_elevation_ft": 5095,
+    "gain_ft": 1532,
+    "loss_ft": 0,
+    "net_elevation_ft": 1532
+  },
+  "44.26330,-104.95030": 1287.0,
+  "43.67260,-103.51020|||44.26330,-104.95030": {
+    "start_elevation_ft": 5095,
+    "finish_elevation_ft": 4222,
+    "gain_ft": 0,
+    "loss_ft": 873,
+    "net_elevation_ft": -873
+  },
+  "44.79480,-106.82230": 1251.0,
+  "44.83760,-108.39360": 1170.0,
+  "44.79480,-106.82230|||44.83760,-108.39360": {
+    "start_elevation_ft": 4104,
+    "finish_elevation_ft": 3839,
+    "gain_ft": 0,
+    "loss_ft": 266,
+    "net_elevation_ft": -266
+  },
+  "45.18590,-109.24710": 1697.0,
+  "45.67940,-111.04400": 1471.0,
+  "45.18590,-109.24710|||45.67940,-111.04400": {
+    "start_elevation_ft": 5568,
+    "finish_elevation_ft": 4826,
+    "gain_ft": 0,
+    "loss_ft": 741,
+    "net_elevation_ft": -741
+  },
+  "46.00380,-112.53480": 1689.0,
+  "45.67940,-111.04400|||46.00380,-112.53480": {
+    "start_elevation_ft": 4826,
+    "finish_elevation_ft": 5541,
+    "gain_ft": 715,
+    "loss_ft": 0,
+    "net_elevation_ft": 715
+  },
+  "46.87010,-113.99530": 980.0,
+  "46.00380,-112.53480|||46.87010,-113.99530": {
+    "start_elevation_ft": 5541,
+    "finish_elevation_ft": 3215,
+    "gain_ft": 0,
+    "loss_ft": 2326,
+    "net_elevation_ft": -2326
+  },
+  "47.65720,-117.42350": 578.0,
+  "46.87010,-113.99530|||47.65720,-117.42350": {
+    "start_elevation_ft": 3215,
+    "finish_elevation_ft": 1896,
+    "gain_ft": 0,
+    "loss_ft": 1319,
+    "net_elevation_ft": -1319
+  },
+  "46.99710,-120.54510": 472.0,
+  "47.65720,-117.42350|||46.99710,-120.54510": {
+    "start_elevation_ft": 1896,
+    "finish_elevation_ft": 1549,
+    "gain_ft": 0,
+    "loss_ft": 348,
+    "net_elevation_ft": -348
+  },
+  "47.60380,-122.33010": 40.0,
+  "46.99710,-120.54510|||47.60380,-122.33010": {
+    "start_elevation_ft": 1549,
+    "finish_elevation_ft": 131,
+    "gain_ft": 0,
+    "loss_ft": 1417,
+    "net_elevation_ft": -1417
+  }
+}

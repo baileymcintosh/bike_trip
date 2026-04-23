@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import time
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from pathlib import Path
@@ -786,6 +787,21 @@ def save_route_cache(cache: dict) -> None:
     route_cache_path().write_text(json.dumps(cache, indent=2), encoding="utf-8")
 
 
+def elevation_cache_path() -> Path:
+    return ROOT / "bike_trip_elevation_cache.json"
+
+
+def load_elevation_cache() -> dict:
+    path = elevation_cache_path()
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def save_elevation_cache(cache: dict) -> None:
+    elevation_cache_path().write_text(json.dumps(cache, indent=2), encoding="utf-8")
+
+
 def lodging_cache_path() -> Path:
     return ROOT / "bike_trip_lodging_cache.json"
 
@@ -799,6 +815,77 @@ def load_lodging_cache() -> dict:
 
 def save_lodging_cache(cache: dict) -> None:
     lodging_cache_path().write_text(json.dumps(cache, indent=2), encoding="utf-8")
+
+
+def fetch_point_elevation(lat: float, lon: float, cache: dict) -> float | None:
+    key = f"{lat:.5f},{lon:.5f}"
+    if key in cache:
+        return cache[key]
+
+    url = f"https://api.open-meteo.com/v1/elevation?latitude={lat:.5f}&longitude={lon:.5f}"
+    req = Request(url, headers={"User-Agent": "bike-trip-planner"})
+    data = None
+    for attempt in range(6):
+        try:
+            with urlopen(req, timeout=60) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except HTTPError as exc:
+            if exc.code != 429 or attempt == 5:
+                raise
+            time.sleep(2 * (attempt + 1))
+        except (URLError, ConnectionResetError, TimeoutError):
+            if attempt == 5:
+                raise
+            time.sleep(2 * (attempt + 1))
+    if data is None:
+        raise RuntimeError("point elevation lookup failed")
+
+    values = data.get("elevation", [])
+    value = values[0] if values else None
+    cache[key] = value
+    time.sleep(0.05)
+    return value
+
+
+def fetch_elevation_profile(sampled_points: list[tuple[float, float]], cache: dict) -> dict:
+    if not sampled_points:
+        return {
+            "start_elevation_ft": None,
+            "finish_elevation_ft": None,
+            "gain_ft": None,
+            "loss_ft": None,
+            "net_elevation_ft": None,
+        }
+
+    start_lat, start_lon = sampled_points[0]
+    finish_lat, finish_lon = sampled_points[-1]
+    key = f"{start_lat:.5f},{start_lon:.5f}|||{finish_lat:.5f},{finish_lon:.5f}"
+    if key in cache:
+        return cache[key]
+
+    start_m = fetch_point_elevation(start_lat, start_lon, cache)
+    finish_m = fetch_point_elevation(finish_lat, finish_lon, cache)
+    if start_m is None or finish_m is None:
+        payload = {
+            "start_elevation_ft": None,
+            "finish_elevation_ft": None,
+            "gain_ft": None,
+            "loss_ft": None,
+            "net_elevation_ft": None,
+        }
+    else:
+        delta_m = finish_m - start_m
+        payload = {
+            "start_elevation_ft": round(start_m * 3.28084),
+            "finish_elevation_ft": round(finish_m * 3.28084),
+            "gain_ft": round(max(delta_m, 0) * 3.28084),
+            "loss_ft": round(max(-delta_m, 0) * 3.28084),
+            "net_elevation_ft": round(delta_m * 3.28084),
+        }
+
+    cache[key] = payload
+    return payload
 
 
 def osrm_route(start: dict, finish: dict, cache: dict) -> dict:
@@ -822,10 +909,24 @@ def osrm_route(start: dict, finish: dict, cache: dict) -> dict:
     return payload
 
 
-def routed_segments(points: list[dict], color: str, branch_name: str, cache: dict) -> list[dict]:
+def routed_segments(
+    points: list[dict], color: str, branch_name: str, route_cache: dict, elevation_cache: dict | None = None
+) -> list[dict]:
     segments = []
     for start, finish in zip(points, points[1:]):
-        route = osrm_route(start, finish, cache)
+        route = osrm_route(start, finish, route_cache)
+        if elevation_cache is None:
+            elevation = {
+                "start_elevation_ft": None,
+                "finish_elevation_ft": None,
+                "gain_ft": None,
+                "loss_ft": None,
+                "net_elevation_ft": None,
+            }
+        else:
+            elevation = fetch_elevation_profile(
+                [(start["lat"], start["lon"]), (finish["lat"], finish["lon"])], elevation_cache
+            )
         mode_key = f"{start['stop']}|||{finish['stop']}"
         mode = SEGMENT_MODES.get(mode_key, "road")
         segments.append(
@@ -841,11 +942,29 @@ def routed_segments(points: list[dict], color: str, branch_name: str, cache: dic
                 "target_miles": finish["miles"],
                 "mapped_miles": route["distance_miles"],
                 "mapped_hours": route["duration_hours"],
+                "start_elevation_ft": elevation["start_elevation_ft"],
+                "finish_elevation_ft": elevation["finish_elevation_ft"],
+                "gain_ft": elevation["gain_ft"],
+                "loss_ft": elevation["loss_ft"],
+                "net_elevation_ft": elevation["net_elevation_ft"],
                 "note": finish["note"],
                 "geometry": route["geometry"],
             }
         )
     return segments
+
+
+def annotate_points_with_inbound(points: list[dict], segments: list[dict]) -> list[dict]:
+    annotated = [dict(point) for point in points]
+    by_day = {segment["finish_day"]: segment for segment in segments}
+    for point in annotated:
+        segment = by_day.get(point["day"])
+        point["start_elevation_ft"] = segment["start_elevation_ft"] if segment else None
+        point["finish_elevation_ft"] = segment["finish_elevation_ft"] if segment else None
+        point["gain_ft"] = segment["gain_ft"] if segment else None
+        point["loss_ft"] = segment["loss_ft"] if segment else None
+        point["net_elevation_ft"] = segment["net_elevation_ft"] if segment else None
+    return annotated
 
 
 def fetch_lodging_for_stop(stop: dict, cache: dict, radius_m: int = 16000) -> list[dict]:
@@ -1390,35 +1509,11 @@ def friend_map_days() -> list[dict]:
 
 
 def write_friend_route_map() -> None:
-    cache = load_route_cache()
-    day_rows = friend_map_days()
-    segments = []
-    for row in day_rows:
-        if not row["route_drawn"]:
-            continue
-        start = {
-            "stop": row["start"],
-            "lat": row["start_lat"],
-            "lon": row["start_lon"],
-        }
-        finish = {
-            "stop": row["finish"],
-            "lat": row["finish_lat"],
-            "lon": row["finish_lon"],
-        }
-        route = osrm_route(start, finish, cache)
-        segments.append(
-            {
-                "day": row["day"],
-                "start": row["start"],
-                "finish": row["finish"],
-                "miles": row["miles"],
-                "mapped_miles": route["distance_miles"],
-                "note": row["note"],
-                "geometry": route["geometry"],
-            }
-        )
-    save_route_cache(cache)
+    route_cache = load_route_cache()
+    elevation_cache = load_elevation_cache()
+    day_rows, segments = friend_route_payload(route_cache, elevation_cache)
+    save_route_cache(route_cache)
+    save_elevation_cache(elevation_cache)
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -1468,7 +1563,7 @@ def write_friend_route_map() -> None:
       const color = seg.day <= 9 ? '#b26139' : (seg.day <= 18 ? '#2f6a8e' : '#7b3f98');
       const geo = L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.85 }} }});
       geo.bindPopup(
-        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>${{seg.note}}`
+        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>Net elevation: ${{seg.net_elevation_ft == null ? 'unknown' : (seg.net_elevation_ft >= 0 ? '+' + seg.net_elevation_ft : seg.net_elevation_ft)}} ft<br>Altitude: ${{seg.start_elevation_ft ?? 'unknown'}} ft to ${{seg.finish_elevation_ft ?? 'unknown'}} ft<br>${{seg.note}}`
       );
       geo.addTo(map);
     }}
@@ -1482,7 +1577,7 @@ def write_friend_route_map() -> None:
         fillOpacity: 0.95,
         weight: 1
       }}).addTo(map).bindPopup(
-        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>${{row.miles ?? 'unknown'}} posted miles<br>${{row.note}}`
+        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>${{row.miles ?? 'unknown'}} posted miles<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`
       );
     }}
   </script>
@@ -1492,7 +1587,7 @@ def write_friend_route_map() -> None:
     (ROOT / "john_route_map.html").write_text(html, encoding="utf-8")
 
 
-def friend_route_payload(cache: dict) -> tuple[list[dict], list[dict]]:
+def friend_route_payload(route_cache: dict, elevation_cache: dict) -> tuple[list[dict], list[dict]]:
     day_rows = friend_map_days()
     segments = []
     for row in day_rows:
@@ -1500,7 +1595,10 @@ def friend_route_payload(cache: dict) -> tuple[list[dict], list[dict]]:
             continue
         start = {"stop": row["start"], "lat": row["start_lat"], "lon": row["start_lon"]}
         finish = {"stop": row["finish"], "lat": row["finish_lat"], "lon": row["finish_lon"]}
-        route = osrm_route(start, finish, cache)
+        route = osrm_route(start, finish, route_cache)
+        elevation = fetch_elevation_profile(
+            [(row["start_lat"], row["start_lon"]), (row["finish_lat"], row["finish_lon"])], elevation_cache
+        )
         mode_key = f"{row['start']}|||{row['finish']}"
         mode = SEGMENT_MODES.get(mode_key, "road")
         segments.append(
@@ -1514,22 +1612,41 @@ def friend_route_payload(cache: dict) -> tuple[list[dict], list[dict]]:
                 "note": row["note"],
                 "mode": mode,
                 "mode_label": MODE_STYLE[mode]["label"],
+                "start_elevation_ft": elevation["start_elevation_ft"],
+                "finish_elevation_ft": elevation["finish_elevation_ft"],
+                "gain_ft": elevation["gain_ft"],
+                "loss_ft": elevation["loss_ft"],
+                "net_elevation_ft": elevation["net_elevation_ft"],
                 "geometry": route["geometry"],
             }
         )
-    return day_rows, segments
+    annotated_rows = [dict(row) for row in day_rows]
+    by_day = {segment["day"]: segment for segment in segments}
+    for row in annotated_rows:
+        segment = by_day.get(row["day"])
+        row["start_elevation_ft"] = segment["start_elevation_ft"] if segment else None
+        row["finish_elevation_ft"] = segment["finish_elevation_ft"] if segment else None
+        row["gain_ft"] = segment["gain_ft"] if segment else None
+        row["loss_ft"] = segment["loss_ft"] if segment else None
+        row["net_elevation_ft"] = segment["net_elevation_ft"] if segment else None
+    return annotated_rows, segments
 
 
 def write_overview_map() -> None:
-    cache = load_route_cache()
+    route_cache = load_route_cache()
+    elevation_cache = load_elevation_cache()
     common_points = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON)
     mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
     southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
-    common_segments = routed_segments(common_points, "#d97706", "Shared", cache)
-    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", cache)
-    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", cache)
-    john_rows, john_segments = friend_route_payload(cache)
-    save_route_cache(cache)
+    common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache, elevation_cache)
+    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", route_cache, elevation_cache)
+    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", route_cache, elevation_cache)
+    common_points = annotate_points_with_inbound(common_points, common_segments)
+    mountain_points = annotate_points_with_inbound(mountain_points, common_segments + mountain_segments)
+    southern_points = annotate_points_with_inbound(southern_points, common_segments + southern_segments)
+    john_rows, john_segments = friend_route_payload(route_cache, elevation_cache)
+    save_route_cache(route_cache)
+    save_elevation_cache(elevation_cache)
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -1584,17 +1701,23 @@ def write_overview_map() -> None:
     L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
     const groups = {{ common: L.layerGroup().addTo(map), mountain: L.layerGroup().addTo(map), southern: L.layerGroup().addTo(map), john: L.layerGroup().addTo(map) }};
 
+    function elev(seg) {{
+      if (seg.net_elevation_ft == null) return '';
+      const net = seg.net_elevation_ft >= 0 ? `+${{seg.net_elevation_ft}}` : `${{seg.net_elevation_ft}}`;
+      return `<br>Net elevation: ${{net}} ft<br>Altitude: ${{seg.start_elevation_ft}} ft to ${{seg.finish_elevation_ft}} ft`;
+    }}
     function addSegs(group, color, segs) {{
       for (const seg of segs) {{
         L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.85 }} }})
-          .bindPopup(`<strong>${{seg.branch}}</strong><br>${{seg.start_stop || seg.start}} to ${{seg.finish_stop || seg.finish}}<br>${{seg.note}}`)
+          .bindPopup(`<strong>${{seg.branch}}</strong><br>${{seg.start_stop || seg.start}} to ${{seg.finish_stop || seg.finish}}${{elev(seg)}}<br>${{seg.note}}`)
           .addTo(group);
       }}
     }}
     function addPoints(group, color, pts) {{
       for (const p of pts) {{
+        const elevText = p.net_elevation_ft == null ? '' : `<br>Net elevation: ${{p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft}} ft<br>Altitude: ${{p.start_elevation_ft}} ft to ${{p.finish_elevation_ft}} ft`;
         L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group)
-          .bindPopup(`<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.note}}`);
+          .bindPopup(`<strong>Day ${{p.day}}</strong><br>${{p.stop}}${{elevText}}<br>${{p.note}}`);
       }}
     }}
 
@@ -1607,8 +1730,9 @@ def write_overview_map() -> None:
     addSegs(groups.john, '#7c3aed', johnSegs);
     for (const row of johnRows) {{
       if (row.finish_lat === null) continue;
+      const elevText = row.net_elevation_ft == null ? '' : `<br>Net elevation: ${{row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft}} ft<br>Altitude: ${{row.start_elevation_ft}} ft to ${{row.finish_elevation_ft}} ft`;
       L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: row.day === 27 ? 5 : 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
-        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}<br>${{row.note}}`);
+        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}${{elevText}}<br>${{row.note}}`);
     }}
 
     function hook(id, key) {{
@@ -1628,15 +1752,20 @@ def write_overview_map() -> None:
 
 def write_detailed_map() -> None:
     route_cache = load_route_cache()
+    elevation_cache = load_elevation_cache()
     lodging_cache = load_lodging_cache()
     common_points = add_lodging([{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON), lodging_cache)
     mountain_points = add_lodging(common_points + map_points(PLAN_MOUNTAIN_BRANCH), lodging_cache)
     southern_points = add_lodging(common_points + map_points(PLAN_SOUTHERN_BRANCH), lodging_cache)
-    common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache)
-    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", route_cache)
-    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", route_cache)
-    john_rows, john_segments = friend_route_payload(route_cache)
+    common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache, elevation_cache)
+    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", route_cache, elevation_cache)
+    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", route_cache, elevation_cache)
+    common_points = annotate_points_with_inbound(common_points, common_segments)
+    mountain_points = annotate_points_with_inbound(mountain_points, common_segments + mountain_segments)
+    southern_points = annotate_points_with_inbound(southern_points, common_segments + southern_segments)
+    john_rows, john_segments = friend_route_payload(route_cache, elevation_cache)
     save_route_cache(route_cache)
+    save_elevation_cache(elevation_cache)
     save_lodging_cache(lodging_cache)
 
     html = f"""<!doctype html>
@@ -1714,14 +1843,14 @@ def write_detailed_map() -> None:
     function addSegs(group, segs, fallbackColor) {{
       for (const seg of segs) {{
         L.geoJSON(seg.geometry, {{ style: styled(seg, fallbackColor) }}).bindPopup(
-          `<strong>${{seg.branch}}</strong><br>${{seg.start_stop || seg.start}} to ${{seg.finish_stop || seg.finish}}<br>Mode: ${{seg.mode_label}}<br>Target: ${{seg.target_miles || seg.miles || 'unknown'}} mi<br>Mapped: ${{seg.mapped_miles}} mi<br>${{seg.note}}`
+          `<strong>${{seg.branch}}</strong><br>${{seg.start_stop || seg.start}} to ${{seg.finish_stop || seg.finish}}<br>Mode: ${{seg.mode_label}}<br>Target: ${{seg.target_miles || seg.miles || 'unknown'}} mi<br>Mapped: ${{seg.mapped_miles}} mi<br>Net elevation: ${{seg.net_elevation_ft == null ? 'unknown' : (seg.net_elevation_ft >= 0 ? '+' + seg.net_elevation_ft : seg.net_elevation_ft)}} ft<br>Altitude: ${{seg.start_elevation_ft ?? 'unknown'}} ft to ${{seg.finish_elevation_ft ?? 'unknown'}} ft<br>${{seg.note}}`
         ).addTo(group);
       }}
     }}
     function addRouteMarkers(group, color, pts, offset) {{
       for (const p of pts) {{
         L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group).bindPopup(
-          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.note}}`
+          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>Net elevation: ${{p.net_elevation_ft == null ? 'unknown' : (p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft)}} ft<br>Altitude: ${{p.start_elevation_ft ?? 'unknown'}} ft to ${{p.finish_elevation_ft ?? 'unknown'}} ft<br>${{p.note}}`
         );
       }}
     }}
@@ -1748,7 +1877,7 @@ def write_detailed_map() -> None:
     for (const row of johnRows) {{
       if (row.finish_lat === null) continue;
       L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
-        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}<br>${{row.note}}`);
+        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`);
     }}
     addLodging(commonPts); addLodging(mountainPts); addLodging(southernPts);
     for (const r of risks) {{
