@@ -44,6 +44,45 @@ FRIEND_DAYS = [
     {"day": 27, "miles": 106, "start": "Ellensburg area, WA", "finish": "Seattle, WA", "basis": "caption", "note": "Finished through Snoqualmie Tunnel and into Seattle."},
 ]
 
+FRIEND_COORDS = {
+    "Washington, DC": [38.8951, -77.0364],
+    "Williamsport, MD": [39.5994, -77.8215],
+    "Cumberland, MD": [39.6526, -78.7624],
+    "South of Pittsburgh (likely Perryopolis area), PA": [40.0871, -79.7507],
+    "South of Pittsburgh, PA": [40.0871, -79.7507],
+    "Steubenville, OH": [40.3601, -80.6151],
+    "Millersburg, OH": [40.5545, -81.9179],
+    "Lilly Chapel, OH": [39.8888, -83.2816],
+    "Richmond, IN": [39.8287, -84.8899],
+    "Logansport, IN": [40.7542, -86.3625],
+    "Chicago Heights, IL": [41.5063, -87.6357],
+    "Chicago, IL metro": [41.8781, -87.6298],
+    "Rock Falls, IL": [41.7816, -89.6926],
+    "Cedar Rapids, IA": [41.9759, -91.6704],
+    "Ames, IA": [42.0268, -93.6170],
+    "Denison, IA": [42.0178, -95.3553],
+    "Norfolk, NE": [42.0283, -97.4170],
+    "Neligh, NE": [42.1286, -98.0300],
+    "Valentine, NE": [42.8747, -100.5506],
+    "Near Gordon, NE": [42.8048, -102.2033],
+    "Gordon, NE": [42.8048, -102.2033],
+    "Short of Custer, SD": [43.6726, -103.5102],
+    "Custer, SD": [43.6726, -103.5102],
+    "Moorcroft, WY": [44.2633, -104.9503],
+    "Sheridan, WY": [44.7948, -106.8223],
+    "Lovell, WY": [44.8376, -108.3936],
+    "Red Lodge, MT": [45.1859, -109.2471],
+    "Near Bozeman, MT": [45.6794, -111.0440],
+    "Bozeman, MT": [45.6794, -111.0440],
+    "Butte, MT": [46.0038, -112.5348],
+    "Outside Missoula, MT": [46.8701, -113.9953],
+    "Missoula, MT": [46.8701, -113.9953],
+    "Outside Spokane, WA": [47.6572, -117.4235],
+    "Spokane, WA": [47.6572, -117.4235],
+    "Ellensburg area, WA": [46.9971, -120.5451],
+    "Seattle, WA": [47.6038, -122.3301],
+}
+
 
 PLAN_COMMON = [
     {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Start at Cape Henlopen for the Atlantic tire dip, then ride inland."},
@@ -1068,6 +1107,127 @@ def write_decision_map() -> None:
     (ROOT / "bike_trip_map_decision.html").write_text(html, encoding="utf-8")
 
 
+def friend_map_days() -> list[dict]:
+    rows = []
+    for row in FRIEND_DAYS:
+        start = FRIEND_COORDS.get(row["start"])
+        finish = FRIEND_COORDS.get(row["finish"])
+        rows.append(
+            {
+                **row,
+                "start_lat": start[0] if start else None,
+                "start_lon": start[1] if start else None,
+                "finish_lat": finish[0] if finish else None,
+                "finish_lon": finish[1] if finish else None,
+                "route_drawn": bool(start and finish and row["start"] != row["finish"]),
+            }
+        )
+    return rows
+
+
+def write_friend_route_map() -> None:
+    cache = load_route_cache()
+    day_rows = friend_map_days()
+    segments = []
+    for row in day_rows:
+        if not row["route_drawn"]:
+            continue
+        start = {
+            "stop": row["start"],
+            "lat": row["start_lat"],
+            "lon": row["start_lon"],
+        }
+        finish = {
+            "stop": row["finish"],
+            "lat": row["finish_lat"],
+            "lon": row["finish_lon"],
+        }
+        route = osrm_route(start, finish, cache)
+        segments.append(
+            {
+                "day": row["day"],
+                "start": row["start"],
+                "finish": row["finish"],
+                "miles": row["miles"],
+                "mapped_miles": route["distance_miles"],
+                "note": row["note"],
+                "geometry": route["geometry"],
+            }
+        )
+    save_route_cache(cache)
+
+    html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>John's DC-to-Seattle Route</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {{ height: 100%; margin: 0; }}
+    .panel {{
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      width: 360px;
+      max-width: calc(100% - 24px);
+      background: rgba(255, 248, 240, 0.96);
+      border: 1px solid #caa57a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font: 14px/1.4 Georgia, serif;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }}
+    .panel h1 {{ margin: 0 0 8px; font-size: 18px; }}
+    .panel p {{ margin: 0 0 8px; }}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="panel">
+    <h1>John's Posted Route</h1>
+    <p>This map is reconstructed from the public Instagram captions. It is a day-by-day approximation of the ride from Washington, DC to Seattle.</p>
+    <p>Important: several days involved family pickups, repairs, or starts/finishes listed as “outside” a city, so this should be treated as a practical reconstruction, not a legal cue sheet.</p>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const rows = {json.dumps(day_rows)};
+    const segments = {json.dumps(segments)};
+    const map = L.map('map').setView([42.0, -99.0], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }}).addTo(map);
+
+    for (const seg of segments) {{
+      const color = seg.day <= 9 ? '#b26139' : (seg.day <= 18 ? '#2f6a8e' : '#7b3f98');
+      const geo = L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.85 }} }});
+      geo.bindPopup(
+        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>${{seg.note}}`
+      );
+      geo.addTo(map);
+    }}
+
+    for (const row of rows) {{
+      if (row.finish_lat === null || row.finish_lon === null) continue;
+      L.circleMarker([row.finish_lat, row.finish_lon], {{
+        radius: row.day === 27 ? 6 : 4,
+        color: '#222',
+        fillColor: '#fff',
+        fillOpacity: 0.95,
+        weight: 1
+      }}).addTo(map).bindPopup(
+        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>${{row.miles ?? 'unknown'}} posted miles<br>${{row.note}}`
+      );
+    }}
+  </script>
+</body>
+</html>
+"""
+    (ROOT / "john_route_map.html").write_text(html, encoding="utf-8")
+
+
 def write_map() -> None:
     common = branch_points([])
     la = branch_points(PLAN_LA)
@@ -1162,6 +1322,7 @@ def main() -> None:
     write_routed_map()
     write_lodging_map()
     write_decision_map()
+    write_friend_route_map()
 
 
 if __name__ == "__main__":
