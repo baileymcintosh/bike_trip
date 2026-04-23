@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import time
+from datetime import date, timedelta
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -13,6 +14,10 @@ ROOT = Path(__file__).resolve().parent
 INSTAGRAM_URL = "https://www.instagram.com/coast2coast4charity/"
 OSRM_BASE = "https://router.project-osrm.org/route/v1/cycling/"
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+ARCHIVE_WEATHER_BASE = "https://archive-api.open-meteo.com/v1/archive"
+TRIP_START_DATE = date(2026, 5, 1)
+CLIMATE_BASELINE_START = date(2016, 5, 1)
+CLIMATE_BASELINE_END = date(2025, 6, 2)
 
 
 FRIEND_DAYS = [
@@ -473,6 +478,42 @@ def write_friend_csv(day_posts: dict[int, dict]) -> None:
             )
 
 
+def write_temperature_csv() -> None:
+    temperature_cache = load_temperature_cache()
+    rows = []
+
+    def add_rows(branch_name: str, points: list[dict]) -> None:
+        annotated = annotate_points_with_temperatures(points, temperature_cache)
+        for row in annotated:
+            rows.append(
+                {
+                    "route": branch_name,
+                    "day": row["day"],
+                    "expected_date": row["expected_date"],
+                    "stop": row["stop"],
+                    "avg_min_c": row["avg_temp_min_c"],
+                    "avg_max_c": row["avg_temp_max_c"],
+                    "avg_min_f": row["avg_temp_min_f"],
+                    "avg_max_f": row["avg_temp_max_f"],
+                    "samples": row["temp_samples"],
+                }
+            )
+
+    add_rows("shared", [{"day": 0, "stop": "Cape Henlopen State Park, DE", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON))
+    add_rows("mountain", [{"day": 0, "stop": "Cape Henlopen State Park, DE", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON) + map_points(PLAN_MOUNTAIN_BRANCH))
+    add_rows("southern", [{"day": 0, "stop": "Cape Henlopen State Park, DE", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON) + map_points(PLAN_SOUTHERN_BRANCH))
+
+    save_temperature_cache(temperature_cache)
+    path = ROOT / "bike_trip_temperature_ranges.csv"
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(
+            f,
+            fieldnames=["route", "day", "expected_date", "stop", "avg_min_c", "avg_max_c", "avg_min_f", "avg_max_f", "samples"],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def lines_for_plan(plan: list[dict]) -> list[str]:
     out = []
     total = 0
@@ -746,6 +787,7 @@ def write_planning_brief_html() -> None:
       <ul>
         <li><a href="bike_trip_map_overview.html">Overview map</a>: high-level comparison of the shared route, the mountain branch, the southern branch, and John's route.</li>
         <li><a href="bike_trip_map_detailed.html">Detailed map</a>: lodging, risk markers, decision notes, and segment styling by <strong>road</strong>, <strong>trail</strong>, or <strong>mixed</strong>.</li>
+        <li><a href="bike_trip_temperature_ranges.csv">Temperature ranges CSV</a>: historical average low/high for each expected overnight date, in both °C and °F.</li>
       </ul>
     </section>
   </main>
@@ -814,6 +856,21 @@ def save_elevation_cache(cache: dict) -> None:
     elevation_cache_path().write_text(json.dumps(cache, indent=2), encoding="utf-8")
 
 
+def temperature_cache_path() -> Path:
+    return ROOT / "bike_trip_temperature_cache.json"
+
+
+def load_temperature_cache() -> dict:
+    path = temperature_cache_path()
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def save_temperature_cache(cache: dict) -> None:
+    temperature_cache_path().write_text(json.dumps(cache, indent=2), encoding="utf-8")
+
+
 def lodging_cache_path() -> Path:
     return ROOT / "bike_trip_lodging_cache.json"
 
@@ -858,6 +915,100 @@ def fetch_point_elevation(lat: float, lon: float, cache: dict) -> float | None:
     cache[key] = value
     time.sleep(0.05)
     return value
+
+
+def arrival_date_for_day(day_number: int) -> date:
+    return TRIP_START_DATE + timedelta(days=max(day_number - 1, 0))
+
+
+def c_to_f(value_c: float | None) -> float | None:
+    if value_c is None:
+        return None
+    return round((value_c * 9 / 5) + 32, 1)
+
+
+def fetch_temperature_baseline(stop: dict, cache: dict) -> dict:
+    stop_key = stop["stop"]
+    if stop_key in cache:
+        return cache[stop_key]
+
+    params = urlencode(
+        {
+            "latitude": stop["lat"],
+            "longitude": stop["lon"],
+            "start_date": CLIMATE_BASELINE_START.isoformat(),
+            "end_date": CLIMATE_BASELINE_END.isoformat(),
+            "daily": "temperature_2m_max,temperature_2m_min",
+            "timezone": "auto",
+        }
+    )
+    req = Request(f"{ARCHIVE_WEATHER_BASE}?{params}", headers={"User-Agent": "bike-trip-planner"})
+    data = None
+    for attempt in range(8):
+        try:
+            with urlopen(req, timeout=120) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except HTTPError as exc:
+            if exc.code != 429 or attempt == 7:
+                raise
+            time.sleep(5 * (attempt + 1))
+        except (URLError, ConnectionResetError, TimeoutError):
+            if attempt == 7:
+                raise
+            time.sleep(5 * (attempt + 1))
+    if data is None:
+        raise RuntimeError("temperature baseline lookup failed")
+
+    grouped: dict[str, dict[str, list[float]]] = {}
+    daily = data.get("daily", {})
+    for day_text, tmax, tmin in zip(
+        daily.get("time", []),
+        daily.get("temperature_2m_max", []),
+        daily.get("temperature_2m_min", []),
+    ):
+        month_day = day_text[5:]
+        bucket = grouped.setdefault(month_day, {"max_c": [], "min_c": []})
+        if tmax is not None:
+            bucket["max_c"].append(tmax)
+        if tmin is not None:
+            bucket["min_c"].append(tmin)
+
+    baseline = {}
+    for month_day, bucket in grouped.items():
+        max_values = bucket["max_c"]
+        min_values = bucket["min_c"]
+        avg_max_c = round(sum(max_values) / len(max_values), 1) if max_values else None
+        avg_min_c = round(sum(min_values) / len(min_values), 1) if min_values else None
+        baseline[month_day] = {
+            "avg_max_c": avg_max_c,
+            "avg_min_c": avg_min_c,
+            "avg_max_f": c_to_f(avg_max_c),
+            "avg_min_f": c_to_f(avg_min_c),
+            "samples": min(len(max_values), len(min_values)) if max_values and min_values else max(len(max_values), len(min_values)),
+        }
+
+    cache[stop_key] = baseline
+    save_temperature_cache(cache)
+    time.sleep(0.75)
+    return baseline
+
+
+def annotate_points_with_temperatures(points: list[dict], cache: dict) -> list[dict]:
+    annotated = []
+    for point in points:
+        row = dict(point)
+        arrival = arrival_date_for_day(row["day"])
+        month_day = arrival.strftime("%m-%d")
+        baseline = fetch_temperature_baseline(row, cache).get(month_day, {})
+        row["expected_date"] = arrival.isoformat()
+        row["avg_temp_max_c"] = baseline.get("avg_max_c")
+        row["avg_temp_min_c"] = baseline.get("avg_min_c")
+        row["avg_temp_max_f"] = baseline.get("avg_max_f")
+        row["avg_temp_min_f"] = baseline.get("avg_min_f")
+        row["temp_samples"] = baseline.get("samples")
+        annotated.append(row)
+    return annotated
 
 
 def fetch_elevation_profile(sampled_points: list[tuple[float, float]], cache: dict) -> dict:
@@ -1523,9 +1674,11 @@ def friend_map_days() -> list[dict]:
 def write_friend_route_map() -> None:
     route_cache = load_route_cache()
     elevation_cache = load_elevation_cache()
-    day_rows, segments = friend_route_payload(route_cache, elevation_cache)
+    temperature_cache = load_temperature_cache()
+    day_rows, segments = friend_route_payload(route_cache, elevation_cache, temperature_cache)
     save_route_cache(route_cache)
     save_elevation_cache(elevation_cache)
+    save_temperature_cache(temperature_cache)
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -1575,7 +1728,7 @@ def write_friend_route_map() -> None:
       const color = seg.day <= 9 ? '#b26139' : (seg.day <= 18 ? '#2f6a8e' : '#7b3f98');
       const geo = L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.85 }} }});
       geo.bindPopup(
-        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>Net elevation: ${{seg.net_elevation_ft == null ? 'unknown' : (seg.net_elevation_ft >= 0 ? '+' + seg.net_elevation_ft : seg.net_elevation_ft)}} ft<br>Altitude: ${{seg.start_elevation_ft ?? 'unknown'}} ft to ${{seg.finish_elevation_ft ?? 'unknown'}} ft<br>${{seg.note}}`
+        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>Expected date: ${{seg.expected_date}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>Net elevation: ${{seg.net_elevation_ft == null ? 'unknown' : (seg.net_elevation_ft >= 0 ? '+' + seg.net_elevation_ft : seg.net_elevation_ft)}} ft<br>Altitude: ${{seg.start_elevation_ft ?? 'unknown'}} ft to ${{seg.finish_elevation_ft ?? 'unknown'}} ft<br>${{seg.note}}`
       );
       geo.addTo(map);
     }}
@@ -1589,7 +1742,7 @@ def write_friend_route_map() -> None:
         fillOpacity: 0.95,
         weight: 1
       }}).addTo(map).bindPopup(
-        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>${{row.miles ?? 'unknown'}} posted miles<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`
+        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>Expected date: ${{row.expected_date}}<br>${{row.miles ?? 'unknown'}} posted miles<br>Avg range: ${{row.avg_temp_min_c ?? 'unknown'}}-${{row.avg_temp_max_c ?? 'unknown'}} °C / ${{row.avg_temp_min_f ?? 'unknown'}}-${{row.avg_temp_max_f ?? 'unknown'}} °F<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`
       );
     }}
   </script>
@@ -1599,7 +1752,7 @@ def write_friend_route_map() -> None:
     (ROOT / "john_route_map.html").write_text(html, encoding="utf-8")
 
 
-def friend_route_payload(route_cache: dict, elevation_cache: dict) -> tuple[list[dict], list[dict]]:
+def friend_route_payload(route_cache: dict, elevation_cache: dict, temperature_cache: dict) -> tuple[list[dict], list[dict]]:
     day_rows = friend_map_days()
     segments = []
     for row in day_rows:
@@ -1624,6 +1777,7 @@ def friend_route_payload(route_cache: dict, elevation_cache: dict) -> tuple[list
                 "note": row["note"],
                 "mode": mode,
                 "mode_label": MODE_STYLE[mode]["label"],
+                "expected_date": arrival_date_for_day(row["day"]).isoformat(),
                 "start_elevation_ft": elevation["start_elevation_ft"],
                 "finish_elevation_ft": elevation["finish_elevation_ft"],
                 "gain_ft": elevation["gain_ft"],
@@ -1636,17 +1790,36 @@ def friend_route_payload(route_cache: dict, elevation_cache: dict) -> tuple[list
     by_day = {segment["day"]: segment for segment in segments}
     for row in annotated_rows:
         segment = by_day.get(row["day"])
+        arrival = arrival_date_for_day(row["day"])
+        row["expected_date"] = arrival.isoformat()
         row["start_elevation_ft"] = segment["start_elevation_ft"] if segment else None
         row["finish_elevation_ft"] = segment["finish_elevation_ft"] if segment else None
         row["gain_ft"] = segment["gain_ft"] if segment else None
         row["loss_ft"] = segment["loss_ft"] if segment else None
         row["net_elevation_ft"] = segment["net_elevation_ft"] if segment else None
+        if row["finish_lat"] is not None and row["finish_lon"] is not None:
+            baseline = fetch_temperature_baseline(
+                {"stop": row["finish"], "lat": row["finish_lat"], "lon": row["finish_lon"]},
+                temperature_cache,
+            ).get(arrival.strftime("%m-%d"), {})
+            row["avg_temp_max_c"] = baseline.get("avg_max_c")
+            row["avg_temp_min_c"] = baseline.get("avg_min_c")
+            row["avg_temp_max_f"] = baseline.get("avg_max_f")
+            row["avg_temp_min_f"] = baseline.get("avg_min_f")
+            row["temp_samples"] = baseline.get("samples")
+        else:
+            row["avg_temp_max_c"] = None
+            row["avg_temp_min_c"] = None
+            row["avg_temp_max_f"] = None
+            row["avg_temp_min_f"] = None
+            row["temp_samples"] = None
     return annotated_rows, segments
 
 
 def write_overview_map() -> None:
     route_cache = load_route_cache()
     elevation_cache = load_elevation_cache()
+    temperature_cache = load_temperature_cache()
     common_points = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON)
     mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
     southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
@@ -1656,9 +1829,13 @@ def write_overview_map() -> None:
     common_points = annotate_points_with_inbound(common_points, common_segments)
     mountain_points = annotate_points_with_inbound(mountain_points, common_segments + mountain_segments)
     southern_points = annotate_points_with_inbound(southern_points, common_segments + southern_segments)
-    john_rows, john_segments = friend_route_payload(route_cache, elevation_cache)
+    common_points = annotate_points_with_temperatures(common_points, temperature_cache)
+    mountain_points = annotate_points_with_temperatures(mountain_points, temperature_cache)
+    southern_points = annotate_points_with_temperatures(southern_points, temperature_cache)
+    john_rows, john_segments = friend_route_payload(route_cache, elevation_cache, temperature_cache)
     save_route_cache(route_cache)
     save_elevation_cache(elevation_cache)
+    save_temperature_cache(temperature_cache)
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -1728,8 +1905,9 @@ def write_overview_map() -> None:
     function addPoints(group, color, pts) {{
       for (const p of pts) {{
         const elevText = p.net_elevation_ft == null ? '' : `<br>Net elevation: ${{p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft}} ft<br>Altitude: ${{p.start_elevation_ft}} ft to ${{p.finish_elevation_ft}} ft`;
+        const tempText = p.avg_temp_max_c == null ? '' : `<br>Expected date: ${{p.expected_date}}<br>Avg range: ${{p.avg_temp_min_c}}-${{p.avg_temp_max_c}} °C / ${{p.avg_temp_min_f}}-${{p.avg_temp_max_f}} °F`;
         L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group)
-          .bindPopup(`<strong>Day ${{p.day}}</strong><br>${{p.stop}}${{elevText}}<br>${{p.note}}`);
+          .bindPopup(`<strong>Day ${{p.day}}</strong><br>${{p.stop}}${{tempText}}${{elevText}}<br>${{p.note}}`);
       }}
     }}
 
@@ -1743,8 +1921,9 @@ def write_overview_map() -> None:
     for (const row of johnRows) {{
       if (row.finish_lat === null) continue;
       const elevText = row.net_elevation_ft == null ? '' : `<br>Net elevation: ${{row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft}} ft<br>Altitude: ${{row.start_elevation_ft}} ft to ${{row.finish_elevation_ft}} ft`;
+      const tempText = row.avg_temp_max_c == null ? '' : `<br>Expected date: ${{row.expected_date}}<br>Avg range: ${{row.avg_temp_min_c}}-${{row.avg_temp_max_c}} °C / ${{row.avg_temp_min_f}}-${{row.avg_temp_max_f}} °F`;
       L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: row.day === 27 ? 5 : 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
-        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}${{elevText}}<br>${{row.note}}`);
+        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}${{tempText}}${{elevText}}<br>${{row.note}}`);
     }}
 
     function hook(id, key) {{
@@ -1765,19 +1944,27 @@ def write_overview_map() -> None:
 def write_detailed_map() -> None:
     route_cache = load_route_cache()
     elevation_cache = load_elevation_cache()
+    temperature_cache = load_temperature_cache()
     lodging_cache = load_lodging_cache()
-    common_points = add_lodging([{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON), lodging_cache)
-    mountain_points = add_lodging(common_points + map_points(PLAN_MOUNTAIN_BRANCH), lodging_cache)
-    southern_points = add_lodging(common_points + map_points(PLAN_SOUTHERN_BRANCH), lodging_cache)
+    common_points = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON)
+    mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
+    southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
     common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache, elevation_cache)
     mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", route_cache, elevation_cache)
     southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", route_cache, elevation_cache)
     common_points = annotate_points_with_inbound(common_points, common_segments)
     mountain_points = annotate_points_with_inbound(mountain_points, common_segments + mountain_segments)
     southern_points = annotate_points_with_inbound(southern_points, common_segments + southern_segments)
-    john_rows, john_segments = friend_route_payload(route_cache, elevation_cache)
+    common_points = annotate_points_with_temperatures(common_points, temperature_cache)
+    mountain_points = annotate_points_with_temperatures(mountain_points, temperature_cache)
+    southern_points = annotate_points_with_temperatures(southern_points, temperature_cache)
+    common_points = add_lodging(common_points, lodging_cache)
+    mountain_points = add_lodging(mountain_points, lodging_cache)
+    southern_points = add_lodging(southern_points, lodging_cache)
+    john_rows, john_segments = friend_route_payload(route_cache, elevation_cache, temperature_cache)
     save_route_cache(route_cache)
     save_elevation_cache(elevation_cache)
+    save_temperature_cache(temperature_cache)
     save_lodging_cache(lodging_cache)
 
     html = f"""<!doctype html>
@@ -1861,8 +2048,9 @@ def write_detailed_map() -> None:
     }}
     function addRouteMarkers(group, color, pts, offset) {{
       for (const p of pts) {{
+        const tempText = p.avg_temp_max_c == null ? '' : `<br>Expected date: ${{p.expected_date}}<br>Avg range: ${{p.avg_temp_min_c}}-${{p.avg_temp_max_c}} °C / ${{p.avg_temp_min_f}}-${{p.avg_temp_max_f}} °F`;
         L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group).bindPopup(
-          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>Net elevation: ${{p.net_elevation_ft == null ? 'unknown' : (p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft)}} ft<br>Altitude: ${{p.start_elevation_ft ?? 'unknown'}} ft to ${{p.finish_elevation_ft ?? 'unknown'}} ft<br>${{p.note}}`
+          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}${{tempText}}<br>Net elevation: ${{p.net_elevation_ft == null ? 'unknown' : (p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft)}} ft<br>Altitude: ${{p.start_elevation_ft ?? 'unknown'}} ft to ${{p.finish_elevation_ft ?? 'unknown'}} ft<br>${{p.note}}`
         );
       }}
     }}
@@ -1888,8 +2076,9 @@ def write_detailed_map() -> None:
     addSegs(groups.john, johnSegs, '#7c3aed');
     for (const row of johnRows) {{
       if (row.finish_lat === null) continue;
+      const tempText = row.avg_temp_max_c == null ? '' : `<br>Expected date: ${{row.expected_date}}<br>Avg range: ${{row.avg_temp_min_c}}-${{row.avg_temp_max_c}} °C / ${{row.avg_temp_min_f}}-${{row.avg_temp_max_f}} °F`;
       L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
-        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`);
+        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}${{tempText}}<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`);
     }}
     addLodging(commonPts); addLodging(mountainPts); addLodging(southernPts);
     for (const r of risks) {{
@@ -2000,6 +2189,7 @@ def main() -> None:
     items = load_instagram_items()
     day_posts = caption_lookup(items)
     write_friend_csv(day_posts)
+    write_temperature_csv()
     write_markdown()
     write_decision_markdown()
     write_planning_brief_html()
