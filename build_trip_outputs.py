@@ -401,6 +401,13 @@ RISK_MARKERS = [
         "text": "The southern branch lowers snow risk but heat and long service gaps become the dominant hazard from here west.",
     },
     {
+        "name": "Death Valley Warning",
+        "lat": 36.2437,
+        "lon": -116.8169,
+        "title": "Do not improvise a Death Valley cut-through",
+        "text": "If California desert conditions force a route rethink, do not treat Death Valley as an easy fallback. Extreme heat, long exposed stretches, sparse services, and mechanical consequences are serious enough that this should only be considered with deliberate planning, early starts, and a clear water strategy.",
+    },
+    {
         "name": "Flagstaff High Elevation",
         "lat": 35.1988,
         "lon": -111.6518,
@@ -711,7 +718,7 @@ def write_planning_brief_html() -> None:
           <tr>
             <td>Southern Branch</td>
             <td>Higher completion probability on a first tour</td>
-            <td>Heat, wind, long desert service gaps</td>
+            <td>Heat, wind, long desert service gaps, and no casual Death Valley detour</td>
             <td><span class="risk">More robust</span>, but closer to 33 days</td>
           </tr>
           <tr>
@@ -727,6 +734,11 @@ def write_planning_brief_html() -> None:
     <section class="card">
       <h2>Recommended Decision Point</h2>
       <p><strong>Denison, Iowa on Day 14</strong> is the meaningful split. If you are on schedule, healthy, and Colorado looks stable, the mountain branch stays alive. If you are already feeling the load, behind schedule, or wary of mountain access, the southern branch is the more realistic completion route.</p>
+    </section>
+
+    <section class="card">
+      <h2>California Desert Note</h2>
+      <p><strong>Death Valley should not be treated as an improvisation option</strong>. If wind, closures, or fatigue force a rethink in eastern California, the correct move is usually to shorten the day, change the overnight stop, or use a more conventional Mojave corridor. Death Valley adds a separate class of exposure and service risk.</p>
     </section>
 
     <section class="card">
