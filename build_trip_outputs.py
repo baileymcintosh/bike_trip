@@ -397,15 +397,15 @@ RISK_MARKERS = [
         "name": "Needles Heat Warning",
         "lat": 34.8383,
         "lon": -114.6039,
-        "title": "Desert heat / water gap zone",
-        "text": "The southern branch lowers snow risk but heat and long service gaps become the dominant hazard from here west.",
+        "title": "Route corridor desert exposure starts here",
+        "text": "This is on your actual southern line. From here through Barstow, the main hazard shifts to long exposed miles, service gaps, reflected heat, and limited bailout margin.",
     },
     {
-        "name": "Death Valley Warning",
-        "lat": 36.2437,
-        "lon": -116.8169,
-        "title": "Do not improvise a Death Valley cut-through",
-        "text": "If California desert conditions force a route rethink, do not treat Death Valley as an easy fallback. Extreme heat, long exposed stretches, sparse services, and mechanical consequences are serious enough that this should only be considered with deliberate planning, early starts, and a clear water strategy.",
+        "name": "Mojave Corridor Warning",
+        "lat": 35.1194,
+        "lon": -116.0822,
+        "title": "Actual route hazard: Mojave exposure zone",
+        "text": "This marker is on the corridor you would actually ride. It is not Death Valley, but operationally it is the same class of problem: extreme sun, dry wind, long gaps, and mechanical trouble becoming much more consequential.",
     },
     {
         "name": "Flagstaff High Elevation",
@@ -718,7 +718,7 @@ def write_planning_brief_html() -> None:
           <tr>
             <td>Southern Branch</td>
             <td>Higher completion probability on a first tour</td>
-            <td>Heat, wind, long desert service gaps, and no casual Death Valley detour</td>
+            <td>Heat, wind, long desert service gaps, and a serious Needles-to-Barstow exposure block</td>
             <td><span class="risk">More robust</span>, but closer to 33 days</td>
           </tr>
           <tr>
@@ -738,7 +738,7 @@ def write_planning_brief_html() -> None:
 
     <section class="card">
       <h2>California Desert Note</h2>
-      <p><strong>Death Valley should not be treated as an improvisation option</strong>. If wind, closures, or fatigue force a rethink in eastern California, the correct move is usually to shorten the day, change the overnight stop, or use a more conventional Mojave corridor. Death Valley adds a separate class of exposure and service risk.</p>
+      <p><strong>Your route does not literally cross Death Valley</strong>, but parts of the California desert corridor create a similar planning problem. The Needles-to-Barstow and Baker-to-Barstow stretches still demand heat discipline, water margin, earlier starts, and realistic bailout thinking instead of “I can always push a bit farther.”</p>
     </section>
 
     <section class="card">
