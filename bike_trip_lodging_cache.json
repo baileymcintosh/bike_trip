@@ -4774,5 +4774,2144 @@
       "website": "Hostelsf.com",
       "phone": ""
     }
+  ],
+  "Lincoln, NE|||16000": [
+    {
+      "name": "Graduate by Hilton Lincoln",
+      "lat": 40.8144649,
+      "lon": -96.7089449,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/lnkglgu-graduate-lincoln/",
+      "phone": "+1 402-475-4011"
+    },
+    {
+      "name": "Hilton Garden Inn Lincoln Downtown/Haymarket",
+      "lat": 40.8167159,
+      "lon": -96.7096792,
+      "kind": "hotel",
+      "website": "https://hiltongardeninn3.hilton.com/en/hotels/nebraska/hilton-garden-inn-lincoln-downtown-haymarket-LNKDHGI/index.html",
+      "phone": "+1 402-475-9000"
+    },
+    {
+      "name": "Courtyard Lincoln Downtown/Haymarket",
+      "lat": 40.8173533,
+      "lon": -96.7093385,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/hotels/travel/lnkcy-courtyard-lincoln-downtown-haymarket/",
+      "phone": "+1 402-904-4800"
+    },
+    {
+      "name": "Quality Inn & Suites",
+      "lat": 40.764726,
+      "lon": -96.7005337,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Baymont Inn & Suites",
+      "lat": 40.8511276,
+      "lon": -96.6841247,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/baymont/lincoln-nebraska/baymont-in-and-suites-lincoln-ne/overview",
+      "phone": "+1 402-261-1530"
+    },
+    {
+      "name": "The Kindler Hotel",
+      "lat": 40.8151238,
+      "lon": -96.7051965,
+      "kind": "hotel",
+      "website": "https://thekindlerhotel.com/",
+      "phone": "+1-402-261-7800"
+    },
+    {
+      "name": "Hampton Inn & Suites",
+      "lat": 40.8873459,
+      "lon": -96.6786908,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/lnknhhx-hampton-suites-lincoln-northeast-i-80/",
+      "phone": "+1 402-435-4600"
+    },
+    {
+      "name": "Quality Inn & Suites",
+      "lat": 40.886791,
+      "lon": -96.6792722,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/nebraska/lincoln/quality-inn-hotels/ne140",
+      "phone": "+1-402-817-7807"
+    },
+    {
+      "name": "Lincoln Garden Inn",
+      "lat": 40.8771425,
+      "lon": -96.6812805,
+      "kind": "motel",
+      "website": "https://www.lincolngardeninn.com/#/",
+      "phone": "+1-402-438-4700"
+    },
+    {
+      "name": "Sunset Inn & Suites - Lincoln Airport",
+      "lat": 40.8418544,
+      "lon": -96.7386788,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Americas Best Value Inn - Lincoln Airport",
+      "lat": 40.8423452,
+      "lon": -96.7405919,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Horizan Inn Motel",
+      "lat": 40.8410488,
+      "lon": -96.7406215,
+      "kind": "motel",
+      "website": "https://horizoninnmotel.com/",
+      "phone": "+1-402-474-5252"
+    },
+    {
+      "name": "Holiday Inn Express Hotel & Suites Lincoln Airport",
+      "lat": 40.8466694,
+      "lon": -96.7370179,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6",
+      "lat": 40.8453566,
+      "lon": -96.7378924,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Comfort Inn",
+      "lat": 40.8457883,
+      "lon": -96.7364194,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/nebraska/lincoln/sleep-inn-hotels",
+      "phone": "+1 402-858-0610"
+    },
+    {
+      "name": "Country Inn & Suites",
+      "lat": 40.8440385,
+      "lon": -96.7407262,
+      "kind": "hotel",
+      "website": "https://www.radissonhotels.com/en-us/hotels/country-inn-lincoln-airport-ne",
+      "phone": "+1 402-474-2080"
+    },
+    {
+      "name": "Luxury Inn & Suites Lincoln",
+      "lat": 40.8422429,
+      "lon": -96.7387861,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Magnuson Hotel",
+      "lat": 40.8463737,
+      "lon": -96.7377054,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hyatt Place Lincoln Haymarket",
+      "lat": 40.8161981,
+      "lon": -96.7124175,
+      "kind": "hotel",
+      "website": "https://www.hyatt.com/",
+      "phone": "+1 402-742-6007"
+    },
+    {
+      "name": "Days Inn",
+      "lat": 40.777917,
+      "lon": -96.7050667,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Residence Inn",
+      "lat": 40.7376181,
+      "lon": -96.64117,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/lnkri",
+      "phone": "+1 402-423-1555"
+    },
+    {
+      "name": "Rodeway Inn",
+      "lat": 40.8131729,
+      "lon": -96.759921,
+      "kind": "motel",
+      "website": "http://www.rodewayinn.com/hotel-lincoln-nebraska-NE135",
+      "phone": "+1 402-475-4921"
+    },
+    {
+      "name": "Super 8 Lincoln West",
+      "lat": 40.8131634,
+      "lon": -96.7579374,
+      "kind": "motel",
+      "website": "http://www.super8.com/hotels/nebraska/lincoln/super-8-lincoln-west/hotel-overview",
+      "phone": "+1 402-476-8887"
+    },
+    {
+      "name": "Fairfield Inn & Suites Lincoln Southeast",
+      "lat": 40.7375384,
+      "lon": -96.6048538,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/lnkse",
+      "phone": ""
+    },
+    {
+      "name": "Sleep Inn and Suites",
+      "lat": 40.8651042,
+      "lon": -96.6803024,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/nebraska/lincoln/sleep-inn-hotels",
+      "phone": "+1-402-477-0645"
+    }
+  ],
+  "Hastings, NE|||16000": [
+    {
+      "name": "Comfort Inn",
+      "lat": 40.6156298,
+      "lon": -98.3842783,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/nebraska/hastings/comfort-inn-hotels/ne004",
+      "phone": "+1 402-463-5252"
+    },
+    {
+      "name": "Rainbow Motel",
+      "lat": 40.5684766,
+      "lon": -98.3939042,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Holiday Inn Express",
+      "lat": 40.6209074,
+      "lon": -98.3858945,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/hastings/hsihi/hoteldetail",
+      "phone": "+1 402-463-8858"
+    },
+    {
+      "name": "Rodeway Inn & Suites",
+      "lat": 40.6109394,
+      "lon": -98.3818374,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Super 8 by Wyndham Hastings",
+      "lat": 40.6080554,
+      "lon": -98.3850703,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/hastings-nebraska/super-8-hastings-ne/overview",
+      "phone": "+1 402-512-0184"
+    },
+    {
+      "name": "Quality Inn",
+      "lat": 40.6190168,
+      "lon": -98.3852351,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Howard Johnsons Hotel & Convention Center",
+      "lat": 40.6089619,
+      "lon": -98.3834916,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    }
+  ],
+  "Smith Center, KS|||16000": [],
+  "Great Bend, KS|||16000": [
+    {
+      "name": "Best Western",
+      "lat": 38.3625566,
+      "lon": -98.7785968,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-great-bend/best-western-angus-inn/propertyCode.17080.html",
+      "phone": "+1 620-792-3541"
+    },
+    {
+      "name": "Traveller's Budget Inn",
+      "lat": 38.3622355,
+      "lon": -98.794843,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Comfort Inn",
+      "lat": 38.3608048,
+      "lon": -98.789727,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Days Inn by Wyndham Great Bend",
+      "lat": 38.3611638,
+      "lon": -98.7987521,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/great-bend-kansas/days-inn-great-bend/overview",
+      "phone": "+1 620-792-8235"
+    }
+  ],
+  "Dodge City, KS|||16000": [
+    {
+      "name": "Knights Inn Dodge City",
+      "lat": 37.7544475,
+      "lon": -100.0355073,
+      "kind": "motel",
+      "website": "https://www.wyattearphotelgrill.com/",
+      "phone": "+1-620-371-7226"
+    },
+    {
+      "name": "Best Western",
+      "lat": 37.7543534,
+      "lon": -100.0324699,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hampton Inn & Suites",
+      "lat": 37.7683592,
+      "lon": -100.0605686,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/ddctyhx-hampton-suites-dodge-city/",
+      "phone": "+1 620-225-0000"
+    },
+    {
+      "name": "Super 8 by Wyndham Dodge City",
+      "lat": 37.7541617,
+      "lon": -100.03747,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/dodge-city-kansas/super-8-dodge-city/overview",
+      "phone": "+1 620-682-4524"
+    },
+    {
+      "name": "Holiday Inn Express & Suites Dodge City",
+      "lat": 37.7511732,
+      "lon": -100.0224735,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/dodge-city/ddcsx/hoteldetail",
+      "phone": "+1 620-225-1000"
+    },
+    {
+      "name": "TownePlace Suites Dodge City",
+      "lat": 37.7554645,
+      "lon": -100.0563812,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/ddcts",
+      "phone": "+1 620-371-7171"
+    },
+    {
+      "name": "La Quinta Inn & Suites",
+      "lat": 37.754793,
+      "lon": -100.047332,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/laquinta/dodge-city-kansas/la-quinta-dodge-city/overview",
+      "phone": "+1 620-488-6484"
+    },
+    {
+      "name": "Comfort Suites",
+      "lat": 37.7551044,
+      "lon": -100.0528796,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/kansas/dodge-city/quality-inn-hotels",
+      "phone": "+1 620-801-4545"
+    },
+    {
+      "name": "Travelodge Dodge City",
+      "lat": 37.7541175,
+      "lon": -100.0340863,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Dodge House Hotel & Convention Center",
+      "lat": 37.7551623,
+      "lon": -100.0481308,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Best Western North Edge Inn",
+      "lat": 37.7815291,
+      "lon": -100.0214928,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-dodge-city/best-western-north-edge-inn/propertyCode.17138.html",
+      "phone": "+1 620-371-6441"
+    }
+  ],
+  "Liberal, KS|||16000": [
+    {
+      "name": "Budget Host La Fonda Motel",
+      "lat": 37.0328283,
+      "lon": -100.927847,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Best Western Plus",
+      "lat": 37.0550719,
+      "lon": -100.924382,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-liberal/best-western-plus-liberal-hotel-suites/propertyCode.17140.html",
+      "phone": "+1 620-624-9700"
+    },
+    {
+      "name": "Hampton Inn & Suites Liberal",
+      "lat": 37.0308757,
+      "lon": -100.914879,
+      "kind": "hotel",
+      "website": "",
+      "phone": "+1 620-604-0699"
+    },
+    {
+      "name": "Super 8 by Wyndham Liberal KS",
+      "lat": 37.0370999,
+      "lon": -100.9070803,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/liberal-kansas/super-8-liberal-ks/overview",
+      "phone": "+1 620-955-4285"
+    },
+    {
+      "name": "Days Inn",
+      "lat": 37.0329245,
+      "lon": -100.9139968,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/liberal-kansas/days-inn-liberal-ks/overview",
+      "phone": "+1 620-604-9390"
+    },
+    {
+      "name": "Fairfield Inn & Suites Liberal",
+      "lat": 37.0318834,
+      "lon": -100.9143088,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/lblfi",
+      "phone": ""
+    },
+    {
+      "name": "Comfort Suites",
+      "lat": 37.0723391,
+      "lon": -100.9217513,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/kansas/liberal/quality-inn-hotels",
+      "phone": "+1 620-309-4083"
+    },
+    {
+      "name": "AMERICAN INN OF LIBERAL",
+      "lat": 37.0325955,
+      "lon": -100.9097822,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Rodeway Inn",
+      "lat": 37.0317913,
+      "lon": -100.9165993,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/kansas/liberal/quality-inn-hotels",
+      "phone": "+1 620-624-5642"
+    },
+    {
+      "name": "Quality Inn",
+      "lat": 37.0356778,
+      "lon": -100.9066031,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    }
+  ],
+  "Dalhart, TX|||16000": [
+    {
+      "name": "La Quinta Inn & Suites Dalhart",
+      "lat": 36.0694169,
+      "lon": -102.5147172,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/laquinta/dalhart-texas/la-quinta-dalhart/overview",
+      "phone": "+1 806-249-1145"
+    }
+  ],
+  "Tucumcari, NM|||16000": [
+    {
+      "name": "Tucumcari Inn",
+      "lat": 35.1714579,
+      "lon": -103.7050983,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Historic Route 66 Motel",
+      "lat": 35.1714696,
+      "lon": -103.7061669,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Bedget Inn",
+      "lat": 35.1714507,
+      "lon": -103.7341352,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Palomino Motel",
+      "lat": 35.1720975,
+      "lon": -103.7113954,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Value Inn",
+      "lat": 35.1714069,
+      "lon": -103.7114678,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Roadrunner Lodge",
+      "lat": 35.172076,
+      "lon": -103.7136914,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel Safari",
+      "lat": 35.1720147,
+      "lon": -103.71816,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Tristar Inn Xpress",
+      "lat": 35.1717077,
+      "lon": -103.7269201,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Buckaroo Motel",
+      "lat": 35.1716332,
+      "lon": -103.7405833,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Holiday Inn Express Hotel & Suites Tucumcari",
+      "lat": 35.1535746,
+      "lon": -103.7229042,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/tucumcari/tccfs/hoteldetail",
+      "phone": "+1 575-461-3333"
+    },
+    {
+      "name": "Desert Inn",
+      "lat": 35.1553096,
+      "lon": -103.7243281,
+      "kind": "hotel",
+      "website": "https://www.desertinn66.com/",
+      "phone": ""
+    },
+    {
+      "name": "La Quinta Inn & Suites Tucumcari",
+      "lat": 35.154479,
+      "lon": -103.7227309,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/laquinta/tucumcari-new-mexico/la-quinta-tucumcari/overview",
+      "phone": "+1 575-461-2233"
+    },
+    {
+      "name": "Motel Safari",
+      "lat": 35.1713976,
+      "lon": -103.7176515,
+      "kind": "motel",
+      "website": "https://themotelsafari.com/",
+      "phone": ""
+    },
+    {
+      "name": "Days Inn Tucumcari",
+      "lat": 35.1536781,
+      "lon": -103.7253515,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/tucumcari-new-mexico/days-inn-tucumcari/overview",
+      "phone": "+1 575-461-3158"
+    },
+    {
+      "name": "Fairfield Inn & Suites Tucumcari",
+      "lat": 35.1601169,
+      "lon": -103.7038358,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/hotels/travel/tccfi-fairfield-inn-and-suites-tucumcari/",
+      "phone": ""
+    },
+    {
+      "name": "Americana Motel",
+      "lat": 35.1715467,
+      "lon": -103.721896,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Rodeway Inn",
+      "lat": 35.1712232,
+      "lon": -103.6859162,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/new-mexico/tucumcari/rodeway-inn-hotels",
+      "phone": "+1 575-461-4094"
+    },
+    {
+      "name": "Pow Wow Inn",
+      "lat": 35.1722573,
+      "lon": -103.7343741,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6 Tucumcari",
+      "lat": 35.1712409,
+      "lon": -103.6850724,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Econo Lodge",
+      "lat": 35.171305,
+      "lon": -103.6842214,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/new-mexico/tucumcari/rodeway-inn-hotels",
+      "phone": "+1 575-461-4194"
+    },
+    {
+      "name": "Americas Best Value Inn",
+      "lat": 35.1712945,
+      "lon": -103.6826939,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Quality Inn",
+      "lat": 35.170942,
+      "lon": -103.6814201,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    }
+  ],
+  "Santa Rosa, NM|||16000": [
+    {
+      "name": "La Loma Motel",
+      "lat": 34.9442987,
+      "lon": -104.6839666,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Sunset Motel",
+      "lat": 34.9442977,
+      "lon": -104.6817507,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6 Santa Rosa",
+      "lat": 34.947878,
+      "lon": -104.6461937,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Econo Lodge",
+      "lat": 34.9456765,
+      "lon": -104.6669563,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/new-mexico/santa-rosa/econo-lodge-hotels",
+      "phone": "+1 575-472-3494"
+    },
+    {
+      "name": "Route 66 Inn",
+      "lat": 34.9437319,
+      "lon": -104.6820512,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Super 8",
+      "lat": 34.9448924,
+      "lon": -104.6777871,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1 575-303-0634"
+    },
+    {
+      "name": "America's Best Value Inn",
+      "lat": 34.9374859,
+      "lon": -104.6922493,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1-575-472-3898"
+    },
+    {
+      "name": "Days Inn & Suites Santa Rosa",
+      "lat": 34.9454691,
+      "lon": -104.6702961,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/santa-rosa-new-mexico/days-inn-and-suites-santa-rosa-santa-rosa-nm/overview",
+      "phone": "+1 575-472-3446"
+    },
+    {
+      "name": "Holiday Inn Express Santa Rosa",
+      "lat": 34.9473287,
+      "lon": -104.648473,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/santa-rosa/sronm/hoteldetail",
+      "phone": "+1 575-472-5411"
+    },
+    {
+      "name": "Hotel Blue 66",
+      "lat": 34.94888,
+      "lon": -104.6465652,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-santa-rosa/hotel-blue-66-bw-signature-collection/propertyCode.32120.html",
+      "phone": "+1-575-999-9533"
+    },
+    {
+      "name": "La Quinta Inn & Suites by Wyndham Santa Rosa",
+      "lat": 34.9457783,
+      "lon": -104.6683877,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/laquinta/santa-rosa-new-mexico/la-quinta-santa-rosa/overview",
+      "phone": ""
+    },
+    {
+      "name": "Rodeway Inn",
+      "lat": 34.9446987,
+      "lon": -104.6668119,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/new-mexico/santa-rosa/econo-lodge-hotels",
+      "phone": "+1 575-472-5985"
+    },
+    {
+      "name": "Comfort Inn",
+      "lat": 34.9475422,
+      "lon": -104.647245,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/new-mexico/santa-rosa/econo-lodge-hotels",
+      "phone": "+1 575-472-2663"
+    },
+    {
+      "name": "Tower Motel",
+      "lat": 34.9427301,
+      "lon": -104.6847329,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hampton",
+      "lat": 34.9482281,
+      "lon": -104.6518344,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/tccsrhx-hampton-santa-rosa/",
+      "phone": "+1 575-472-2300"
+    }
+  ],
+  "Albuquerque, NM|||16000": [
+    {
+      "name": "Sonesta ES Suites",
+      "lat": 35.1070291,
+      "lon": -106.6071,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Suburban Extended Stay",
+      "lat": 35.1079905,
+      "lon": -106.6078745,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "El Vado Motel",
+      "lat": 35.0943132,
+      "lon": -106.6771945,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Freeway Inn",
+      "lat": 35.0845878,
+      "lon": -106.5263014,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Ramada",
+      "lat": 35.0857914,
+      "lon": -106.5312934,
+      "kind": "hotel",
+      "website": "http://ramadaabq.com/",
+      "phone": "+1 505-296-4853"
+    },
+    {
+      "name": "Barcelona Suites",
+      "lat": 35.0884283,
+      "lon": -106.5681269,
+      "kind": "hotel",
+      "website": "http://www.barcelonasuitesabq.com",
+      "phone": "+1-505-255-5566"
+    },
+    {
+      "name": "Hilton Garden Inn",
+      "lat": 35.226562,
+      "lon": -106.660838,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/abqrrgi-hilton-garden-inn-albuquerque-north-rio-rancho/",
+      "phone": ""
+    },
+    {
+      "name": "Studio 6 Albuquerque N",
+      "lat": 35.1557259,
+      "lon": -106.5913105,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 76",
+      "lat": 35.1151053,
+      "lon": -106.6220932,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Knights Inn Albuquerque",
+      "lat": 35.083178,
+      "lon": -106.638396,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6 Albuquerque - Coors Road",
+      "lat": 35.10406,
+      "lon": -106.707178,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Best Western Plus Executive Suites",
+      "lat": 35.1333088,
+      "lon": -106.606813,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-albuquerque/best-western-plus-executive-suites/propertyCode.32097.html",
+      "phone": "+1 505-830-0900"
+    },
+    {
+      "name": "Ramada",
+      "lat": 35.084066,
+      "lon": -106.5310868,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Clyde Hotel",
+      "lat": 35.0862613,
+      "lon": -106.6506963,
+      "kind": "hotel",
+      "website": "https://www.clydehotel.com/",
+      "phone": ""
+    },
+    {
+      "name": "casa",
+      "lat": 35.0501922,
+      "lon": -106.7397261,
+      "kind": "guest_house",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hilton Garden Inn",
+      "lat": 35.1005283,
+      "lon": -106.572399,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Super 8",
+      "lat": 35.077385,
+      "lon": -106.5128819,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Grandview Motel",
+      "lat": 35.0726423,
+      "lon": -106.7412685,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Grandview Motel",
+      "lat": 35.0725737,
+      "lon": -106.741156,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Holiday Inn Express",
+      "lat": 35.0854941,
+      "lon": -106.5306082,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/albuquerque/abqse/hoteldetail",
+      "phone": "+1 505-275-8900"
+    },
+    {
+      "name": "Baymont",
+      "lat": 35.0565637,
+      "lon": -106.6356941,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/baymont/albuquerque-new-mexico/baymont-inn-and-suites-albuquerque-airport/overview",
+      "phone": "+1 505-225-8168"
+    },
+    {
+      "name": "Crosslands Albuquerque - Northeast",
+      "lat": 35.1591257,
+      "lon": -106.5891598,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hotel Zazz",
+      "lat": 35.0798925,
+      "lon": -106.6025396,
+      "kind": "hotel",
+      "website": "https://www.hotelzazz.com/about",
+      "phone": ""
+    },
+    {
+      "name": "Homewood Suites by Hilton Albuquerque Uptown",
+      "lat": 35.1049734,
+      "lon": -106.5662652,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/abqhwhw-homewood-suites-albuquerque-uptown/",
+      "phone": "+1-505-881-7300"
+    },
+    {
+      "name": "Hyatt Place Albuquerque / Uptown",
+      "lat": 35.1048847,
+      "lon": -106.5675706,
+      "kind": "hotel",
+      "website": "https://www.hyatt.com/en-us/hotel/new-mexico/hyatt-place-albuquerque-uptown/abqzu",
+      "phone": "+1 505-872-9000"
+    }
+  ],
+  "Grants, NM|||16000": [
+    {
+      "name": "Sands",
+      "lat": 35.1456536,
+      "lon": -107.8385512,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Leisure Lodge Motel",
+      "lat": 35.1420661,
+      "lon": -107.8324044,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "SureStay",
+      "lat": 35.1268333,
+      "lon": -107.8269052,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-grants/surestay-by-best-western-grants/propertyCode.53005.html",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6",
+      "lat": 35.130077,
+      "lon": -107.8281543,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Days Inn by Wyndham Grants",
+      "lat": 35.130857,
+      "lon": -107.8262527,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/grants-new-mexico/days-inn-grants/overview",
+      "phone": "+1-505-240-6518"
+    },
+    {
+      "name": "Super 8 by Wyndham Grants",
+      "lat": 35.1272457,
+      "lon": -107.8267735,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/grants-new-mexico/super-8-grants/overview",
+      "phone": "+1 505-240-6575"
+    },
+    {
+      "name": "Quality Inn & Suites",
+      "lat": 35.1316672,
+      "lon": -107.8261893,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Holiday Inn Express & Suites",
+      "lat": 35.1289476,
+      "lon": -107.8264813,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/grants/grtnm/hoteldetail",
+      "phone": "+1-505-287-9252"
+    },
+    {
+      "name": "Southwest Motel",
+      "lat": 35.1449242,
+      "lon": -107.838169,
+      "kind": "hotel",
+      "website": "http://www.southwestmotelgrants.us",
+      "phone": ""
+    },
+    {
+      "name": "Best Western Grants Inn",
+      "lat": 35.1284105,
+      "lon": -107.8281295,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-grants/best-western-grants-inn/propertyCode.32114.html",
+      "phone": "+1 505-287-7777"
+    }
+  ],
+  "Gallup, NM|||16000": [
+    {
+      "name": "El Rancho Hotel & Motel",
+      "lat": 35.5295674,
+      "lon": -108.7281432,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Quality Inn And Suites Gallup",
+      "lat": 35.5281662,
+      "lon": -108.765104,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hampton Inn & Suites",
+      "lat": 35.5292314,
+      "lon": -108.7641388,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/guphshx-hampton-suites-gallup/",
+      "phone": "+1 505-726-0900"
+    },
+    {
+      "name": "Comfort Inn Gallup",
+      "lat": 35.5287949,
+      "lon": -108.763323,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/new-mexico/gallup/quality-inn-hotels",
+      "phone": "+1 505-726-2700"
+    },
+    {
+      "name": "Hilton Garden Inn Gallup",
+      "lat": 35.5280577,
+      "lon": -108.7659546,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/gupgigi-hilton-garden-inn-gallup/",
+      "phone": ""
+    },
+    {
+      "name": "El Capitan Motel",
+      "lat": 35.5296277,
+      "lon": -108.722229,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Gallup Travelodge",
+      "lat": 35.5059869,
+      "lon": -108.8247559,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Knights Inn & Suites Gallup",
+      "lat": 35.5076289,
+      "lon": -108.822545,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Econo Lodge",
+      "lat": 35.5071747,
+      "lon": -108.8189086,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/new-mexico/gallup/quality-inn-hotels",
+      "phone": "+1 505-722-3800"
+    },
+    {
+      "name": "Budget Inn",
+      "lat": 35.5080132,
+      "lon": -108.8200459,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Red Lion Hotels",
+      "lat": 35.5076201,
+      "lon": -108.814885,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hacienda Motel",
+      "lat": 35.5289071,
+      "lon": -108.702351,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Royal Holiday Inn",
+      "lat": 35.5179148,
+      "lon": -108.7721891,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Ranchito Motel",
+      "lat": 35.5235691,
+      "lon": -108.7545077,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Red Lounge",
+      "lat": 35.5302922,
+      "lon": -108.7282773,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Colonial Motel",
+      "lat": 35.5240003,
+      "lon": -108.7542366,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Best Western Plus",
+      "lat": 35.5288504,
+      "lon": -108.7278041,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-gallup/best-western-plus-gallup-inn-suites/propertyCode.32113.html",
+      "phone": "+1 505-726-5380"
+    },
+    {
+      "name": "Hampton Inn Gallup-West",
+      "lat": 35.5052641,
+      "lon": -108.8288996,
+      "kind": "hotel",
+      "website": "https://hamptoninn3.hilton.com/en/hotels/new-mexico/hampton-inn-gallup-west-GUPHHHX/index.html",
+      "phone": "+1 505-722-7224"
+    },
+    {
+      "name": "Motel 6",
+      "lat": 35.507071,
+      "lon": -108.827538,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1-505-200-3272"
+    },
+    {
+      "name": "Red Roof Inn Gallup",
+      "lat": 35.507013,
+      "lon": -108.8268235,
+      "kind": "hotel",
+      "website": "https://www.redroof.com/property/Gallup/NM/87301/Hotels-close-to-University-of-New-Mexico-Gallup-Airport-US-66-I-40/RRI530/",
+      "phone": "+1-505-722-7765"
+    },
+    {
+      "name": "Microtel Inn & Suites by Wyndham Gallup",
+      "lat": 35.5072462,
+      "lon": -108.8249448,
+      "kind": "hotel",
+      "website": "http://www.microtelinn.com/hotels/new-mexico/gallup/microtel-inn-gallup/hotel-overview?cid=local",
+      "phone": "+1-505-722-2600"
+    },
+    {
+      "name": "Days Inn & Suites Red Rock-Gallup",
+      "lat": 35.528638,
+      "lon": -108.68929,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/gallup-new-mexico/days-inn-and-suites-red-rock-gallup/overview",
+      "phone": "+1 505-722-7600"
+    },
+    {
+      "name": "Days Inn",
+      "lat": 35.5203813,
+      "lon": -108.764383,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/gallup-new-mexico/days-inn-gallup/overview",
+      "phone": "+1 505-236-4999"
+    },
+    {
+      "name": "Holiday Inn Express",
+      "lat": 35.5299862,
+      "lon": -108.6657295,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/gallup/gupes/hoteldetail",
+      "phone": "+1-505-722-7500"
+    },
+    {
+      "name": "Sleep Inn",
+      "lat": 35.5302548,
+      "lon": -108.6666553,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/new-mexico/gallup/quality-inn-hotels",
+      "phone": "+1 505-863-3535"
+    }
+  ],
+  "Holbrook, AZ|||16000": [
+    {
+      "name": "Magnuson Hotel Adobe Holbrook",
+      "lat": 34.9024044,
+      "lon": -110.1665829,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Wigwam Motel",
+      "lat": 34.9025815,
+      "lon": -110.1688677,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Americas Best Value Inn",
+      "lat": 34.9063832,
+      "lon": -110.1578301,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Sahara Inn",
+      "lat": 34.9300554,
+      "lon": -110.1385706,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Globetrotter Lodge",
+      "lat": 34.9033134,
+      "lon": -110.1700359,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "BEST WESTERN Arizonian Inn",
+      "lat": 34.9323586,
+      "lon": -110.1361059,
+      "kind": "hotel",
+      "website": "http://book.bestwestern.com/bestwestern/US/AZ/Holbrook-hotels/BEST-WESTERN-Arizonian-Inn/Hotel-Overview.do?iata=00170260&propertyCode=03066&sob=PBMS7&cm_mmc=PS-_-PBMS7-_-Modified-_-3066",
+      "phone": "+1 928-524-2611"
+    },
+    {
+      "name": "Lexington Inn",
+      "lat": 34.915354,
+      "lon": -110.1526889,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "El Rancho Motel",
+      "lat": 34.907753,
+      "lon": -110.158643,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 66",
+      "lat": 34.9249886,
+      "lon": -110.1455208,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6 Holbrook",
+      "lat": 34.9331249,
+      "lon": -110.1353818,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Travelodge Holbrook",
+      "lat": 34.9316102,
+      "lon": -110.1369499,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/travelodge/holbrook-arizona/travelodge-holbrook/overview",
+      "phone": "+1 928-297-0308"
+    },
+    {
+      "name": "Days Inn by Wyndham Holbrook",
+      "lat": 34.9343673,
+      "lon": -110.1362183,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/holbrook-arizona/days-inn-holbrook/overview",
+      "phone": "+1 928-297-0630"
+    },
+    {
+      "name": "Howard Johnson Holbrook",
+      "lat": 34.9358175,
+      "lon": -110.1327982,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Quality Inn",
+      "lat": 34.93535,
+      "lon": -110.1330324,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Green Tree Inn",
+      "lat": 34.9349992,
+      "lon": -110.1338407,
+      "kind": "motel",
+      "website": "https://www.greentreeinn.com/hotels/az/holbrook",
+      "phone": ""
+    },
+    {
+      "name": "La Quinta Inn & Suites Holbrook Petrified Forest",
+      "lat": 34.9389109,
+      "lon": -110.1325715,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/laquinta/holbrook-arizona/la-quinta-inn-and-suites-holbrook-petrified-forest/overview",
+      "phone": "+1 928-852-0797"
+    },
+    {
+      "name": "Brad's Desert Inn",
+      "lat": 34.9017371,
+      "lon": -110.1622573,
+      "kind": "motel",
+      "website": "https://bradsdesertinnaz.com/",
+      "phone": ""
+    },
+    {
+      "name": "Super 8 - Holbrook",
+      "lat": 34.9208334,
+      "lon": -110.1499252,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/holbrook-arizona/super-8-holbrook/overview",
+      "phone": "+1 928-414-7393"
+    },
+    {
+      "name": "Econolodge - Holbrook",
+      "lat": 34.9280242,
+      "lon": -110.1426408,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/arizona/holbrook/econo-lodge-hotels/az431",
+      "phone": "+1 928-297-0292"
+    }
+  ],
+  "Flagstaff, AZ|||16000": [
+    {
+      "name": "Best Western Pony Soldier Inn & Suites",
+      "lat": 35.2113833,
+      "lon": -111.60423,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-flagstaff/best-western-pony-soldier-inn-suites/propertyCode.03002.html",
+      "phone": "+1 928-526-2388"
+    },
+    {
+      "name": "Ski Lift Lodge & Cabins",
+      "lat": 35.2681533,
+      "lon": -111.7184603,
+      "kind": "hotel",
+      "website": "www.arizonasnowbowl.com/lodging/",
+      "phone": ""
+    },
+    {
+      "name": "Hotel Elev8 Flagstaff",
+      "lat": 35.191359,
+      "lon": -111.624762,
+      "kind": "motel",
+      "website": "https://www.hotelelev8flagstaff.com/",
+      "phone": "+1 928-774-1821"
+    },
+    {
+      "name": "Americana Motor Hotel",
+      "lat": 35.2077662,
+      "lon": -111.6111076,
+      "kind": "motel",
+      "website": "https://www.americanamotorhotel.com/",
+      "phone": "+1 928-833-3060"
+    },
+    {
+      "name": "Whispering Winds",
+      "lat": 35.1944884,
+      "lon": -111.6381857,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hotel Monte Vista",
+      "lat": 35.1982679,
+      "lon": -111.6474069,
+      "kind": "hotel",
+      "website": "https://hotelmontevista.com/",
+      "phone": "+1 928-779-6971"
+    },
+    {
+      "name": "Motel DuBeau",
+      "lat": 35.1966325,
+      "lon": -111.6505419,
+      "kind": "motel",
+      "website": "https://www.modubeau.com/",
+      "phone": "+1 928-774-6731"
+    },
+    {
+      "name": "Mountain View Inn",
+      "lat": 35.211551,
+      "lon": -111.6038618,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hotel Aspen Inn Suites",
+      "lat": 35.1943538,
+      "lon": -111.6374111,
+      "kind": "motel",
+      "website": "http://www.hotelaspenflagstaffaz.com/",
+      "phone": "+1 928-774-7356"
+    },
+    {
+      "name": "Sonesta ES Suites",
+      "lat": 35.2093899,
+      "lon": -111.577465,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Club Wyndham",
+      "lat": 35.2036159,
+      "lon": -111.5773952,
+      "kind": "hotel",
+      "website": "https://clubwyndham.wyndhamdestinations.com/us/en/resorts/wyndham-hotels-resorts/united-states-of-america/arizona/flagstaff/club-wyndham-flagstaff",
+      "phone": "+1-928-526-3232"
+    },
+    {
+      "name": "SpringHill Suites",
+      "lat": 35.177736,
+      "lon": -111.6637744,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/hotels/travel/flgsh-springhill-suites-flagstaff/",
+      "phone": "+1 928-774-8042"
+    },
+    {
+      "name": "Hilton Garden Inn Flagstaff",
+      "lat": 35.1795816,
+      "lon": -111.6621484,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/flgfhgi-hilton-garden-inn-flagstaff/",
+      "phone": "+1 928-226-8888"
+    },
+    {
+      "name": "Hampton Inn & Suites Flagstaff",
+      "lat": 35.177606,
+      "lon": -111.6621328,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/flgwehx-hampton-suites-flagstaff/",
+      "phone": "+1-928-913-0900"
+    },
+    {
+      "name": "Baymont Flagstaff",
+      "lat": 35.1805408,
+      "lon": -111.6622426,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/baymont/flagstaff-arizona/baymont-flagstaff/overview",
+      "phone": "+1 928-255-5435"
+    },
+    {
+      "name": "Super 8 by Wyndham Conference Center NAU/Downtown",
+      "lat": 35.1934493,
+      "lon": -111.6592194,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/flagstaff-arizona/super-8-conference-center-nau-downtown/overview",
+      "phone": "+1 928-255-5126"
+    },
+    {
+      "name": "Howard Johnson by Wyndham Flagstaff",
+      "lat": 35.192285,
+      "lon": -111.6606087,
+      "kind": "hotel",
+      "website": "wyndhamhotels.com",
+      "phone": "+1-928-774-3381"
+    },
+    {
+      "name": "Courtyard",
+      "lat": 35.1746411,
+      "lon": -111.6629861,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/en-us/hotels/flgcy-courtyard-flagstaff/overview/",
+      "phone": "+1 928-774-5800"
+    },
+    {
+      "name": "Comfort Inn",
+      "lat": 35.1785908,
+      "lon": -111.6637073,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/arizona/sedona/ascend-hotels",
+      "phone": "+1-928-774-2225"
+    },
+    {
+      "name": "America's Best Inn",
+      "lat": 35.1986676,
+      "lon": -111.6205072,
+      "kind": "motel",
+      "website": "https://www.sonesta.com/americas-best-value-inn/az/flagstaff/americas-best-value-inn-suites-flagstaff",
+      "phone": "+1 928-774-2779"
+    },
+    {
+      "name": "La Quinta Inn & Suites",
+      "lat": 35.1804508,
+      "lon": -111.6636306,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/laquinta/flagstaff-arizona/la-quinta-flagstaff/overview",
+      "phone": "+1-928-556-8666"
+    },
+    {
+      "name": "Weatherford Hotel",
+      "lat": 35.198431,
+      "lon": -111.6490766,
+      "kind": "hotel",
+      "website": "https://www.weatherfordhotel.com/",
+      "phone": "+1 928-779-1919"
+    },
+    {
+      "name": "Travel Inn",
+      "lat": 35.1871361,
+      "lon": -111.661913,
+      "kind": "hotel",
+      "website": "",
+      "phone": "+1-928-774-6621"
+    },
+    {
+      "name": "Drury Inn & Suites",
+      "lat": 35.1945322,
+      "lon": -111.6549885,
+      "kind": "hotel",
+      "website": "",
+      "phone": "+1-928-773-4900"
+    },
+    {
+      "name": "Grand Canyon International Hostel",
+      "lat": 35.1956994,
+      "lon": -111.6490309,
+      "kind": "hostel",
+      "website": "https://www.grandcanyonhostel.com/GCindex.htm",
+      "phone": ""
+    }
+  ],
+  "Seligman, AZ|||16000": [
+    {
+      "name": "Historic Route 66 Motel",
+      "lat": 35.3284595,
+      "lon": -112.8822711,
+      "kind": "motel",
+      "website": "route66seligmanarizona.com",
+      "phone": "+1-928-422-3204"
+    },
+    {
+      "name": "Supai Motel",
+      "lat": 35.3271428,
+      "lon": -112.8767003,
+      "kind": "hotel",
+      "website": "",
+      "phone": "+1 928-422-4153"
+    },
+    {
+      "name": "Romney Motel Seligman",
+      "lat": 35.327115,
+      "lon": -112.876305,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Canyon Lodge",
+      "lat": 35.3269531,
+      "lon": -112.8747855,
+      "kind": "motel",
+      "website": "https://route66canyonlodge.com/",
+      "phone": "+1 928-422-3255"
+    },
+    {
+      "name": "Stage Coach 66 Motel",
+      "lat": 35.3233091,
+      "lon": -112.8573573,
+      "kind": "motel",
+      "website": "https://www.stagecoach66motel.com/",
+      "phone": "+1 928-422-3470"
+    }
+  ],
+  "Kingman, AZ|||16000": [
+    {
+      "name": "Days Inn West",
+      "lat": 35.2135279,
+      "lon": -114.014808,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/kingman-arizona/days-inn-kingman-west/overview",
+      "phone": "+1 928-263-2510"
+    },
+    {
+      "name": "El Trovatore Motel",
+      "lat": 35.1913631,
+      "lon": -114.0341646,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hill Top Motel",
+      "lat": 35.1937148,
+      "lon": -114.0342385,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Imperial Motel",
+      "lat": 35.1938356,
+      "lon": -114.0333943,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Rodeway Inn",
+      "lat": 35.2134986,
+      "lon": -114.0134468,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Comfort Inn",
+      "lat": 35.2142087,
+      "lon": -114.0143867,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "La Quinta Inn",
+      "lat": 35.2231756,
+      "lon": -114.0385025,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6 Kingman West",
+      "lat": 35.1897351,
+      "lon": -114.0630621,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Arizona Inn",
+      "lat": 35.1908539,
+      "lon": -114.0619706,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Knights Inn Kingman",
+      "lat": 35.219354,
+      "lon": -114.0097485,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1 928-757-4315"
+    },
+    {
+      "name": "Knights Inn",
+      "lat": 35.2186721,
+      "lon": -114.0102141,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6 Kingman East",
+      "lat": 35.2218472,
+      "lon": -114.0070324,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Days Inn",
+      "lat": 35.2225452,
+      "lon": -114.0063272,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/kingman-arizona/days-inn-kingman-east/overview",
+      "phone": "+1 928-263-8421"
+    },
+    {
+      "name": "Super 8",
+      "lat": 35.223149,
+      "lon": -114.0058657,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/kingman-arizona/super-8-kingman-az/overview",
+      "phone": "+1 928-757-4808"
+    },
+    {
+      "name": "Econo Lodge",
+      "lat": 35.2237971,
+      "lon": -114.0052754,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Route 66 Motel",
+      "lat": 35.2129229,
+      "lon": -114.0154359,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Best Western Plus a Wayfarer's Inn And Suites",
+      "lat": 35.2115192,
+      "lon": -114.0172304,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-kingman/best-western-plus-a-wayfarer-s-inn-and-suites/propertyCode.03059.html",
+      "phone": "+1 928-753-6271"
+    },
+    {
+      "name": "Ramblin Rose Motel",
+      "lat": 35.1869945,
+      "lon": -114.0413904,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1 928-753-5541"
+    },
+    {
+      "name": "Economy Inn",
+      "lat": 35.1965989,
+      "lon": -114.0760935,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1 928-753-6171"
+    },
+    {
+      "name": "Tri State Inn",
+      "lat": 35.1962985,
+      "lon": -114.0747847,
+      "kind": "motel",
+      "website": "http://tristateinn.com/",
+      "phone": "+1 928-753-3881"
+    },
+    {
+      "name": "Budget Inn",
+      "lat": 35.1968723,
+      "lon": -114.0755919,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Best Western Plus King's Inn & Suites",
+      "lat": 35.2118382,
+      "lon": -114.0147738,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-kingman/best-western-plus-king-s-inn-suites/propertyCode.03012.html",
+      "phone": "+1 928-753-6101"
+    },
+    {
+      "name": "Hampton Inn & Suites",
+      "lat": 35.2226441,
+      "lon": -114.0371819,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/igmazhx-hampton-suites-kingman/",
+      "phone": "+1 928-692-0200"
+    },
+    {
+      "name": "Lido",
+      "lat": 35.215856,
+      "lon": -114.013016,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Clarion",
+      "lat": 35.2155085,
+      "lon": -114.0131035,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/arizona/kingman/clarion-hotels/az126",
+      "phone": "+1-928-718-1717"
+    }
+  ],
+  "Needles, CA|||16000": [
+    {
+      "name": "Budget Inn",
+      "lat": 34.8486926,
+      "lon": -114.6194352,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1-760-326-2212"
+    },
+    {
+      "name": "Red Roof Inn Needles",
+      "lat": 34.8490835,
+      "lon": -114.6216544,
+      "kind": "hotel",
+      "website": "https://www.redroof.com/property/ca/needles/RRI426",
+      "phone": "+1 937 327 6572"
+    },
+    {
+      "name": "Rio Del Sol Inn",
+      "lat": 34.8504944,
+      "lon": -114.6249757,
+      "kind": "hotel",
+      "website": "https://www.riodelsolinn.com/",
+      "phone": "+1-760-326-5660"
+    },
+    {
+      "name": "Best Western Colorado River Inn",
+      "lat": 34.8495101,
+      "lon": -114.6232737,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-needles/best-western-colorado-river-inn/propertyCode.05522.html",
+      "phone": "+1 760-326-4552"
+    },
+    {
+      "name": "Days Inn & Suites",
+      "lat": 34.8375465,
+      "lon": -114.6119357,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/days-inn/needles-california/days-inn-and-suites-needles/overview",
+      "phone": "+1 760-903-4057"
+    },
+    {
+      "name": "Motel 6",
+      "lat": 34.8386528,
+      "lon": -114.6133501,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Econo Lodge",
+      "lat": 34.8377691,
+      "lon": -114.6037512,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Rodeway Inn & Suites",
+      "lat": 34.8382003,
+      "lon": -114.6098781,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/california/needles/rodeway-inn-hotels",
+      "phone": "+1 760-326-4900"
+    },
+    {
+      "name": "Hampton Inn Needles",
+      "lat": 34.8482709,
+      "lon": -114.6158752,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/eedithx-hampton-needles/",
+      "phone": "+1 760-326-0001"
+    }
+  ],
+  "Barstow, CA|||16000": [
+    {
+      "name": "Americas Best Value Inn",
+      "lat": 34.894768,
+      "lon": -117.043484,
+      "kind": "motel",
+      "website": "",
+      "phone": "+1-760-256-8921"
+    },
+    {
+      "name": "Route 66 Barstow",
+      "lat": 34.8988677,
+      "lon": -117.0144711,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Sunset Inn",
+      "lat": 34.8962222,
+      "lon": -117.0379417,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "H",
+      "lat": 34.8558679,
+      "lon": -117.0832958,
+      "kind": "hotel",
+      "website": "",
+      "phone": "+1-760-255-1400"
+    },
+    {
+      "name": "Fairfield Inn & Suites",
+      "lat": 34.8477755,
+      "lon": -117.0816646,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/ontba",
+      "phone": "+1 760-307-5300"
+    },
+    {
+      "name": "TownePlace Suites",
+      "lat": 34.8479199,
+      "lon": -117.0812537,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Holiday Inn Express & Suites Barstow-Outlet Center",
+      "lat": 34.8444795,
+      "lon": -117.0847405,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/barstow/bstld/hoteldetail",
+      "phone": "+1 760-253-9200"
+    },
+    {
+      "name": "Motel 6",
+      "lat": 34.8567579,
+      "lon": -117.085758,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Holiday Inn & Suites Barstow",
+      "lat": 34.8498111,
+      "lon": -117.0849182,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/holidayinn/hotels/us/en/barstow/vcvbr/hoteldetail",
+      "phone": ""
+    },
+    {
+      "name": "Quality Inn On Historic Route 66",
+      "lat": 34.8927107,
+      "lon": -117.0034266,
+      "kind": "hotel",
+      "website": "http://www.qualityinn.com/hotel-barstow-california-CA183",
+      "phone": "+1 760 256 6891"
+    },
+    {
+      "name": "Days Inn",
+      "lat": 34.8907551,
+      "lon": -117.0035828,
+      "kind": "hotel",
+      "website": "http://www.daysinn.com/hotels/california/barstow/days-inn-barstow/hotel-overview",
+      "phone": "+1-760-256-1737"
+    },
+    {
+      "name": "Ramada",
+      "lat": 34.8941451,
+      "lon": -117.001388,
+      "kind": "hotel",
+      "website": "http://www.ramada.com/hotels/california/barstow/ramada-barstow/hotel-overview",
+      "phone": "+1-760-256-5673"
+    },
+    {
+      "name": "Travelodge",
+      "lat": 34.8905109,
+      "lon": -116.9993346,
+      "kind": "hotel",
+      "website": "http://www.travelodge.com/hotels/california/barstow/travelodge-barstow/hotel-overview",
+      "phone": "+1 760-256-8931"
+    },
+    {
+      "name": "Comfort Suites Barstow",
+      "lat": 34.8555613,
+      "lon": -117.0822059,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/california/barstow/rodeway-inn-hotels",
+      "phone": "+1 760-307-4080"
+    },
+    {
+      "name": "Super 8",
+      "lat": 34.8920131,
+      "lon": -117.0054104,
+      "kind": "motel",
+      "website": "https://www.wyndhamhotels.com/super-8/barstow-california/super-8-barstow/overview",
+      "phone": "+1 760-957-4155"
+    },
+    {
+      "name": "Econo Lodge",
+      "lat": 34.8970016,
+      "lon": -117.00947,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/california/barstow/rodeway-inn-hotels",
+      "phone": "+1 760-256-2133"
+    },
+    {
+      "name": "Best Motel",
+      "lat": 34.8969327,
+      "lon": -117.0075967,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Astro Budget Motel",
+      "lat": 34.897212,
+      "lon": -117.0079016,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Rodeway Inn Barstow",
+      "lat": 34.8973355,
+      "lon": -117.0081677,
+      "kind": "motel",
+      "website": "https://www.choicehotels.com/california/barstow/rodeway-inn-hotels",
+      "phone": "+1 760-256-7581"
+    },
+    {
+      "name": "Economy Inn",
+      "lat": 34.8980597,
+      "lon": -117.009169,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Desert Inn",
+      "lat": 34.8979556,
+      "lon": -117.0111857,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Motel 6",
+      "lat": 34.8975476,
+      "lon": -117.0071143,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Baymont Barstow Historic Route 66",
+      "lat": 34.8939283,
+      "lon": -117.0505592,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/baymont/barstow-california/baymont-inn-and-suites-barstow-historic-route-66/overview",
+      "phone": "+1-760-256-1300"
+    },
+    {
+      "name": "Best Western Plus",
+      "lat": 34.8558187,
+      "lon": -117.0855286,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-barstow/best-western-plus-new-barstow-inn-suites/propertyCode.05746.html",
+      "phone": "+1 760-307-5555"
+    },
+    {
+      "name": "Best Western Desert Villa Inn",
+      "lat": 34.8870856,
+      "lon": -116.9944584,
+      "kind": "hotel",
+      "website": "https://www.bestwestern.com/en_US/book/hotels-in-barstow/best-western-desert-villa-inn/propertyCode.05427.html",
+      "phone": "+1 760-256-1781"
+    }
   ]
 }

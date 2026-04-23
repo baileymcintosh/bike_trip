@@ -286,6 +286,128 @@ SOURCES = [
     },
 ]
 
+SEGMENT_MODES = {
+    "Cape Henlopen State Park, DE|||Annapolis, MD": "road",
+    "Annapolis, MD|||Williamsport, MD": "road",
+    "Williamsport, MD|||Cumberland, MD": "trail",
+    "Cumberland, MD|||South of Pittsburgh / Perryopolis area, PA": "trail",
+    "South of Pittsburgh / Perryopolis area, PA|||Steubenville, OH": "mixed",
+    "Steubenville, OH|||Millersburg, OH": "road",
+    "Millersburg, OH|||Lilly Chapel / west Columbus, OH": "mixed",
+    "Lilly Chapel / west Columbus, OH|||Richmond, IN": "road",
+    "Richmond, IN|||Logansport, IN": "mixed",
+    "Logansport, IN|||Chicago Heights, IL": "mixed",
+    "Chicago Heights, IL|||Rock Falls, IL": "mixed",
+    "Rock Falls, IL|||Cedar Rapids, IA": "mixed",
+    "Cedar Rapids, IA|||Ames, IA": "road",
+    "Ames, IA|||Denison, IA": "road",
+    "Denison, IA|||Norfolk, NE": "road",
+    "Norfolk, NE|||Kearney, NE": "road",
+    "Kearney, NE|||McCook, NE": "road",
+    "McCook, NE|||Sterling, CO": "road",
+    "Sterling, CO|||Denver, CO": "road",
+    "Denver, CO|||Silverthorne / Frisco, CO": "mixed",
+    "Silverthorne / Frisco, CO|||Glenwood Springs, CO": "mixed",
+    "Glenwood Springs, CO|||Grand Junction, CO": "mixed",
+    "Grand Junction, CO|||Green River, UT": "road",
+    "Green River, UT|||Richfield, UT": "road",
+    "Richfield, UT|||Cedar City, UT": "road",
+    "Cedar City, UT|||Mesquite, NV": "road",
+    "Mesquite, NV|||Las Vegas, NV": "road",
+    "Las Vegas, NV|||Baker or Barstow, CA": "road",
+    "Baker or Barstow, CA|||Victorville / San Bernardino, CA": "road",
+    "Victorville / San Bernardino, CA|||Santa Monica, CA": "mixed",
+    "Denison, IA|||Lincoln, NE": "road",
+    "Lincoln, NE|||Hastings, NE": "road",
+    "Hastings, NE|||Smith Center, KS": "road",
+    "Smith Center, KS|||Great Bend, KS": "road",
+    "Great Bend, KS|||Dodge City, KS": "road",
+    "Dodge City, KS|||Liberal, KS": "road",
+    "Liberal, KS|||Dalhart, TX": "road",
+    "Dalhart, TX|||Tucumcari, NM": "road",
+    "Tucumcari, NM|||Santa Rosa, NM": "road",
+    "Santa Rosa, NM|||Albuquerque, NM": "road",
+    "Albuquerque, NM|||Grants, NM": "road",
+    "Grants, NM|||Gallup, NM": "road",
+    "Gallup, NM|||Holbrook, AZ": "road",
+    "Holbrook, AZ|||Flagstaff, AZ": "road",
+    "Flagstaff, AZ|||Seligman, AZ": "road",
+    "Seligman, AZ|||Kingman, AZ": "road",
+    "Kingman, AZ|||Needles, CA": "road",
+    "Needles, CA|||Barstow, CA": "road",
+    "Barstow, CA|||Santa Monica, CA": "mixed",
+    "Washington, DC|||Williamsport, MD": "mixed",
+    "Williamsport, MD|||Cumberland, MD": "trail",
+    "Cumberland, MD|||South of Pittsburgh (likely Perryopolis area), PA": "trail",
+    "South of Pittsburgh, PA|||Steubenville, OH": "mixed",
+    "Steubenville, OH|||Millersburg, OH": "road",
+    "Millersburg, OH|||Lilly Chapel, OH": "mixed",
+    "Lilly Chapel, OH|||Richmond, IN": "road",
+    "Richmond, IN|||Logansport, IN": "mixed",
+    "Logansport, IN|||Chicago Heights, IL": "mixed",
+    "Chicago, IL metro|||Rock Falls, IL": "mixed",
+    "Rock Falls, IL|||Cedar Rapids, IA": "mixed",
+    "Cedar Rapids, IA|||Ames, IA": "road",
+    "Ames, IA|||Denison, IA": "road",
+    "Denison, IA|||Norfolk, NE": "road",
+    "Norfolk, NE|||Neligh, NE": "trail",
+    "Neligh, NE|||Valentine, NE": "trail",
+    "Valentine, NE|||Near Gordon, NE": "road",
+    "Near Gordon, NE|||Short of Custer, SD": "road",
+    "Custer, SD|||Moorcroft, WY": "road",
+    "Sheridan, WY|||Lovell, WY": "road",
+    "Red Lodge, MT|||Near Bozeman, MT": "road",
+    "Near Bozeman, MT|||Butte, MT": "road",
+    "Butte, MT|||Outside Missoula, MT": "road",
+    "Outside Missoula, MT|||Outside Spokane, WA": "mixed",
+    "Spokane, WA|||Ellensburg area, WA": "mixed",
+    "Ellensburg area, WA|||Seattle, WA": "trail",
+}
+
+MODE_STYLE = {
+    "trail": {"color": "#2a9d5b", "dash": "1,0", "label": "Trail"},
+    "road": {"color": "#b26139", "dash": "1,0", "label": "Road"},
+    "mixed": {"color": "#2f6a8e", "dash": "10,8", "label": "Mixed"},
+}
+
+RISK_MARKERS = [
+    {
+        "name": "Denison Decision Point",
+        "lat": 42.0178,
+        "lon": -95.3553,
+        "title": "Choose mountain vs southern here",
+        "text": "If you wait too long to choose, the lower-risk southern branch stops fitting a 30-day target.",
+    },
+    {
+        "name": "Denver Weather Check",
+        "lat": 39.7392,
+        "lon": -104.9849,
+        "title": "Colorado checkpoint",
+        "text": "Use this checkpoint to decide whether high-country conditions justify staying on the mountain branch.",
+    },
+    {
+        "name": "Glenwood Canyon Risk",
+        "lat": 39.5505,
+        "lon": -107.3240,
+        "title": "Late-spring access risk",
+        "text": "The Glenwood Canyon recreation path is typically a late-May opening and can close with runoff or weather.",
+    },
+    {
+        "name": "Needles Heat Warning",
+        "lat": 34.8383,
+        "lon": -114.6039,
+        "title": "Desert heat / water gap zone",
+        "text": "The southern branch lowers snow risk but heat and long service gaps become the dominant hazard from here west.",
+    },
+    {
+        "name": "Flagstaff High Elevation",
+        "lat": 35.1988,
+        "lon": -111.6518,
+        "title": "Not all of the southern branch is low desert",
+        "text": "Flagstaff is cooler and higher, which helps with heat but can bring cold nights and wind.",
+    },
+]
+
 
 def load_instagram_items() -> list[dict]:
     path = ROOT / "instagram_raw.json"
@@ -482,6 +604,144 @@ def write_decision_markdown() -> None:
     (ROOT / "bike_trip_decision.md").write_text("\n".join(md), encoding="utf-8")
 
 
+def write_planning_brief_html() -> None:
+    html = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bike Trip Planning Brief</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --paper: #fffaf4;
+      --ink: #201a16;
+      --clay: #b26139;
+      --blue: #2f6a8e;
+      --green: #2a9d5b;
+      --border: rgba(178,97,57,0.22);
+    }
+    body {
+      margin: 0;
+      font: 16px/1.55 Georgia, serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fffdf9 0%, #f6ecdf 100%);
+    }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 42px 20px 64px;
+    }
+    h1, h2 { line-height: 1.1; }
+    h1 { margin: 0 0 16px; font-size: clamp(2rem, 4vw, 3.2rem); }
+    h2 { margin: 30px 0 10px; font-size: 1.35rem; }
+    .card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 26px rgba(61, 40, 20, 0.06);
+      margin-bottom: 18px;
+    }
+    .meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0 8px;
+    }
+    .chip {
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    ul { margin: 8px 0 0 20px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.96rem;
+      background: white;
+    }
+    th, td {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #fbf3e7; }
+    .good { color: var(--green); font-weight: bold; }
+    .warn { color: var(--clay); font-weight: bold; }
+    .risk { color: var(--blue); font-weight: bold; }
+    a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Bike Trip Planning Brief</h1>
+    <div class="meta">
+      <span class="chip">Start: Cape Henlopen, DE</span>
+      <span class="chip">Target: 30 days</span>
+      <span class="chip">Primary finish: LA</span>
+      <span class="chip">Fallback: SF or southern completion line</span>
+    </div>
+
+    <section class="card">
+      <h2>Bottom Line</h2>
+      <ul>
+        <li>The official Great American Rail-Trail is too long and too incomplete to be your exact 30-day route.</li>
+        <li>Your friend John's ride is the best practical eastern template because it demonstrates real daily stop spacing and pace.</li>
+        <li>The real strategic choice is not “rail-trail or not”; it is <span class="warn">mountain 30-day line</span> versus <span class="risk">southern completion-first line</span>.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>What Each Route Means</h2>
+      <table>
+        <thead>
+          <tr><th>Route</th><th>What It Optimizes</th><th>Main Risk</th><th>Reality</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mountain Branch</td>
+            <td>Best shot at a true 30-day Atlantic-to-LA finish</td>
+            <td>Colorado timing, passes, Glenwood Canyon, late snow</td>
+            <td><span class="warn">Fastest</span>, but more contingent on conditions</td>
+          </tr>
+          <tr>
+            <td>Southern Branch</td>
+            <td>Higher completion probability on a first tour</td>
+            <td>Heat, wind, long desert service gaps</td>
+            <td><span class="risk">More robust</span>, but closer to 33 days</td>
+          </tr>
+          <tr>
+            <td>John's Route</td>
+            <td>Reference pacing and stop pattern</td>
+            <td>It ends in Seattle, not California</td>
+            <td><span class="good">Excellent benchmark</span>, not your final west-end route</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Recommended Decision Point</h2>
+      <p><strong>Denison, Iowa on Day 14</strong> is the meaningful split. If you are on schedule, healthy, and Colorado looks stable, the mountain branch stays alive. If you are already feeling the load, behind schedule, or wary of mountain access, the southern branch is the more realistic completion route.</p>
+    </section>
+
+    <section class="card">
+      <h2>How To Use The Maps</h2>
+      <ul>
+        <li><a href="bike_trip_map_overview.html">Overview map</a>: high-level comparison of the shared route, the mountain branch, the southern branch, and John's route.</li>
+        <li><a href="bike_trip_map_detailed.html">Detailed map</a>: lodging, risk markers, decision notes, and segment styling by <strong>road</strong>, <strong>trail</strong>, or <strong>mixed</strong>.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
+"""
+    (ROOT / "planning_brief.html").write_text(html, encoding="utf-8")
+
+
 def map_points(plan: list[dict]) -> list[dict]:
     return [
         {
@@ -566,10 +826,14 @@ def routed_segments(points: list[dict], color: str, branch_name: str, cache: dic
     segments = []
     for start, finish in zip(points, points[1:]):
         route = osrm_route(start, finish, cache)
+        mode_key = f"{start['stop']}|||{finish['stop']}"
+        mode = SEGMENT_MODES.get(mode_key, "road")
         segments.append(
             {
                 "branch": branch_name,
                 "color": color,
+                "mode": mode,
+                "mode_label": MODE_STYLE[mode]["label"],
                 "start_day": start["day"],
                 "finish_day": finish["day"],
                 "start_stop": start["stop"],
@@ -1228,6 +1492,285 @@ def write_friend_route_map() -> None:
     (ROOT / "john_route_map.html").write_text(html, encoding="utf-8")
 
 
+def friend_route_payload(cache: dict) -> tuple[list[dict], list[dict]]:
+    day_rows = friend_map_days()
+    segments = []
+    for row in day_rows:
+        if not row["route_drawn"]:
+            continue
+        start = {"stop": row["start"], "lat": row["start_lat"], "lon": row["start_lon"]}
+        finish = {"stop": row["finish"], "lat": row["finish_lat"], "lon": row["finish_lon"]}
+        route = osrm_route(start, finish, cache)
+        mode_key = f"{row['start']}|||{row['finish']}"
+        mode = SEGMENT_MODES.get(mode_key, "road")
+        segments.append(
+            {
+                "day": row["day"],
+                "branch": "John",
+                "start": row["start"],
+                "finish": row["finish"],
+                "miles": row["miles"],
+                "mapped_miles": route["distance_miles"],
+                "note": row["note"],
+                "mode": mode,
+                "mode_label": MODE_STYLE[mode]["label"],
+                "geometry": route["geometry"],
+            }
+        )
+    return day_rows, segments
+
+
+def write_overview_map() -> None:
+    cache = load_route_cache()
+    common_points = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON)
+    mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
+    southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
+    common_segments = routed_segments(common_points, "#d97706", "Shared", cache)
+    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", cache)
+    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", cache)
+    john_rows, john_segments = friend_route_payload(cache)
+    save_route_cache(cache)
+
+    html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bike Trip Overview Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {{ height: 100%; margin: 0; }}
+    .panel {{
+      position: absolute;
+      top: 12px; right: 12px; z-index: 1000;
+      width: 390px; max-width: calc(100% - 24px);
+      background: rgba(255, 248, 240, 0.96);
+      border: 1px solid #caa57a; border-radius: 12px;
+      padding: 14px 16px; font: 14px/1.4 Georgia, serif;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }}
+    .panel h1 {{ margin: 0 0 8px; font-size: 18px; }}
+    .panel p {{ margin: 0 0 8px; }}
+    .panel button {{
+      margin: 6px 6px 0 0; border: 1px solid #8b6b46; background: #fff8f0;
+      border-radius: 999px; padding: 6px 10px; cursor: pointer; font: inherit;
+    }}
+    .panel button.active {{ background: #f4d9b5; }}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="panel">
+    <h1>Overview Map</h1>
+    <p>High-level comparison of your shared route east, the 30-day mountain branch, the lower-risk southern branch, and John's actual ride west to Seattle.</p>
+    <div>
+      <button id="toggle-common" class="active">Shared East</button>
+      <button id="toggle-mountain" class="active">Mountain</button>
+      <button id="toggle-southern" class="active">Southern</button>
+      <button id="toggle-john" class="active">John</button>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const commonPts = {json.dumps(common_points)};
+    const mountainPts = {json.dumps(mountain_points)};
+    const southernPts = {json.dumps(southern_points)};
+    const commonSegs = {json.dumps(common_segments)};
+    const mountainSegs = {json.dumps(mountain_segments)};
+    const southernSegs = {json.dumps(southern_segments)};
+    const johnRows = {json.dumps(john_rows)};
+    const johnSegs = {json.dumps(john_segments)};
+    const map = L.map('map').setView([40.5, -98.5], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
+    const groups = {{ common: L.layerGroup().addTo(map), mountain: L.layerGroup().addTo(map), southern: L.layerGroup().addTo(map), john: L.layerGroup().addTo(map) }};
+
+    function addSegs(group, color, segs) {{
+      for (const seg of segs) {{
+        L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.85 }} }})
+          .bindPopup(`<strong>${{seg.branch}}</strong><br>${{seg.start_stop || seg.start}} to ${{seg.finish_stop || seg.finish}}<br>${{seg.note}}`)
+          .addTo(group);
+      }}
+    }}
+    function addPoints(group, color, pts) {{
+      for (const p of pts) {{
+        L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group)
+          .bindPopup(`<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.note}}`);
+      }}
+    }}
+
+    addSegs(groups.common, '#d97706', commonSegs);
+    addPoints(groups.common, '#d97706', commonPts);
+    addSegs(groups.mountain, '#b91c1c', mountainSegs);
+    addPoints(groups.mountain, '#b91c1c', mountainPts.slice(commonPts.length - 1));
+    addSegs(groups.southern, '#1d4ed8', southernSegs);
+    addPoints(groups.southern, '#1d4ed8', southernPts.slice(commonPts.length - 1));
+    addSegs(groups.john, '#7c3aed', johnSegs);
+    for (const row of johnRows) {{
+      if (row.finish_lat === null) continue;
+      L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: row.day === 27 ? 5 : 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
+        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}<br>${{row.note}}`);
+    }}
+
+    function hook(id, key) {{
+      const button = document.getElementById(id);
+      button.addEventListener('click', () => {{
+        if (map.hasLayer(groups[key])) {{ map.removeLayer(groups[key]); button.classList.remove('active'); }}
+        else {{ groups[key].addTo(map); button.classList.add('active'); }}
+      }});
+    }}
+    hook('toggle-common','common'); hook('toggle-mountain','mountain'); hook('toggle-southern','southern'); hook('toggle-john','john');
+  </script>
+</body>
+</html>
+"""
+    (ROOT / "bike_trip_map_overview.html").write_text(html, encoding="utf-8")
+
+
+def write_detailed_map() -> None:
+    route_cache = load_route_cache()
+    lodging_cache = load_lodging_cache()
+    common_points = add_lodging([{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON), lodging_cache)
+    mountain_points = add_lodging(common_points + map_points(PLAN_MOUNTAIN_BRANCH), lodging_cache)
+    southern_points = add_lodging(common_points + map_points(PLAN_SOUTHERN_BRANCH), lodging_cache)
+    common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache)
+    mountain_segments = routed_segments(mountain_points[len(common_points) - 1 :], "#b91c1c", "Mountain", route_cache)
+    southern_segments = routed_segments(southern_points[len(common_points) - 1 :], "#1d4ed8", "Southern", route_cache)
+    john_rows, john_segments = friend_route_payload(route_cache)
+    save_route_cache(route_cache)
+    save_lodging_cache(lodging_cache)
+
+    html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bike Trip Detailed Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body, #map {{ height: 100%; margin: 0; }}
+    .panel {{
+      position: absolute; top: 12px; right: 12px; z-index: 1000;
+      width: 410px; max-width: calc(100% - 24px);
+      background: rgba(255,248,240,0.97); border: 1px solid #caa57a; border-radius: 12px;
+      padding: 14px 16px; font: 14px/1.4 Georgia, serif; box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }}
+    .panel h1 {{ margin: 0 0 8px; font-size: 18px; }}
+    .panel p {{ margin: 0 0 8px; }}
+    .panel button {{
+      margin: 6px 6px 0 0; border: 1px solid #8b6b46; background: #fff8f0; border-radius: 999px; padding: 6px 10px; cursor: pointer; font: inherit;
+    }}
+    .panel button.active {{ background: #f4d9b5; }}
+    .legend {{ margin-top: 8px; font-size: 13px; }}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="panel">
+    <h1>Detailed Map</h1>
+    <p>This map combines route geometry, overnight lodging, and key decision / risk markers. Segment color shows branch; line style shows whether the section is mostly road, trail, or mixed.</p>
+    <div>
+      <button id="toggle-common" class="active">Shared</button>
+      <button id="toggle-mountain" class="active">Mountain</button>
+      <button id="toggle-southern" class="active">Southern</button>
+      <button id="toggle-john">John</button>
+      <button id="toggle-lodging" class="active">Lodging</button>
+      <button id="toggle-risks" class="active">Risks</button>
+    </div>
+    <div class="legend">
+      <strong>Mode styling</strong><br>
+      Solid green = trail<br>
+      Solid clay = road<br>
+      Dashed blue = mixed
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const commonPts = {json.dumps(common_points)};
+    const mountainPts = {json.dumps(mountain_points)};
+    const southernPts = {json.dumps(southern_points)};
+    const commonSegs = {json.dumps(common_segments)};
+    const mountainSegs = {json.dumps(mountain_segments)};
+    const southernSegs = {json.dumps(southern_segments)};
+    const johnRows = {json.dumps(john_rows)};
+    const johnSegs = {json.dumps(john_segments)};
+    const risks = {json.dumps(RISK_MARKERS)};
+    const modeStyle = {json.dumps(MODE_STYLE)};
+    const map = L.map('map').setView([40.5, -98.5], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{ maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }}).addTo(map);
+    const groups = {{
+      common: L.layerGroup().addTo(map), mountain: L.layerGroup().addTo(map), southern: L.layerGroup().addTo(map),
+      john: L.layerGroup(), lodging: L.layerGroup().addTo(map), risks: L.layerGroup().addTo(map)
+    }};
+
+    function styled(seg, fallbackColor) {{
+      const m = modeStyle[seg.mode];
+      return {{
+        color: m.color || fallbackColor,
+        weight: 4,
+        opacity: 0.9,
+        dashArray: m.dash === '1,0' ? null : m.dash
+      }};
+    }}
+    function addSegs(group, segs, fallbackColor) {{
+      for (const seg of segs) {{
+        L.geoJSON(seg.geometry, {{ style: styled(seg, fallbackColor) }}).bindPopup(
+          `<strong>${{seg.branch}}</strong><br>${{seg.start_stop || seg.start}} to ${{seg.finish_stop || seg.finish}}<br>Mode: ${{seg.mode_label}}<br>Target: ${{seg.target_miles || seg.miles || 'unknown'}} mi<br>Mapped: ${{seg.mapped_miles}} mi<br>${{seg.note}}`
+        ).addTo(group);
+      }}
+    }}
+    function addRouteMarkers(group, color, pts, offset) {{
+      for (const p of pts) {{
+        L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group).bindPopup(
+          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.note}}`
+        );
+      }}
+    }}
+    function addLodging(points) {{
+      const seen = new Set();
+      for (const p of points) {{
+        for (const l of p.lodging || []) {{
+          const key = `${{l.name}}|${{l.lat.toFixed(4)}}|${{l.lon.toFixed(4)}}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          L.circleMarker([l.lat, l.lon], {{ radius: 4, color: '#444', fillColor: '#fff', fillOpacity: 0.9, weight: 1 }}).addTo(groups.lodging)
+            .bindPopup(`<strong>${{l.name}}</strong><br>${{l.kind}}`);
+        }}
+      }}
+    }}
+
+    addSegs(groups.common, commonSegs, '#d97706');
+    addRouteMarkers(groups.common, '#d97706', commonPts);
+    addSegs(groups.mountain, mountainSegs, '#b91c1c');
+    addRouteMarkers(groups.mountain, '#b91c1c', mountainPts.slice(commonPts.length - 1));
+    addSegs(groups.southern, southernSegs, '#1d4ed8');
+    addRouteMarkers(groups.southern, '#1d4ed8', southernPts.slice(commonPts.length - 1));
+    addSegs(groups.john, johnSegs, '#7c3aed');
+    for (const row of johnRows) {{
+      if (row.finish_lat === null) continue;
+      L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
+        .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}<br>${{row.note}}`);
+    }}
+    addLodging(commonPts); addLodging(mountainPts); addLodging(southernPts);
+    for (const r of risks) {{
+      L.marker([r.lat, r.lon]).addTo(groups.risks).bindPopup(`<strong>${{r.title}}</strong><br>${{r.text}}`);
+    }}
+
+    function hook(id, key) {{
+      const b = document.getElementById(id);
+      b.addEventListener('click', () => {{
+        if (map.hasLayer(groups[key])) {{ map.removeLayer(groups[key]); b.classList.remove('active'); }}
+        else {{ groups[key].addTo(map); b.classList.add('active'); }}
+      }});
+    }}
+    hook('toggle-common','common'); hook('toggle-mountain','mountain'); hook('toggle-southern','southern');
+    hook('toggle-john','john'); hook('toggle-lodging','lodging'); hook('toggle-risks','risks');
+  </script>
+</body>
+</html>
+"""
+    (ROOT / "bike_trip_map_detailed.html").write_text(html, encoding="utf-8")
+
+
 def write_map() -> None:
     common = branch_points([])
     la = branch_points(PLAN_LA)
@@ -1318,6 +1861,9 @@ def main() -> None:
     write_friend_csv(day_posts)
     write_markdown()
     write_decision_markdown()
+    write_planning_brief_html()
+    write_overview_map()
+    write_detailed_map()
     write_map()
     write_routed_map()
     write_lodging_map()
