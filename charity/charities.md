@@ -2,7 +2,7 @@
 
 This document evaluates charities to support as part of this bike trip fundraiser. The goal is to fund organizations that bring sports and community center access to low-income neighborhoods — an intervention with strong evidence for reducing crime, improving health, and expanding opportunity.
 
-The portfolio is built around a **national anchor + local bookends** model: one national org for scale and credibility, one Philadelphia org (start of the journey, home base), and one LA org (end of the journey).
+The portfolio is built around a **global cycling anchor + national org + local bookends** model: one global charity with direct thematic connection to the ride, one national US org for scale, one Philadelphia org (start), and one LA org (finish).
 
 ---
 
@@ -17,6 +17,29 @@ When choosing where to donate, three things matter most for effective giving:
 ---
 
 ## Recommended Portfolio
+
+### Global Cycling Anchor — World Bicycle Relief
+**Website:** [worldbicyclerelief.org](https://worldbicyclerelief.org)  
+**Charity Navigator:** 4 stars (94% score)  
+**Focus:** Providing purpose-built bicycles to students, healthcare workers, and farmers in rural sub-Saharan Africa and other developing regions
+
+The thematic fit with a cross-country bike trip is obvious, but the impact case is what makes this compelling. A single bike costs **$165** to deliver and transforms a child's daily life: rural students in Zambia often walk 3+ hours each way to school; a bike cuts that to under an hour. The result is better attendance, fewer dropouts, and improved grades.
+
+**The evidence is exceptional for a charity of this type.** WBR commissioned a rigorous **randomized controlled trial (RCT)** — the gold standard in social science — through Innovations for Poverty Action (IPA) and IDinsight. Results for girls who received bicycles in Zambia:
+- **19% less likely to drop out of school**
+- **28% fewer absences**
+- **66% more likely to arrive on time**
+- Higher scores on math assessments
+- Greater personal aspirations, higher self-image, and a greater desire to delay marriage
+
+88% of students in BEEP (Bicycles for Educational Empowerment) program schools complete their schooling, versus a 60% national average. Income gains for households with access to a bike run up to 35%.
+
+**Scale:** 850,000+ bikes distributed to date; 4 million+ people impacted.  
+**Why it stands out:** The RCT evidence is rare in this space and puts WBR in a different category of credibility. The $165/bike cost means fundraising milestones are highly concrete — every $165 raised is one bike, one child's commute transformed. That's a powerful message for donors following the ride.
+
+**The pitch:** *"I'm crossing America by bike to fund bikes for kids in rural Africa who need them to get to school."* The symmetry between your activity and the cause is unique and memorable.
+
+---
 
 ### National Anchor — Up2Us Sports
 **Website:** [up2us.org](https://www.up2us.org)  
@@ -91,16 +114,22 @@ Pays registration fees directly so low-income kids can join leagues they otherwi
 
 | Org | Type | Suggested % |
 |---|---|---|
-| Up2Us Sports | National, evidence-led | 40% |
-| Philadelphia Youth Sports Collaborative | Local — Philly (start) | 30% |
-| Heart of Los Angeles | Local — LA (finish) | 30% |
+| World Bicycle Relief | Global cycling — thematic anchor | 25% |
+| Up2Us Sports | National, evidence-led | 25% |
+| Philadelphia Youth Sports Collaborative | Local — Philly (start) | 25% |
+| Heart of Los Angeles | Local — LA (finish) | 25% |
 
-This split gives the fundraiser a clear story: *Philadelphia to Los Angeles — every dollar stays in the communities connected to this ride, from start to finish.*
+The story across these four: *bikes and community programs, from Philly to LA, and all the way to rural Zambia.* WBR appeals to EA-minded donors who want maximum cost-per-outcome; PYSC and HOLA appeal to donors who want to see local, tangible impact in cities connected to the ride.
 
 ---
 
 ## Sources
 
+- [World Bicycle Relief](https://worldbicyclerelief.org)
+- [Charity Navigator — World Bicycle Relief](https://www.charitynavigator.org/ein/205080679)
+- [IPA RCT — Wheels of Change, Zambia](https://poverty-action.org/study/wheels-change-impact-bicycle-access-girls%E2%80%99-education-and-empowerment-outcomes-rural-zambia)
+- [IDinsight Impact Evaluation — WBR](https://worldbicyclerelief.org/idinsight/)
+- [Brookings — Riding to School](https://www.brookings.edu/articles/riding-to-school-how-bicycles-are-changing-education-for-girls-in-rural-africa/)
 - [Up2Us Sports](https://www.up2us.org)
 - [Philadelphia Youth Sports Collaborative](https://pysc.org)
 - [Charity Navigator — PYSC](https://www.charitynavigator.org/ein/810716680)

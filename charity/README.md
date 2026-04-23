@@ -24,6 +24,7 @@ Evaluated charity recommendations built around a **national anchor + local booke
 
 | Charity | Type | Rating |
 |---|---|---|
+| **World Bicycle Relief** | Global cycling — thematic anchor | 4-star CN (94%), RCT-backed |
 | **Up2Us Sports** | National — AmeriCorps coaches, evidence-led | 4-star Charity Navigator |
 | **Philadelphia Youth Sports Collaborative** | Local — Philly start | 4-star CN (90%), Game On Philly! 5-yr plan |
 | **Heart of Los Angeles (HOLA)** | Local — LA finish | 4-star CN, 8 consecutive years |
@@ -50,9 +51,10 @@ Suggested split:
 
 | Org | Role | % |
 |---|---|---|
-| Up2Us Sports | National anchor — scale and credibility | 40% |
-| Philadelphia Youth Sports Collaborative | Local — where the ride begins | 30% |
-| Heart of Los Angeles | Local — where the ride ends | 30% |
+| World Bicycle Relief | Global cycling anchor — $165/bike, RCT evidence | 25% |
+| Up2Us Sports | National — scale and credibility | 25% |
+| Philadelphia Youth Sports Collaborative | Local — where the ride begins | 25% |
+| Heart of Los Angeles | Local — where the ride ends | 25% |
 
 Other approaches worth considering:
 
