@@ -68,7 +68,7 @@
         const elevText = p.net_elevation_ft == null ? '' : `<br>Net elevation: ${p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft} ft<br>Altitude: ${p.start_elevation_ft} ft to ${p.finish_elevation_ft} ft`;
         const tempText = p.avg_temp_max_c == null ? '' : `<br>Expected date: ${p.expected_date}<br>Avg range: ${p.avg_temp_min_c}-${p.avg_temp_max_c} °C / ${p.avg_temp_min_f}-${p.avg_temp_max_f} °F`;
         L.circleMarker([p.lat, p.lon], { radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }).addTo(group)
-          .bindPopup(`<strong>Day ${p.day}</strong><br>${p.stop}${tempText}${elevText}<br>${p.note}`);
+          .bindPopup(`<strong>Day ${p.day}</strong><br>${p.stop}<br>${p.miles} mi${tempText}${elevText}<br>${p.note}`);
       }
     }
 
