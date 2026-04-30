@@ -15,9 +15,11 @@ INSTAGRAM_URL = "https://www.instagram.com/coast2coast4charity/"
 OSRM_BASE = "https://router.project-osrm.org/route/v1/cycling/"
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 ARCHIVE_WEATHER_BASE = "https://archive-api.open-meteo.com/v1/archive"
-TRIP_START_DATE = date(2026, 5, 1)
-CLIMATE_BASELINE_START = date(2016, 5, 1)
+TRIP_START_DATE = date(2026, 4, 30)
+CLIMATE_BASELINE_START = date(2016, 4, 30)
 CLIMATE_BASELINE_END = date(2025, 6, 2)
+START_STOP = "Woodland Beach, DE"
+START_NOTE = "Bay tire dip start."
 
 
 FRIEND_DAYS = [
@@ -91,8 +93,8 @@ FRIEND_COORDS = {
 
 
 PLAN_COMMON = [
-    {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Start at Cape Henlopen for the Atlantic tire dip, then ride inland."},
-    {"day": 2, "stop": "Williamsport, MD", "miles": 100, "segment": "common", "note": "Joins your friend's eastern corridor and the C&O / GAP approach."},
+    {"day": 1, "stop": "Baltimore, MD", "miles": 70, "segment": "common", "note": "Start at Woodland Beach for the tire dip, then ride toward Baltimore."},
+    {"day": 2, "stop": "Williamsport, MD", "miles": 95, "segment": "common", "note": "Joins your friend's eastern corridor and the C&O / GAP approach."},
     {"day": 3, "stop": "Cumberland, MD", "miles": 65, "segment": "common", "note": "Trail-heavy day."},
     {"day": 4, "stop": "South of Pittsburgh / Perryopolis area, PA", "miles": 90, "segment": "common", "note": "GAP-based push west."},
     {"day": 5, "stop": "Steubenville, OH", "miles": 80, "segment": "common", "note": "Ohio River side of the eastern rail-trail network."},
@@ -147,8 +149,8 @@ PLAN_SF = [
 ]
 
 PLAN_DECISION_COMMON = [
-    {"day": 1, "stop": "Annapolis, MD", "miles": 90, "segment": "common", "note": "Atlantic start from Cape Henlopen."},
-    {"day": 2, "stop": "Williamsport, MD", "miles": 100, "segment": "common", "note": "Join the eastern corridor."},
+    {"day": 1, "stop": "Baltimore, MD", "miles": 70, "segment": "common", "note": "Bay start from Woodland Beach."},
+    {"day": 2, "stop": "Williamsport, MD", "miles": 95, "segment": "common", "note": "Join the eastern corridor."},
     {"day": 3, "stop": "Cumberland, MD", "miles": 65, "segment": "common", "note": "C&O / GAP transition."},
     {"day": 4, "stop": "South of Pittsburgh / Perryopolis area, PA", "miles": 90, "segment": "common", "note": "GAP westbound."},
     {"day": 5, "stop": "Steubenville, OH", "miles": 80, "segment": "common", "note": "Ohio River side."},
@@ -206,8 +208,8 @@ PLAN_SOUTHERN_BRANCH = [
 
 
 COORDS = {
-    "Cape Henlopen State Park, DE": [38.7709, -75.1033],
-    "Annapolis, MD": [38.9786, -76.4928],
+    "Woodland Beach, DE": [39.3316, -75.4709],
+    "Baltimore, MD": [39.2904, -76.6122],
     "Williamsport, MD": [39.5994, -77.8215],
     "Cumberland, MD": [39.6526, -78.7624],
     "South of Pittsburgh / Perryopolis area, PA": [40.0884, -79.7509],
@@ -293,8 +295,8 @@ SOURCES = [
 ]
 
 SEGMENT_MODES = {
-    "Cape Henlopen State Park, DE|||Annapolis, MD": "road",
-    "Annapolis, MD|||Williamsport, MD": "road",
+    "Woodland Beach, DE|||Baltimore, MD": "road",
+    "Baltimore, MD|||Williamsport, MD": "road",
     "Williamsport, MD|||Cumberland, MD": "trail",
     "Cumberland, MD|||South of Pittsburgh / Perryopolis area, PA": "trail",
     "South of Pittsburgh / Perryopolis area, PA|||Steubenville, OH": "mixed",
@@ -489,6 +491,7 @@ def write_temperature_csv() -> None:
                 {
                     "route": branch_name,
                     "day": row["day"],
+                    "setoff_date": row["setoff_date"],
                     "expected_date": row["expected_date"],
                     "stop": row["stop"],
                     "avg_min_c": row["avg_temp_min_c"],
@@ -499,16 +502,16 @@ def write_temperature_csv() -> None:
                 }
             )
 
-    add_rows("shared", [{"day": 0, "stop": "Cape Henlopen State Park, DE", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON))
-    add_rows("mountain", [{"day": 0, "stop": "Cape Henlopen State Park, DE", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON) + map_points(PLAN_MOUNTAIN_BRANCH))
-    add_rows("southern", [{"day": 0, "stop": "Cape Henlopen State Park, DE", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON) + map_points(PLAN_SOUTHERN_BRANCH))
+    add_rows("shared", [{"day": 0, "stop": START_STOP, "lat": COORDS[START_STOP][0], "lon": COORDS[START_STOP][1]}] + map_points(PLAN_DECISION_COMMON))
+    add_rows("mountain", [{"day": 0, "stop": START_STOP, "lat": COORDS[START_STOP][0], "lon": COORDS[START_STOP][1]}] + map_points(PLAN_DECISION_COMMON) + map_points(PLAN_MOUNTAIN_BRANCH))
+    add_rows("southern", [{"day": 0, "stop": START_STOP, "lat": COORDS[START_STOP][0], "lon": COORDS[START_STOP][1]}] + map_points(PLAN_DECISION_COMMON) + map_points(PLAN_SOUTHERN_BRANCH))
 
     save_temperature_cache(temperature_cache)
     path = ROOT / "bike_trip_temperature_ranges.csv"
     with path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["route", "day", "expected_date", "stop", "avg_min_c", "avg_max_c", "avg_min_f", "avg_max_f", "samples"],
+            fieldnames=["route", "day", "setoff_date", "expected_date", "stop", "avg_min_c", "avg_max_c", "avg_min_f", "avg_max_f", "samples"],
         )
         writer.writeheader()
         writer.writerows(rows)
@@ -542,7 +545,7 @@ def write_markdown() -> None:
         "",
         "## Recommended Start",
         "",
-        "- Start at **Cape Henlopen State Park, Delaware**. It gives you an actual Atlantic tire dip, is reachable from the Philly area, and is also the eastern terminus corridor used in the planned USBR 50 concept.",
+        "- Start at **Woodland Beach, Delaware**. It gives you a simple beach launch close to Philly and sets up a more direct first day toward Baltimore.",
         "",
         "## Why This Is Not A Pure GART Plan",
         "",
@@ -564,7 +567,7 @@ def write_markdown() -> None:
         "| Day | Overnight | Target Miles | Why It Works |",
         "| --- | --- | ---: | --- |",
         *lines_for_plan(PLAN_LA),
-        f"\nApproximate 30-day total from Cape Henlopen to Santa Monica: **{la_total} miles**",
+        f"\nApproximate 30-day total from Woodland Beach to Santa Monica: **{la_total} miles**",
         "",
         "## SF Fallback",
         "",
@@ -574,7 +577,7 @@ def write_markdown() -> None:
         "| Day | Overnight | Target Miles | Why It Works |",
         "| --- | --- | ---: | --- |",
         *lines_for_plan(PLAN_SF),
-        f"\nApproximate 30-day total from Cape Henlopen to San Francisco: **{sf_total} miles**",
+        f"\nApproximate 30-day total from Woodland Beach to San Francisco: **{sf_total} miles**",
         "",
         "## Western Reality Check",
         "",
@@ -728,7 +731,7 @@ def write_planning_brief_html() -> None:
   <main>
     <h1>Bike Trip Planning Brief</h1>
     <div class="meta">
-      <span class="chip">Start: Cape Henlopen, DE</span>
+      <span class="chip">Start: Woodland Beach, DE</span>
       <span class="chip">Target: 30 days</span>
       <span class="chip">Primary finish: LA</span>
       <span class="chip">Fallback: SF or southern completion line</span>
@@ -801,6 +804,8 @@ def map_points(plan: list[dict]) -> list[dict]:
     return [
         {
             "day": row["day"],
+            "setoff_date": setoff_date_for_day(row["day"]).isoformat(),
+            "expected_date": arrival_date_for_day(row["day"]).isoformat(),
             "stop": row["stop"],
             "miles": row["miles"],
             "segment": row["segment"],
@@ -816,12 +821,14 @@ def branch_points(plan: list[dict]) -> list[dict]:
     return [
         {
             "day": 0,
-            "stop": "Cape Henlopen State Park, DE",
+            "setoff_date": TRIP_START_DATE.isoformat(),
+            "expected_date": TRIP_START_DATE.isoformat(),
+            "stop": START_STOP,
             "miles": 0,
             "segment": "common",
-            "note": "Atlantic tire dip start.",
-            "lat": COORDS["Cape Henlopen State Park, DE"][0],
-            "lon": COORDS["Cape Henlopen State Park, DE"][1],
+            "note": START_NOTE,
+            "lat": COORDS[START_STOP][0],
+            "lon": COORDS[START_STOP][1],
         }
     ] + map_points(PLAN_COMMON) + map_points(plan)
 
@@ -921,6 +928,10 @@ def arrival_date_for_day(day_number: int) -> date:
     return TRIP_START_DATE + timedelta(days=max(day_number - 1, 0))
 
 
+def setoff_date_for_day(day_number: int) -> date:
+    return TRIP_START_DATE + timedelta(days=max(day_number, 0))
+
+
 def c_to_f(value_c: float | None) -> float | None:
     if value_c is None:
         return None
@@ -999,9 +1010,11 @@ def annotate_points_with_temperatures(points: list[dict], cache: dict) -> list[d
     for point in points:
         row = dict(point)
         arrival = arrival_date_for_day(row["day"])
+        setoff = setoff_date_for_day(row["day"])
         month_day = arrival.strftime("%m-%d")
         baseline = fetch_temperature_baseline(row, cache).get(month_day, {})
         row["expected_date"] = arrival.isoformat()
+        row["setoff_date"] = setoff.isoformat()
         row["avg_temp_max_c"] = baseline.get("avg_max_c")
         row["avg_temp_min_c"] = baseline.get("avg_min_c")
         row["avg_temp_max_f"] = baseline.get("avg_max_f")
@@ -1299,7 +1312,7 @@ def write_routed_map() -> None:
         fillOpacity: 0.95,
         weight: 1
       }}).bindPopup(
-        `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>${{point.miles}} target miles<br>${{point.note}}`
+        `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>Set off: ${{point.setoff_date}}<br>Arrive: ${{point.expected_date}}<br>${{point.miles}} target miles<br>${{point.note}}`
       );
     }}
 
@@ -1451,7 +1464,7 @@ def write_lodging_map() -> None:
           fillColor: color,
           fillOpacity: 0.95
         }}).addTo(groups[name]).bindPopup(
-          `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>${{point.miles}} target miles<br>${{point.note}}<br><br><strong>Nearby lodging:</strong>${{lodgingHtml}}`
+          `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>Set off: ${{point.setoff_date}}<br>Arrive: ${{point.expected_date}}<br>${{point.miles}} target miles<br>${{point.note}}<br><br><strong>Nearby lodging:</strong>${{lodgingHtml}}`
         );
       }});
     }}
@@ -1514,12 +1527,12 @@ def write_decision_map() -> None:
     common_points = [
         {
             "day": 0,
-            "stop": "Cape Henlopen State Park, DE",
+            "stop": START_STOP,
             "miles": 0,
             "segment": "common",
-            "note": "Atlantic tire dip start.",
-            "lat": COORDS["Cape Henlopen State Park, DE"][0],
-            "lon": COORDS["Cape Henlopen State Park, DE"][1],
+            "note": START_NOTE,
+            "lat": COORDS[START_STOP][0],
+            "lon": COORDS[START_STOP][1],
         }
     ] + map_points(PLAN_DECISION_COMMON)
     mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
@@ -1618,7 +1631,7 @@ def write_decision_map() -> None:
           fillColor: color,
           fillOpacity: 0.95
         }}).addTo(group).bindPopup(
-          `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>${{point.miles}} target miles<br>${{point.note}}`
+          `<strong>Day ${{point.day}}</strong><br>${{point.stop}}<br>Set off: ${{point.setoff_date}}<br>Arrive: ${{point.expected_date}}<br>${{point.miles}} target miles<br>${{point.note}}`
         );
       }}
     }}
@@ -1728,7 +1741,7 @@ def write_friend_route_map() -> None:
       const color = seg.day <= 9 ? '#b26139' : (seg.day <= 18 ? '#2f6a8e' : '#7b3f98');
       const geo = L.geoJSON(seg.geometry, {{ style: {{ color, weight: 4, opacity: 0.85 }} }});
       geo.bindPopup(
-        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>Expected date: ${{seg.expected_date}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>Net elevation: ${{seg.net_elevation_ft == null ? 'unknown' : (seg.net_elevation_ft >= 0 ? '+' + seg.net_elevation_ft : seg.net_elevation_ft)}} ft<br>Altitude: ${{seg.start_elevation_ft ?? 'unknown'}} ft to ${{seg.finish_elevation_ft ?? 'unknown'}} ft<br>${{seg.note}}`
+        `<strong>Day ${{seg.day}}</strong><br>${{seg.start}} to ${{seg.finish}}<br>Set off: ${{seg.setoff_date}}<br>Arrive: ${{seg.expected_date}}<br>${{seg.miles ?? 'unknown'}} posted miles<br>${{seg.mapped_miles}} mapped miles<br>Net elevation: ${{seg.net_elevation_ft == null ? 'unknown' : (seg.net_elevation_ft >= 0 ? '+' + seg.net_elevation_ft : seg.net_elevation_ft)}} ft<br>Altitude: ${{seg.start_elevation_ft ?? 'unknown'}} ft to ${{seg.finish_elevation_ft ?? 'unknown'}} ft<br>${{seg.note}}`
       );
       geo.addTo(map);
     }}
@@ -1742,7 +1755,7 @@ def write_friend_route_map() -> None:
         fillOpacity: 0.95,
         weight: 1
       }}).addTo(map).bindPopup(
-        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>Expected date: ${{row.expected_date}}<br>${{row.miles ?? 'unknown'}} posted miles<br>Avg range: ${{row.avg_temp_min_c ?? 'unknown'}}-${{row.avg_temp_max_c ?? 'unknown'}} °C / ${{row.avg_temp_min_f ?? 'unknown'}}-${{row.avg_temp_max_f ?? 'unknown'}} °F<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`
+        `<strong>Day ${{row.day}}</strong><br>Finish: ${{row.finish}}<br>Set off: ${{row.setoff_date}}<br>Arrive: ${{row.expected_date}}<br>${{row.miles ?? 'unknown'}} posted miles<br>Avg range: ${{row.avg_temp_min_c ?? 'unknown'}}-${{row.avg_temp_max_c ?? 'unknown'}} °C / ${{row.avg_temp_min_f ?? 'unknown'}}-${{row.avg_temp_max_f ?? 'unknown'}} °F<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`
       );
     }}
   </script>
@@ -1778,6 +1791,7 @@ def friend_route_payload(route_cache: dict, elevation_cache: dict, temperature_c
                 "mode": mode,
                 "mode_label": MODE_STYLE[mode]["label"],
                 "expected_date": arrival_date_for_day(row["day"]).isoformat(),
+                "setoff_date": setoff_date_for_day(row["day"]).isoformat(),
                 "start_elevation_ft": elevation["start_elevation_ft"],
                 "finish_elevation_ft": elevation["finish_elevation_ft"],
                 "gain_ft": elevation["gain_ft"],
@@ -1791,7 +1805,9 @@ def friend_route_payload(route_cache: dict, elevation_cache: dict, temperature_c
     for row in annotated_rows:
         segment = by_day.get(row["day"])
         arrival = arrival_date_for_day(row["day"])
+        setoff = setoff_date_for_day(row["day"])
         row["expected_date"] = arrival.isoformat()
+        row["setoff_date"] = setoff.isoformat()
         row["start_elevation_ft"] = segment["start_elevation_ft"] if segment else None
         row["finish_elevation_ft"] = segment["finish_elevation_ft"] if segment else None
         row["gain_ft"] = segment["gain_ft"] if segment else None
@@ -1820,7 +1836,7 @@ def write_overview_map() -> None:
     route_cache = load_route_cache()
     elevation_cache = load_elevation_cache()
     temperature_cache = load_temperature_cache()
-    common_points = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON)
+    common_points = [{"day": 0, "stop": START_STOP, "miles": 0, "segment": "common", "note": START_NOTE, "lat": COORDS[START_STOP][0], "lon": COORDS[START_STOP][1]}] + map_points(PLAN_DECISION_COMMON)
     mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
     southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
     common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache, elevation_cache)
@@ -1905,7 +1921,7 @@ def write_overview_map() -> None:
     function addPoints(group, color, pts) {{
       for (const p of pts) {{
         const elevText = p.net_elevation_ft == null ? '' : `<br>Net elevation: ${{p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft}} ft<br>Altitude: ${{p.start_elevation_ft}} ft to ${{p.finish_elevation_ft}} ft`;
-        const tempText = p.avg_temp_max_c == null ? '' : `<br>Expected date: ${{p.expected_date}}<br>Avg range: ${{p.avg_temp_min_c}}-${{p.avg_temp_max_c}} °C / ${{p.avg_temp_min_f}}-${{p.avg_temp_max_f}} °F`;
+        const tempText = p.avg_temp_max_c == null ? '' : `<br>Set off: ${{p.setoff_date}}<br>Arrive: ${{p.expected_date}}<br>Avg range: ${{p.avg_temp_min_c}}-${{p.avg_temp_max_c}} °C / ${{p.avg_temp_min_f}}-${{p.avg_temp_max_f}} °F`;
         L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group)
           .bindPopup(`<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.miles}} mi${{tempText}}${{elevText}}<br>${{p.note}}`);
       }}
@@ -1921,7 +1937,7 @@ def write_overview_map() -> None:
     for (const row of johnRows) {{
       if (row.finish_lat === null) continue;
       const elevText = row.net_elevation_ft == null ? '' : `<br>Net elevation: ${{row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft}} ft<br>Altitude: ${{row.start_elevation_ft}} ft to ${{row.finish_elevation_ft}} ft`;
-      const tempText = row.avg_temp_max_c == null ? '' : `<br>Expected date: ${{row.expected_date}}<br>Avg range: ${{row.avg_temp_min_c}}-${{row.avg_temp_max_c}} °C / ${{row.avg_temp_min_f}}-${{row.avg_temp_max_f}} °F`;
+      const tempText = row.avg_temp_max_c == null ? '' : `<br>Set off: ${{row.setoff_date}}<br>Arrive: ${{row.expected_date}}<br>Avg range: ${{row.avg_temp_min_c}}-${{row.avg_temp_max_c}} °C / ${{row.avg_temp_min_f}}-${{row.avg_temp_max_f}} °F`;
       L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: row.day === 27 ? 5 : 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
         .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}${{tempText}}${{elevText}}<br>${{row.note}}`);
     }}
@@ -1946,7 +1962,7 @@ def write_detailed_map() -> None:
     elevation_cache = load_elevation_cache()
     temperature_cache = load_temperature_cache()
     lodging_cache = load_lodging_cache()
-    common_points = [{"day": 0, "stop": "Cape Henlopen State Park, DE", "miles": 0, "segment": "common", "note": "Atlantic tire dip start.", "lat": COORDS["Cape Henlopen State Park, DE"][0], "lon": COORDS["Cape Henlopen State Park, DE"][1]}] + map_points(PLAN_DECISION_COMMON)
+    common_points = [{"day": 0, "stop": START_STOP, "miles": 0, "segment": "common", "note": START_NOTE, "lat": COORDS[START_STOP][0], "lon": COORDS[START_STOP][1]}] + map_points(PLAN_DECISION_COMMON)
     mountain_points = common_points + map_points(PLAN_MOUNTAIN_BRANCH)
     southern_points = common_points + map_points(PLAN_SOUTHERN_BRANCH)
     common_segments = routed_segments(common_points, "#d97706", "Shared", route_cache, elevation_cache)
@@ -2048,7 +2064,7 @@ def write_detailed_map() -> None:
     }}
     function addRouteMarkers(group, color, pts, offset) {{
       for (const p of pts) {{
-        const tempText = p.avg_temp_max_c == null ? '' : `<br>Expected date: ${{p.expected_date}}<br>Avg range: ${{p.avg_temp_min_c}}-${{p.avg_temp_max_c}} °C / ${{p.avg_temp_min_f}}-${{p.avg_temp_max_f}} °F`;
+        const tempText = p.avg_temp_max_c == null ? '' : `<br>Set off: ${{p.setoff_date}}<br>Arrive: ${{p.expected_date}}<br>Avg range: ${{p.avg_temp_min_c}}-${{p.avg_temp_max_c}} °C / ${{p.avg_temp_min_f}}-${{p.avg_temp_max_f}} °F`;
         L.circleMarker([p.lat, p.lon], {{ radius: p.day === 14 ? 6 : 4, color, fillColor: color, fillOpacity: 0.95 }}).addTo(group).bindPopup(
           `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.miles}} mi${{tempText}}<br>Net elevation: ${{p.net_elevation_ft == null ? 'unknown' : (p.net_elevation_ft >= 0 ? '+' + p.net_elevation_ft : p.net_elevation_ft)}} ft<br>Altitude: ${{p.start_elevation_ft ?? 'unknown'}} ft to ${{p.finish_elevation_ft ?? 'unknown'}} ft<br>${{p.note}}`
         );
@@ -2076,7 +2092,7 @@ def write_detailed_map() -> None:
     addSegs(groups.john, johnSegs, '#7c3aed');
     for (const row of johnRows) {{
       if (row.finish_lat === null) continue;
-      const tempText = row.avg_temp_max_c == null ? '' : `<br>Expected date: ${{row.expected_date}}<br>Avg range: ${{row.avg_temp_min_c}}-${{row.avg_temp_max_c}} °C / ${{row.avg_temp_min_f}}-${{row.avg_temp_max_f}} °F`;
+      const tempText = row.avg_temp_max_c == null ? '' : `<br>Set off: ${{row.setoff_date}}<br>Arrive: ${{row.expected_date}}<br>Avg range: ${{row.avg_temp_min_c}}-${{row.avg_temp_max_c}} °C / ${{row.avg_temp_min_f}}-${{row.avg_temp_max_f}} °F`;
       L.circleMarker([row.finish_lat, row.finish_lon], {{ radius: 3, color: '#7c3aed', fillColor: '#fff', fillOpacity: 0.95 }}).addTo(groups.john)
         .bindPopup(`<strong>John Day ${{row.day}}</strong><br>${{row.finish}}${{tempText}}<br>Net elevation: ${{row.net_elevation_ft == null ? 'unknown' : (row.net_elevation_ft >= 0 ? '+' + row.net_elevation_ft : row.net_elevation_ft)}} ft<br>Altitude: ${{row.start_elevation_ft ?? 'unknown'}} ft to ${{row.finish_elevation_ft ?? 'unknown'}} ft<br>${{row.note}}`);
     }}
@@ -2140,7 +2156,7 @@ def write_map() -> None:
   <div id="map"></div>
   <div class="panel">
     <h1>Cross-Country Bike Plan</h1>
-    <p>Common eastern spine from Cape Henlopen to Norfolk, then two western finish options.</p>
+    <p>Common eastern spine from Woodland Beach to Norfolk, then two western finish options.</p>
     <p>Orange = shared route. Red = Los Angeles branch. Blue = San Francisco fallback.</p>
     <div class="key">
       <span class="chip"><span class="swatch" style="background:#d97706"></span>Shared</span>
@@ -2170,7 +2186,7 @@ def write_map() -> None:
           fillColor: color,
           fillOpacity: 0.9
         }}).addTo(map).bindPopup(
-          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>${{p.miles}} target miles<br>${{p.note}}`
+          `<strong>Day ${{p.day}}</strong><br>${{p.stop}}<br>Set off: ${{p.setoff_date}}<br>Arrive: ${{p.expected_date}}<br>${{p.miles}} target miles<br>${{p.note}}`
         );
       }});
     }}

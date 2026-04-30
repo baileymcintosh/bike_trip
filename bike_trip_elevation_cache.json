@@ -534,5 +534,21 @@
     "gain_ft": 0,
     "loss_ft": 1417,
     "net_elevation_ft": -1417
+  },
+  "39.33160,-75.47090": 1.0,
+  "39.29040,-76.61220": 29.0,
+  "39.33160,-75.47090|||39.29040,-76.61220": {
+    "start_elevation_ft": 3,
+    "finish_elevation_ft": 95,
+    "gain_ft": 92,
+    "loss_ft": 0,
+    "net_elevation_ft": 92
+  },
+  "39.29040,-76.61220|||39.59940,-77.82150": {
+    "start_elevation_ft": 95,
+    "finish_elevation_ft": 420,
+    "gain_ft": 325,
+    "loss_ft": 0,
+    "net_elevation_ft": 325
   }
 }

@@ -8,7 +8,7 @@
 
 ## Recommended Start
 
-- Start at **Cape Henlopen State Park, Delaware**. It gives you an actual Atlantic tire dip, is reachable from the Philly area, and is also the eastern terminus corridor used in the planned USBR 50 concept.
+- Start at **Woodland Beach, Delaware**. It gives you a simple beach launch close to Philly and sets up a more direct first day toward Baltimore.
 
 ## Why This Is Not A Pure GART Plan
 
@@ -20,8 +20,8 @@
 
 | Day | Overnight | Target Miles | Why It Works |
 | --- | --- | ---: | --- |
-| 1 | Annapolis, MD | 90 | Start at Cape Henlopen for the Atlantic tire dip, then ride inland. |
-| 2 | Williamsport, MD | 100 | Joins your friend's eastern corridor and the C&O / GAP approach. |
+| 1 | Baltimore, MD | 70 | Start at Woodland Beach for the tire dip, then ride toward Baltimore. |
+| 2 | Williamsport, MD | 95 | Joins your friend's eastern corridor and the C&O / GAP approach. |
 | 3 | Cumberland, MD | 65 | Trail-heavy day. |
 | 4 | South of Pittsburgh / Perryopolis area, PA | 90 | GAP-based push west. |
 | 5 | Steubenville, OH | 80 | Ohio River side of the eastern rail-trail network. |
@@ -36,7 +36,7 @@
 | 14 | Denison, IA | 95 | Friend-proven overnight. |
 | 15 | Norfolk, NE | 100 | Pivot point: decide on the LA desert branch or the SF fallback. |
 
-Approximate subtotal: **1490 miles**
+Approximate subtotal: **1465 miles**
 
 ## LA Primary Finish
 
@@ -63,7 +63,7 @@ Approximate subtotal: **1490 miles**
 
 Approximate subtotal: **1430 miles**
 
-Approximate 30-day total from Cape Henlopen to Santa Monica: **2920 miles**
+Approximate 30-day total from Woodland Beach to Santa Monica: **2895 miles**
 
 ## SF Fallback
 
@@ -90,7 +90,7 @@ Approximate 30-day total from Cape Henlopen to Santa Monica: **2920 miles**
 
 Approximate subtotal: **1465 miles**
 
-Approximate 30-day total from Cape Henlopen to San Francisco: **2955 miles**
+Approximate 30-day total from Woodland Beach to San Francisco: **2930 miles**
 
 ## Western Reality Check
 

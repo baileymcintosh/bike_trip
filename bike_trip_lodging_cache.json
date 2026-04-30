@@ -6913,5 +6913,233 @@
       "website": "https://www.bestwestern.com/en_US/book/hotels-in-barstow/best-western-desert-villa-inn/propertyCode.05427.html",
       "phone": "+1 760-256-1781"
     }
+  ],
+  "Woodland Beach, DE|||16000": [
+    {
+      "name": "Short's Landing Hotel",
+      "lat": 39.3469606,
+      "lon": -75.5366263,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Relax Inn",
+      "lat": 39.2804589,
+      "lon": -75.5934295,
+      "kind": "motel",
+      "website": "https://www.relaxinnsmyrna.com/",
+      "phone": "+1 302-357-6770"
+    },
+    {
+      "name": "Quality Inn",
+      "lat": 39.2812672,
+      "lon": -75.591356,
+      "kind": "hotel",
+      "website": "https://www.choicehotels.com/delaware/smyrna/quality-inn-hotels/de065",
+      "phone": ""
+    }
+  ],
+  "Baltimore, MD|||16000": [
+    {
+      "name": "The Inn at Henderson's Wharf",
+      "lat": 39.279996,
+      "lon": -76.5890781,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Sheraton",
+      "lat": 39.4063233,
+      "lon": -76.6005168,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "South Residence Tower at Mitags",
+      "lat": 39.2127908,
+      "lon": -76.6719078,
+      "kind": "hotel",
+      "website": "ccmit.org",
+      "phone": "+1-410-859-5700"
+    },
+    {
+      "name": "North Residence Tower",
+      "lat": 39.2134059,
+      "lon": -76.6719024,
+      "kind": "hotel",
+      "website": "ccmit.org",
+      "phone": "+1-410-859-5700"
+    },
+    {
+      "name": "Hilton Garden Inn",
+      "lat": 39.2837677,
+      "lon": -76.601596,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/bwiihgi-hilton-garden-inn-baltimore-inner-harbor/",
+      "phone": ""
+    },
+    {
+      "name": "Homewood Suites",
+      "lat": 39.283892,
+      "lon": -76.6016864,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hotel Indigo",
+      "lat": 39.2952047,
+      "lon": -76.6167194,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "La Quinta Inn & Suites by Wyndham Baltimore N / White Marsh",
+      "lat": 39.338286,
+      "lon": -76.490527,
+      "kind": "hotel",
+      "website": "https://www.wyndhamhotels.com/laquinta/baltimore-maryland/la-quinta-baltimore-n-white-marsh/overview",
+      "phone": "+1 410-574-8100"
+    },
+    {
+      "name": "Fairfield Inn & Suites Baltimore Downtown/Inner Harbor",
+      "lat": 39.2881385,
+      "lon": -76.6044429,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/bwifh",
+      "phone": ""
+    },
+    {
+      "name": "Tru",
+      "lat": 39.2860401,
+      "lon": -76.5990131,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/balheru-tru-baltimore-harbor-east/",
+      "phone": "+1 410-291-7500"
+    },
+    {
+      "name": "Candlewood Suites",
+      "lat": 39.290546,
+      "lon": -76.61493,
+      "kind": "hotel",
+      "website": "https://www.ihg.com/candlewood/hotels/us/en/baltimore/bwich/hoteldetail",
+      "phone": "+1 410-244-8181"
+    },
+    {
+      "name": "Courtyard",
+      "lat": 39.2834453,
+      "lon": -76.5997352,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/bwidt",
+      "phone": "+1 443-923-4000"
+    },
+    {
+      "name": "Quality Inn",
+      "lat": 39.2909285,
+      "lon": -76.6143791,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Hampton",
+      "lat": 39.288705,
+      "lon": -76.6123921,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/balihhx-hampton-suites-baltimore-inner-harbor/",
+      "phone": "+1 410-539-7888"
+    },
+    {
+      "name": "Deluxe Plaza",
+      "lat": 39.3034049,
+      "lon": -76.5410886,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Inn at the Collonade",
+      "lat": 39.3340113,
+      "lon": -76.6196719,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/bwicudt-inn-at-the-colonnade-baltimore/",
+      "phone": ""
+    },
+    {
+      "name": "Fayette Square",
+      "lat": 39.2905621,
+      "lon": -76.6231815,
+      "kind": "hostel",
+      "website": "https://www.umaryland.edu/housing/explore/fayette-square/",
+      "phone": ""
+    },
+    {
+      "name": "1840s Carrollton Inn",
+      "lat": 39.2887454,
+      "lon": -76.6041065,
+      "kind": "hotel",
+      "website": "https://www.1840splaza.com/",
+      "phone": "+14103851840"
+    },
+    {
+      "name": "Delta Hotels Marriott",
+      "lat": 39.355074,
+      "lon": -76.6466608,
+      "kind": "hotel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Revival Baltimore",
+      "lat": 39.2973345,
+      "lon": -76.6171888,
+      "kind": "hotel",
+      "website": "https://www.hyatt.com/en-US/hotel/maryland/jdv-revival-baltimore/bwijd",
+      "phone": "+1 410 727 7101"
+    },
+    {
+      "name": "Comfort Inn and Suites BWI Airport",
+      "lat": 39.2146896,
+      "lon": -76.6423798,
+      "kind": "hotel",
+      "website": "",
+      "phone": "+1 410-789-9100"
+    },
+    {
+      "name": "SpringHill Suites Baltimore Downtown Convention Center Area",
+      "lat": 39.2905515,
+      "lon": -76.6212159,
+      "kind": "hotel",
+      "website": "https://www.marriott.com/bwisl",
+      "phone": "+1 410-528-1001"
+    },
+    {
+      "name": "Casa de Roberto Romero Villalta",
+      "lat": 39.3592815,
+      "lon": -76.7234305,
+      "kind": "guest_house",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Colonial Motel",
+      "lat": 39.353635,
+      "lon": -76.4529029,
+      "kind": "motel",
+      "website": "",
+      "phone": ""
+    },
+    {
+      "name": "Home2 Suites Towson",
+      "lat": 39.3982994,
+      "lon": -76.6044441,
+      "kind": "hotel",
+      "website": "https://www.hilton.com/en/hotels/bwiskht-home2-suites-towson/",
+      "phone": "+1 667-275-7200"
+    }
   ]
 }

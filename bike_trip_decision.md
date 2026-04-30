@@ -9,8 +9,8 @@
 
 | Day | Overnight | Target Miles | Notes |
 | --- | --- | ---: | --- |
-| 1 | Annapolis, MD | 90 | Atlantic start from Cape Henlopen. |
-| 2 | Williamsport, MD | 100 | Join the eastern corridor. |
+| 1 | Baltimore, MD | 70 | Bay start from Woodland Beach. |
+| 2 | Williamsport, MD | 95 | Join the eastern corridor. |
 | 3 | Cumberland, MD | 65 | C&O / GAP transition. |
 | 4 | South of Pittsburgh / Perryopolis area, PA | 90 | GAP westbound. |
 | 5 | Steubenville, OH | 80 | Ohio River side. |
@@ -48,7 +48,7 @@
 | 29 | Victorville / San Bernardino, CA | 85 | Margin day if Mojave slows you down. |
 | 30 | Santa Monica, CA | 75 | Pacific finish. |
 
-Approximate total: **2920 miles in 30 days**
+Approximate total: **2895 miles in 30 days**
 
 ## Option B: Southern Completion Branch
 
@@ -78,7 +78,7 @@ Approximate total: **2920 miles in 30 days**
 | 32 | Barstow, CA | 145 | The hardest desert day on this branch. |
 | 33 | Santa Monica, CA | 131 | Pacific finish. |
 
-Approximate total: **3174 miles in 33 days**
+Approximate total: **3149 miles in 33 days**
 
 ## Practical Read
 
